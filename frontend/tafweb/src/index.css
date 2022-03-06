@@ -174,7 +174,8 @@ html, body {
   background-image: url(../public/img/tafalbum.png);
   background-size: 100%;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;  
+  background-size: contain;
 }
 
 #root {
