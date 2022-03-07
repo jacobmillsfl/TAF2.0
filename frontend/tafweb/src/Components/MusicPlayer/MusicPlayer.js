@@ -6,7 +6,11 @@ import Music from './Music'
 class MusicPlayer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      songs: this.getSongs(),
+      url: 'https://tafers.net/files/AbyssOfBliss.mp3',
+      songIndex: 0,
+    };
   }
 
   getSongs() {
@@ -57,6 +61,11 @@ class MusicPlayer extends Component {
   }
 
 
+  songClick( song ) {
+    this.setState((state) => {
+      return {url: song};
+    });
+  }
 
   render() {
 
@@ -66,7 +75,7 @@ class MusicPlayer extends Component {
       <div>
         <Table responsive="sm" style={musicPlayer}>
           <thead style={{ position: "absolute", display: "contents" }}>
-            <tr>
+            <tr style={{ borderStyle: "hidden" }}>
               <th>Artist</th>
               <th>Song</th>
             </tr>
@@ -74,7 +83,7 @@ class MusicPlayer extends Component {
           <tbody style={musicPlayerBody}>
             {
               song_list.map((song, index) => (
-                <tr key={index}>
+                <tr key={index} onClick={() => { this.songClick(song); }}>
                   <td>TAF</td>
                   <td>{song}</td>
                 </tr>
@@ -83,7 +92,7 @@ class MusicPlayer extends Component {
           </tbody>
         </Table>
         <div>
-          <Music url={song_list[0]} />
+          <Music url={this.state.url} />
         </div>
       </div>
     );

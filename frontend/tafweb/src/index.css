@@ -171,15 +171,15 @@ html, body {
 }
 
 .middle-frame-body {
-  background-image: url(../public/img/tafalbum.png);
+  /*background-image: url(../public/img/tafalbum.png);
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;  
-  background-size: contain;
+  background-size: contain;*/
 }
 
 #root {
-  background: #000;
+  background: #89bfc5;
 }
 
 .musicplayer-sidebar-logo-backup {

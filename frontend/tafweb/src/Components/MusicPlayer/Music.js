@@ -1,35 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from 'react';
 
-const useAudio = url => {
-  const [audio] = useState(new Audio(url));
-  const [playing, setPlaying] = useState(false);
+class Music extends React.Component {
 
-  const toggle = () => setPlaying(!playing);
 
-  useEffect(() => {
-      playing ? audio.play() : audio.pause();
-    },
-    [playing]
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      play: false,
+      audio: new Audio(this.props.url)
+    }
+  }
 
-  useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
-    return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
-    };
-  }, []);
 
-  return [playing, toggle];
-};
 
-const Music = ({ url }) => {
-  const [playing, toggle] = useAudio(url);
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    if (prevProps.url !== this.props.url) {      
+      this.state.play = false;
+      this.state.audio.pause();
+      this.setState((state) => {
+        return {audio: new Audio(this.props.url)};
+      });
+    }
+  }
 
-  return (
-    <div>
-      <button onClick={toggle}>{playing ? "Pause" : "Play"}</button>
-    </div>
-  );
-};
+  componentDidMount() {
+    this.state.audio.addEventListener('ended', () => this.setState({ play: false }));
+  }
+
+  componentWillUnmount() {
+    this.state.audio.removeEventListener('ended', () => this.setState({ play: false }));
+  }
+
+  togglePlay = () => {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? this.state.audio.play() : this.state.audio.pause();
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.togglePlay}>{this.state.play ? 'Pause' : 'Play'}</button>
+        <div>
+          Now Playing: {this.state.audio.src}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Music;
