@@ -18,8 +18,8 @@ class MiddleFrame extends Component {
           <div className="row">
             <div className="middle-frame-holder">
               <div className="middle-frame-content">
-                <div class="middle-frame-frame">
-                  <div class="middle-frame-items">
+                <div className="middle-frame-frame">
+                  <div className="middle-frame-items">
                     <div>{children}</div>
                   </div>
                 </div>

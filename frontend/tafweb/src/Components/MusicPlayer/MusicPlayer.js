@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table'
+
+import Music from './Music'
 
 class MusicPlayer extends Component {
   constructor(props) {
@@ -52,7 +54,9 @@ class MusicPlayer extends Component {
       , 'https://tafers.net/files/TrifoldEcstacy.mp3'
       , 'https://tafers.net/files/Vinculum_DrumEdit_20200523_mp3.mp3'
       , 'https://tafers.net/files/Vinculum_DrumEdit_20200712_mp3.mp3']
-}
+  }
+
+
 
   render() {
 
@@ -69,15 +73,18 @@ class MusicPlayer extends Component {
           </thead>
           <tbody style={musicPlayerBody}>
             {
-            song_list.map((song, index) => ( 
-              <tr key={index}>
-                <td>TAF</td>
-                <td>{song}</td>
-              </tr>
-            ))
+              song_list.map((song, index) => (
+                <tr key={index}>
+                  <td>TAF</td>
+                  <td>{song}</td>
+                </tr>
+              ))
             }
           </tbody>
         </Table>
+        <div>
+          <Music url={song_list[0]} />
+        </div>
       </div>
     );
   }
