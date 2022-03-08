@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink, Collapse } from 'reactstrap';
 import './App.css';
-import MiddleFrame from './Components/MiddleFrame';
-import MusicPlayer from './Components/MusicPlayer/MusicPlayer';
+
+import MusicPlayerPage from './Pages/MusicPlayerPage';
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +22,6 @@ class App extends Component {
   render() {
     return (
       <div>
-
         <Navbar className="navbar navbar-dark bg-dark" dark>
           <NavbarBrand href="/" className="mr-auto">Tafers.Net</NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
@@ -34,9 +33,7 @@ class App extends Component {
             </Nav>
           </Collapse>
         </Navbar>
-        <MiddleFrame>
-          <MusicPlayer />
-        </MiddleFrame>
+        <MusicPlayerPage />
       </div>
     );
   }

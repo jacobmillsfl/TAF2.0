@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-class MiddleFrame extends Component {
-  constructor(props) {
+class MiddleFrame extends Component
+{
+  constructor(props)
+  {
     super(props);
 
     this.state = {
@@ -9,9 +11,10 @@ class MiddleFrame extends Component {
   }
 
 
-  render() {
+  render()
+  {
     const children = this.props.children;
-    
+
     return (
       <div>
         <div className="middle-frame-body">

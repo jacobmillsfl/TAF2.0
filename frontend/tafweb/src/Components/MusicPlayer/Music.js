@@ -14,7 +14,6 @@ class Music extends React.Component {
 
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
     if (prevProps.url !== this.props.url) {      
       this.state.play = false;
       this.state.audio.pause();
@@ -35,6 +34,7 @@ class Music extends React.Component {
   togglePlay = () => {
     this.setState({ play: !this.state.play }, () => {
       this.state.play ? this.state.audio.play() : this.state.audio.pause();
+      //this.props.onToggle(this.state.play);
     });
   }
 
@@ -49,5 +49,7 @@ class Music extends React.Component {
     );
   }
 }
+
+
 
 export default Music;
