@@ -98,7 +98,7 @@ class MusicPlayer extends Component
           </tbody>
         </Table>
         <div>
-          <Music url={this.state.url} />
+          <Music url={this.state.url} onToggleVideo={this.props.onToggleVideo}  />
         </div>
       </div>
     );

@@ -11,23 +11,13 @@ class MusicPlayerPage extends React.Component
     this.state = {
       videoPlaying: false
     }
+    this.onToggleVideo = this.onToggleVideo.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
 
-  componentDidUpdate(prevProps)
+  componentDidUpdate()
   {
-    console.log("MusicPlayerPage",prevProps);
-    if (prevProps.videoPlaying !== this.state.videoPlaying) {      
 
-      let videoElement = document.getElementById("videoBackground");
-      if (this.state.videoPlaying) {
-        videoElement.play();
-      } else {
-        videoElement.pause();
-      }
-      this.setState((state) => {
-        return {videoPlaying: !this.state.videoPlaying}
-      });
-    }
   }
 
   componentDidMount()
@@ -40,9 +30,15 @@ class MusicPlayerPage extends React.Component
   {
   }
 
-  onToggle(playing)
+  onToggleVideo(playing)
   {
-    this.setState({ videoPlaying: playing });
+    console.log("TOGGLE VIDEO", playing);
+    let videoElement = document.getElementById("videoBackground");
+    if (playing) {
+      videoElement.play();
+    } else {
+      videoElement.pause();
+    }
   }
 
   render()
@@ -55,7 +51,7 @@ class MusicPlayerPage extends React.Component
           </video>
         </center>
         <MiddleFrame>
-          <MusicPlayer onToggle={this.onToggle} />
+          <MusicPlayer onToggleVideo={this.onToggleVideo} />
         </MiddleFrame>
       </div>
     );

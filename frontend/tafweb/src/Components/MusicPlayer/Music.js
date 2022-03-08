@@ -17,6 +17,7 @@ class Music extends React.Component {
     if (prevProps.url !== this.props.url) {      
       this.state.play = false;
       this.state.audio.pause();
+      this.props.onToggleVideo(this.state.play)
       this.setState((state) => {
         return {audio: new Audio(this.props.url)};
       });
@@ -35,6 +36,8 @@ class Music extends React.Component {
     this.setState({ play: !this.state.play }, () => {
       this.state.play ? this.state.audio.play() : this.state.audio.pause();
       //this.props.onToggle(this.state.play);
+
+      this.props.onToggleVideo(this.state.play)
     });
   }
 
