@@ -22,16 +22,8 @@ function AudioContainer() {
         handleSongEnd,
     } = useContext(mediaContext)
 
-    const [songTitle, setSongTitle] = useState("TAFers.net");
-
-    // self State
-    // const [statevolum, setStateVolum] = useState(0.3)
-    // const [dur, setDur] = useState(0)
-    // const [currentTime, setCurrentTime] = useState(0)
-
     useEffect(() => {
-        console.log("USING EFFECT")
-        console.log(audio.current);
+        console.log("AudioContainer useEffect::")
         console.log({
             currentSongIndex,
             songs,
@@ -41,8 +33,6 @@ function AudioContainer() {
             audioPlaying,
             videoPlaying
         })
-
-        setSongTitle(songs[currentSongIndex].title);
     })
 
 

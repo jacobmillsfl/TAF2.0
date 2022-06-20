@@ -36,29 +36,24 @@ function AudioController() {
             audio.current.ontimeupdate = ((timeupdateEvent: Event) => {
                 setSeekValue((timeupdateEvent.target as HTMLAudioElement).currentTime);
             });
+
+            audio.current.onloadeddata = (() => {
+                setSeekDuration(audio.current.duration);
+            })
         }
 
-        // Log the current state
-        console.log("USING EFFECT INITIAL",{
-            currentSongIndex,
-            songs,
-            audio,
-            repeat,
-            random,
-            audioPlaying,
-            videoPlaying
-        })
-
-        // Update state
+        // Set initial song info
         setCurrentSongDetail(songs[currentSongIndex]);
-        setSeekDuration(Math.floor(audio.current.duration) ?? 0);
     }, [])
 
+    // Update song details when the song changes
+    useEffect(() => {
+        setCurrentSongDetail(songs[currentSongIndex]);
+    }, [currentSongIndex])
+
     function changeSong(index: number) {
-        console.log("SETTING SONG")
         setCurrentSong(index);
-        setCurrentSongDetail(songs[index]);
-        //toggleMediaPlaying(true);
+        toggleMediaPlaying(true);
     }
 
     function getAlbumArt(song: SongDetail | null) {
@@ -69,24 +64,11 @@ function AudioController() {
         toggleMediaPlaying();
     }
 
-    function skipTrack() {
-        setCurrentSong(currentSongIndex + 1);
-    }
-
-    function backTrack() {
-        setCurrentSong(currentSongIndex - 1);
-    }
-
     function getPlayIcon() {
-        if (!audioPlaying) {
-            return (<td><input type="checkbox" id="play" title="Play" onClick={() => togglePlay()} /><label className="play" htmlFor="play"></label></td>);
-        } else {
-            return (<td><input type="checkbox" id="play" title="Play" onClick={() => togglePlay()} checked /><label className="play" htmlFor="play"></label></td>);
-        }
+        return (<td><input type="checkbox" id="play" title="Play" onChange={() => togglePlay()} checked={audioPlaying} /><label className="play" htmlFor="play"></label></td>);
     }
 
     function handleSeekInput(target: EventTarget) {
-        console.log("SEEK CHANGED")
         const timeSeconds = Number((target as HTMLInputElement).value);
         setSeekValue(timeSeconds);
         audio.current.currentTime = timeSeconds;
@@ -102,15 +84,16 @@ function AudioController() {
                 <div className="bodyPlayer"></div>
 
                 <table className="list songlist">
-                    {
-                        songs.map((song, index) => (
-                            <tr className="song songlistSong" onClick={() => changeSong(index)} >
-                                <td className="nr" ><h5>{index + 1}</h5></td>
-                                <td className="title"><h6>{song.title}</h6></td>
-                            </tr>
-                        ))
-
-                    }
+                    <tbody>
+                        {
+                            songs.map((song, index) => (
+                                <tr key={index} className="song songlistSong" onClick={() => changeSong(index)} >
+                                    <td className="nr" ><h5>{index + 1}</h5></td>
+                                    <td className="title"><h6>{song.title}</h6></td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
                 </table>
 
                 <div className="shadow">
@@ -136,11 +119,15 @@ function AudioController() {
 
 
                 <table className="player">
-                    <td><input type="checkbox" id="shuffle" /><label className="shuffle" htmlFor="shuffle"></label></td>
-                    <td><input type="checkbox" id="backward" onClick={() => backTrack()} /><label className="backward" htmlFor="backward"></label></td>
-                    {getPlayIcon()}
-                    <td><input type="checkbox" id="forward" onClick={() => skipTrack()} /><label className="forward" htmlFor="forward"></label></td>
-                    <td><input type="checkbox" id="repeat" /><label className="repeat" htmlFor="repeat"></label></td>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" id="shuffle" /><label className="shuffle" htmlFor="shuffle"></label></td>
+                            <td><input type="checkbox" id="backward" onClick={() => changeSong(currentSongIndex - 1)} /><label className="backward" htmlFor="backward"></label></td>
+                            {getPlayIcon()}
+                            <td><input type="checkbox" id="forward" onClick={() => changeSong(currentSongIndex + 1)} /><label className="forward" htmlFor="forward"></label></td>
+                            <td><input type="checkbox" id="repeat" /><label className="repeat" htmlFor="repeat"></label></td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <table className="footer">
