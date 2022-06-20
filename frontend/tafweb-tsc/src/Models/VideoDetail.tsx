@@ -1,7 +1,7 @@
 type VideoDetail = {
     name: string,
     video: any,
-    playspeed: number
+    playbackRate: number
 }
 
 export default VideoDetail;
