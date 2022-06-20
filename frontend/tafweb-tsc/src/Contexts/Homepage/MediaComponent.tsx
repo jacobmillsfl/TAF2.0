@@ -2,6 +2,7 @@ import React, { useReducer, useRef, useEffect } from 'react';
 import mediaContext from './MediaContext'
 import mediaReducer from './MediaReducer'
 import SongDetail from '../../Models/SongDetail';
+import HtmlAudioRef from '../../Models/HtmlAudioRef';
 import SongApi from '../../Apis/SongApi';
 
 import {
@@ -21,7 +22,7 @@ export type MediaState = {
     random: boolean,
     audioPlaying: boolean,
     videoPlaying: boolean,
-    audio: any,
+    audio: HtmlAudioRef,
     currentSongTime: number,
 }
 
@@ -49,8 +50,10 @@ const MediaComponent = (props: any) => {
 
     const toggleAudio = (play: boolean) => {
         if (play) {
+            console.log("MediaComponent::play()")
             audio.current!.play();
         } else {
+            console.log("MediaComponent::pause()")
             audio.current!.pause();
         }
     }
@@ -72,11 +75,11 @@ const MediaComponent = (props: any) => {
     }
 
     const toggleRandom = () => {
-        dispatch({ type: TOGGLE_RANDOM, data: !state.audioPlaying });
+        dispatch({ type: TOGGLE_RANDOM, data: !state.random });
     }
 
     const toggleRepeat = () => {
-        dispatch({ type: TOGGLE_REPEAT, data: !state.random });
+        dispatch({ type: TOGGLE_REPEAT, data: !state.repeat });
     }
 
     const setCurrentSong = (id: number) => {
@@ -86,20 +89,13 @@ const MediaComponent = (props: any) => {
             newIndex = state.songs.length - 1;
         }
 
+        console.log(`MediaComponent:: PreviousSongIndex=${state.currentSongIndex} NewSongIndex=${newIndex}.`)
         dispatch({ type: SET_CURRENT_SONG, data: newIndex });
-    }
-
-    const setPreviousSong = () => {
-        if (state.currentSongIndex === 0) {
-            setCurrentSong(state.songs.length - 1);
-        } else {
-            setCurrentSong(state.currentSongIndex - 1);
-        }
     }
 
     const handleSongEnd = () => {
         if (state.random) {
-            console.log("Generating random song index...")
+            console.log("MediaComponent:: Generating random song index...")
             let randomIndex = ~~(Math.random() * state.songs.length);
             if (randomIndex === state.currentSongIndex) {
                 randomIndex = (randomIndex + 1) % state.songs.length;
@@ -109,8 +105,14 @@ const MediaComponent = (props: any) => {
                 data: randomIndex,
             })
         } else if (state.repeat) {
-            // Figure out how to start the same song over
+            console.log("MediaComponent:: Repeating the song...")
+            if (state.audio.current) {
+                // Just reset the currentTime and play the song again
+                state.audio.current.currentTime = 0;
+                state.audio.current.play();
+            }
         } else {
+            console.log("MediaComponent:: Next song...")
             let newSongIndex = (state.currentSongIndex + 1) % state.songs.length;
             return dispatch({
                 type: SET_CURRENT_SONG,
@@ -118,7 +120,6 @@ const MediaComponent = (props: any) => {
             });
         }
     }
-
 
 
     return (
@@ -136,8 +137,6 @@ const MediaComponent = (props: any) => {
                 toggleRandom,
                 toggleRepeat,
                 setCurrentSong,
-                setPreviousSong,
-                handleSongEnd,
             }}
         >
             <audio
@@ -147,7 +146,7 @@ const MediaComponent = (props: any) => {
                 ref={audio}
                 preload="true"
                 src={state.songs[state.currentSongIndex].url}
-                autoPlay={true}
+                autoPlay={state.audioPlaying}
                 muted={false}
             />
             {props.children}

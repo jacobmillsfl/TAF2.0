@@ -1,9 +1,6 @@
 import { createContext } from 'react';
 import SongDetail from '../../Models/SongDetail';
-
-type HtmlAudioRef = {
-    current: HTMLAudioElement | null
-}
+import HtmlAudioRef from '../../Models/HtmlAudioRef';
 
 interface MediaPlayerContext {
     currentSongIndex: number;
@@ -18,8 +15,6 @@ interface MediaPlayerContext {
     toggleRandom: () => void;
     toggleRepeat: () => void;
     setCurrentSong: (id: number) => void;
-    setPreviousSong: () => void;
-    handleSongEnd: () => void;
 }
 
 const mediaContext = createContext<MediaPlayerContext>({
@@ -35,8 +30,6 @@ const mediaContext = createContext<MediaPlayerContext>({
     toggleRandom: () => {},
     toggleRepeat: () => {},
     setCurrentSong: () => {},
-    setPreviousSong: () => {},
-    handleSongEnd: () => {},
 });
 
 export default mediaContext;

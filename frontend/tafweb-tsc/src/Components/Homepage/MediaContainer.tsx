@@ -11,15 +11,7 @@ function MediaContainer() {
         random,
         audioPlaying,
         videoPlaying,
-        setSongsArray,
-        toggleMediaPlaying,
-        toggleRandom,
-        toggleRepeat,
-        setCurrentSong,
-        setPreviousSong,
-        handleSongEnd,
-    } = useContext(mediaContext)
-    
+    } = useContext(mediaContext)    
 
     return (
         <div className="backgroundContainer">

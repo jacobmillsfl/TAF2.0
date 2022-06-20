@@ -13,26 +13,19 @@ function AudioContainer() {
         random,
         audioPlaying,
         videoPlaying,
-        setSongsArray,
-        toggleMediaPlaying,
-        toggleRandom,
-        toggleRepeat,
-        setCurrentSong,
-        setPreviousSong,
-        handleSongEnd,
     } = useContext(mediaContext)
 
     useEffect(() => {
-        console.log("AudioContainer useEffect::")
-        console.log({
-            currentSongIndex,
-            songs,
-            audio,
-            repeat,
-            random,
-            audioPlaying,
-            videoPlaying
-        })
+        // console.log("AudioContainer useEffect::")
+        // console.log({
+        //     currentSongIndex,
+        //     songs,
+        //     audio,
+        //     repeat,
+        //     random,
+        //     audioPlaying,
+        //     videoPlaying
+        // })
     })
 
 

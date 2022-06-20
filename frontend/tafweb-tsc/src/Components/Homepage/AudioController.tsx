@@ -20,8 +20,6 @@ function AudioController() {
         toggleRandom,
         toggleRepeat,
         setCurrentSong,
-        setPreviousSong,
-        handleSongEnd,
     } = useContext(mediaContext)
 
     const [currentSongDetail, setCurrentSongDetail] = useState<SongDetail | null>(null);
@@ -53,7 +51,14 @@ function AudioController() {
     }, [currentSongIndex])
 
     function changeSong(index: number) {
-        setCurrentSong(index);
+        if (random) {
+            const newIndex = Math.floor(Math.random() * songs.length)
+            console.log("new random index: ", newIndex);
+            setCurrentSong(newIndex);
+        } else {
+            setCurrentSong(index);
+        }
+
         toggleMediaPlaying(true);
     }
 
@@ -71,8 +76,17 @@ function AudioController() {
 
     function handleSeekInput(target: EventTarget) {
         const timeSeconds = Number((target as HTMLInputElement).value);
-        setSeekValue(timeSeconds);
+        //setSeekValue(timeSeconds);
         audio.current!.currentTime = timeSeconds;
+    }
+
+    function handleBackward() {
+        if (seekValue < 5) {
+            changeSong(currentSongIndex - 1);
+        } else {
+            // Restart current song
+            audio.current!.currentTime = 0;
+        }
     }
 
     return (
@@ -102,12 +116,12 @@ function AudioController() {
 
                 <div className="bar">
                     <input
+                        id="AudioSeekBar"
                         type="range"
                         step="any"
                         value={seekValue}
                         min="0"
                         max={seekDuration}
-                        onInput={(event) => handleSeekInput(event.target)}
                         onChange={(event) => handleSeekInput(event.target)}
                         style={{ "width": "100%" }}
                     />
@@ -122,11 +136,11 @@ function AudioController() {
                 <table className="player">
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" id="shuffle" /><label className="shuffle" htmlFor="shuffle"></label></td>
-                            <td><input type="checkbox" id="backward" onClick={() => changeSong(currentSongIndex - 1)} /><label className="backward" htmlFor="backward"></label></td>
+                            <td><input type="checkbox" id="shuffle" /><label className="shuffle" htmlFor="shuffle" onClick={() => toggleRandom()}></label></td>
+                            <td><input type="checkbox" id="backward" onClick={handleBackward} /><label className="backward" htmlFor="backward"></label></td>
                             {getPlayIcon()}
                             <td><input type="checkbox" id="forward" onClick={() => changeSong(currentSongIndex + 1)} /><label className="forward" htmlFor="forward"></label></td>
-                            <td><input type="checkbox" id="repeat" /><label className="repeat" htmlFor="repeat"></label></td>
+                            <td><input type="checkbox" id="repeat" /><label className="repeat" htmlFor="repeat" onClick={() => toggleRepeat()}></label></td>
                         </tr>
                     </tbody>
                 </table>
