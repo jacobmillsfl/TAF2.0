@@ -29,16 +29,17 @@ function AudioController() {
     const [seekValue, setSeekValue] = useState(0);
     // const [statevolum, setStateVolum] = useState(0.3)
 
-
-    useEffect(() => {
-        // Add a listener to update the song duration bar
+    useEffect(() => {        
         if (audio.current) {
+
+            // Add a listener to update the song duration bar
             audio.current.ontimeupdate = ((timeupdateEvent: Event) => {
                 setSeekValue((timeupdateEvent.target as HTMLAudioElement).currentTime);
             });
 
+            // Add a listener for when a new song is loaded
             audio.current.onloadeddata = (() => {
-                setSeekDuration(audio.current.duration);
+                setSeekDuration(audio.current!.duration);
             })
         }
 
@@ -71,7 +72,7 @@ function AudioController() {
     function handleSeekInput(target: EventTarget) {
         const timeSeconds = Number((target as HTMLInputElement).value);
         setSeekValue(timeSeconds);
-        audio.current.currentTime = timeSeconds;
+        audio.current!.currentTime = timeSeconds;
     }
 
     return (

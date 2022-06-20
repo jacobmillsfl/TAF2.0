@@ -1,6 +1,10 @@
 import { createContext } from 'react';
 import SongDetail from '../../Models/SongDetail';
 
+type HtmlAudioRef = {
+    current: HTMLAudioElement | null
+}
+
 interface MediaPlayerContext {
     currentSongIndex: number;
     songs: Array<SongDetail>;
@@ -8,7 +12,7 @@ interface MediaPlayerContext {
     random: boolean;
     audioPlaying: boolean;
     videoPlaying: boolean;
-    audio: any;
+    audio: HtmlAudioRef;
     setSongsArray: (songArr: Array<SongDetail>) => void;
     toggleMediaPlaying: (play?: boolean) => void;
     toggleRandom: () => void;
@@ -25,7 +29,7 @@ const mediaContext = createContext<MediaPlayerContext>({
     random: false,
     audioPlaying: false,
     videoPlaying: false,
-    audio: null,
+    audio: { current: null },
     setSongsArray: () => {},
     toggleMediaPlaying: () => {},
     toggleRandom: () => {},
