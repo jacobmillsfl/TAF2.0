@@ -3,7 +3,7 @@ import mediaContext from './MediaContext'
 import mediaReducer from './MediaReducer'
 import SongDetail from '../../Models/SongDetail';
 import HtmlAudioRef from '../../Models/HtmlAudioRef';
-import SongApi from '../../Apis/SongApi';
+import SongApi from '../../Utilities/SongApi';
 
 import {
     SET_CURRENT_SONG,
