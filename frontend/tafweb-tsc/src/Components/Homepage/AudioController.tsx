@@ -27,6 +27,9 @@ function AudioController() {
     const [seekValue, setSeekValue] = useState(0);
     // const [statevolum, setStateVolum] = useState(0.3)
 
+    /**
+     * Onload event
+     */
     useEffect(() => {        
         if (audio.current) {
 
@@ -45,11 +48,17 @@ function AudioController() {
         setCurrentSongDetail(songs[currentSongIndex]);
     }, [])
 
-    // Update song details when the song changes
+    /**
+     * Triggers whenever the current song changes.
+     */
     useEffect(() => {
+        // Update song details
         setCurrentSongDetail(songs[currentSongIndex]);
     }, [currentSongIndex])
 
+    /**
+     * Change the current song
+     */
     function changeSong(index: number) {
         if (random) {
             const newIndex = Math.floor(Math.random() * songs.length)
@@ -62,24 +71,49 @@ function AudioController() {
         toggleMediaPlaying(true);
     }
 
+    /**
+     * Get album art for the current song
+     */
     function getAlbumArt(song: SongDetail | null) {
         return song?.albumArt ?? tafAlbum;
     }
 
+    /**
+     * Toggle playing media
+     */
     function togglePlay() {
         toggleMediaPlaying();
     }
 
+    /**
+     * Get the current play icon
+     */
     function getPlayIcon() {
         return (<td><input type="checkbox" id="play" title="Play" onChange={() => togglePlay()} checked={audioPlaying} /><label className="play" htmlFor="play"></label></td>);
     }
 
+    /**
+     * Handle behavior for seekbar changes
+     */
     function handleSeekInput(target: EventTarget) {
         const timeSeconds = Number((target as HTMLInputElement).value);
-        //setSeekValue(timeSeconds);
         audio.current!.currentTime = timeSeconds;
     }
 
+    /**
+     * CSS hack to re-style seek bar as the seek value changes
+     */
+    useEffect( () => {
+        let target = document.querySelector("#AudioSeekBar") as HTMLInputElement;
+        let relativeValue = Number(target.value) - Number(target.min);
+        let relativeMax = Number(target.max) - Number(target.min)
+        let value = relativeValue / relativeMax * 100;
+        target.style.background = 'linear-gradient(to right, #0839b3 0%, #3767e1 ' + value + '%, #fff ' + value + '%, white 100%)'
+    }, [seekValue])
+
+    /**
+     * Handle behavior for backward media navigation
+     */
     function handleBackward() {
         if (seekValue < 5) {
             changeSong(currentSongIndex - 1);
