@@ -19,8 +19,10 @@ function MediaContainer() {
     const videos = VideoUtility.getVideos();
 
     useEffect(() => {
-        const index = Math.floor(Math.random() * videos.length);
-        setCurrentVideo(videos[index]);
+        if (videoPlaying) {
+            const index = Math.floor(Math.random() * videos.length);
+            setCurrentVideo(videos[index]);
+        }
     }, [currentSongIndex])
 
     function videoChanged() {

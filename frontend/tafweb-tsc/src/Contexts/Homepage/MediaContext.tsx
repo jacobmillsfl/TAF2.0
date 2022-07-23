@@ -12,6 +12,7 @@ interface MediaPlayerContext {
     audio: HtmlAudioRef;
     setSongsArray: (songArr: Array<SongDetail>) => void;
     toggleMediaPlaying: (play?: boolean) => void;
+    toggleVideoPlaying: (play?: boolean) => void;
     toggleRandom: () => void;
     toggleRepeat: () => void;
     setCurrentSong: (id: number) => void;
@@ -23,10 +24,11 @@ const mediaContext = createContext<MediaPlayerContext>({
     repeat: false,
     random: false,
     audioPlaying: false,
-    videoPlaying: false,
+    videoPlaying: true,
     audio: { current: null },
     setSongsArray: () => {},
     toggleMediaPlaying: () => {},
+    toggleVideoPlaying: () => {},
     toggleRandom: () => {},
     toggleRepeat: () => {},
     setCurrentSong: () => {},

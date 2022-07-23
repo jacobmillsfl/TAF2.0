@@ -74,6 +74,16 @@ const MediaComponent = (props: any) => {
         }    
     }
 
+    const toggleVideoPlaying = (play?: boolean) => {
+        let playVideo = play;
+
+        if (playVideo === undefined) {
+            playVideo = !state.videoPlaying
+        }
+
+        dispatch({ type: TOGGLE_PLAYING_VIDEO, data: playVideo }); 
+    }
+
     const toggleRandom = () => {
         dispatch({ type: TOGGLE_RANDOM, data: !state.random });
     }
@@ -134,6 +144,7 @@ const MediaComponent = (props: any) => {
                 audio: audio,
                 setSongsArray,
                 toggleMediaPlaying,
+                toggleVideoPlaying,
                 toggleRandom,
                 toggleRepeat,
                 setCurrentSong,

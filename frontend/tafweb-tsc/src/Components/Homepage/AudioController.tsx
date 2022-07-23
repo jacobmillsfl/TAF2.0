@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import mediaContext from "../../Contexts/Homepage/MediaContext";
 import { Table, ListGroup } from "reactstrap";
 import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
+import { RiVideoFill, RiVideoLine } from "react-icons/ri";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import SongDetail from "../../Models/SongDetail";
 import tafAlbum from "../../media/tafalbum.png";
 import CyberBackground from "../../media/cyber_03.mp4";
@@ -11,11 +13,10 @@ function AudioController() {
         currentSongIndex,
         songs,
         audio,
-        repeat,
         random,
         audioPlaying,
         videoPlaying,
-        setSongsArray,
+        toggleVideoPlaying,
         toggleMediaPlaying,
         toggleRandom,
         toggleRepeat,
@@ -25,6 +26,7 @@ function AudioController() {
     const [currentSongDetail, setCurrentSongDetail] = useState<SongDetail | null>(null);
     const [seekDuration, setSeekDuration] = useState(0);
     const [seekValue, setSeekValue] = useState(0);
+    //const [shuffleVideo, setShuffleVideo] = useState(true);
     // const [statevolum, setStateVolum] = useState(0.3)
 
     /**
@@ -85,11 +87,22 @@ function AudioController() {
         toggleMediaPlaying();
     }
 
+    function toggleshuffleVideo() {
+        toggleVideoPlaying(!videoPlaying)
+    }
+
     /**
      * Get the current play icon
      */
-    function getPlayIcon() {
+    function getPlayIcon() : any {
         return (<td><input type="checkbox" id="play" title="Play" onChange={() => togglePlay()} checked={audioPlaying} /><label className="play" htmlFor="play"></label></td>);
+    }
+
+    /**
+     * Get the current play icon
+     */
+    function getVideoIcon() {
+        return (<td><input type="checkbox" id="shuffleVideo" onChange={() => toggleshuffleVideo()} checked={videoPlaying} /><label className="shuffleVideo" htmlFor="shuffleVideo"></label></td>);
     }
 
     /**
@@ -175,6 +188,13 @@ function AudioController() {
                             {getPlayIcon()}
                             <td><input type="checkbox" id="forward" onClick={() => changeSong(currentSongIndex + 1)} /><label className="forward" htmlFor="forward"></label></td>
                             <td><input type="checkbox" id="repeat" /><label className="repeat" htmlFor="repeat" onClick={() => toggleRepeat()}></label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            {getVideoIcon()}
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

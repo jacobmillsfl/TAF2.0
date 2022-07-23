@@ -1058,7 +1058,7 @@ label.main:hover:before {
     height: 50px;
     text-align: center;
     background: #1d1d1d;
-    text-indent: 8px;
+    text-indent: 18px;
 }
 
 .list tr:hover {
@@ -1245,11 +1245,11 @@ td>#heart8:checked~label.zmr:before {
     font-family: FontAwesome;
     color: #fff;
     font-size: 26px;
-    line-height: 26px;
+    line-height: 55px;
     width: 80%;
     height: 35px;
     position: absolute;
-    bottom: 100px;
+    bottom: 35px;
     left: 48%;
     transform: translate(-50%, 0);
     z-index: 10;
@@ -1300,7 +1300,7 @@ td>#play:checked~label.play:before {
 }
 
 .screen>#magicButton:checked~.player {
-    bottom: 4px;
+    bottom: -25px;
     left: -44px;
     transform: scale(0.45, 0.45);
     transition: all 0.3s ease-in;
@@ -1388,6 +1388,22 @@ td>#shuffle:checked~label.shuffle:before {
 }
 
 td>#repeat:checked~label.repeat:before {
+    color: #ff564c;
+    transition: all 0.15s linear;
+}
+
+.shuffleVideo:before {
+    content: "\f03d";
+    cursor: pointer;
+    transition: all 0.15s linear;
+}
+
+.shuffleVideo:hover:before {
+    color: #bbb;
+    transition: all 0.15s linear;
+}
+
+td>#shuffleVideo:checked~label.shuffleVideo:before {
     color: #ff564c;
     transition: all 0.15s linear;
 }
