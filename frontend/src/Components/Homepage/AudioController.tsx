@@ -15,8 +15,8 @@ function AudioController() {
         audio,
         random,
         audioPlaying,
-        videoPlaying,
-        toggleVideoPlaying,
+        videoShuffle,
+        toggleVideoShuffle,
         toggleMediaPlaying,
         toggleRandom,
         toggleRepeat,
@@ -26,8 +26,6 @@ function AudioController() {
     const [currentSongDetail, setCurrentSongDetail] = useState<SongDetail | null>(null);
     const [seekDuration, setSeekDuration] = useState(0);
     const [seekValue, setSeekValue] = useState(0);
-    //const [shuffleVideo, setShuffleVideo] = useState(true);
-    // const [statevolum, setStateVolum] = useState(0.3)
 
     /**
      * Onload event
@@ -47,30 +45,48 @@ function AudioController() {
         }
 
         // Set initial song info
-        setCurrentSongDetail(songs[currentSongIndex]);
+        setCurrentSongDetail({ title: "Loading", artist: "", url: "", albumArt: null });
+        console.log("AudioController::useEffect::onload");
     }, [])
+
+    /**
+     * Triggers whenever the list of songs changes
+     */
+    useEffect(() => {
+        if (songs) 
+        {
+            setCurrentSongDetail(songs![currentSongIndex]);
+        }
+        console.log("AudioController::useEffect::songs");
+    }, [songs])
 
     /**
      * Triggers whenever the current song changes.
      */
     useEffect(() => {
-        // Update song details
-        setCurrentSongDetail(songs[currentSongIndex]);
+        if (songs)
+        {
+            setCurrentSongDetail(songs[currentSongIndex]);
+        }
+        console.log("AudioController::useEffect::currentSongIndex");
     }, [currentSongIndex])
 
     /**
      * Change the current song
      */
     function changeSong(index: number) {
-        if (random) {
-            const newIndex = Math.floor(Math.random() * songs.length)
-            console.log("new random index: ", newIndex);
-            setCurrentSong(newIndex);
-        } else {
-            setCurrentSong(index);
+        if (songs)
+        {
+            if (random) {
+                const newIndex = Math.floor(Math.random() * songs.length)
+                console.log("new random index: ", newIndex);
+                setCurrentSong(newIndex);
+            } else {
+                setCurrentSong(index);
+            }
+    
+            toggleMediaPlaying(true);
         }
-
-        toggleMediaPlaying(true);
     }
 
     /**
@@ -88,7 +104,7 @@ function AudioController() {
     }
 
     function toggleshuffleVideo() {
-        toggleVideoPlaying(!videoPlaying)
+        toggleVideoShuffle(!videoShuffle)
     }
 
     /**
@@ -102,7 +118,7 @@ function AudioController() {
      * Get the current play icon
      */
     function getVideoIcon() {
-        return (<td><input type="checkbox" id="shuffleVideo" onChange={() => toggleshuffleVideo()} checked={videoPlaying} /><label className="shuffleVideo" htmlFor="shuffleVideo"></label></td>);
+        return (<td><input type="checkbox" id="shuffleVideo" onChange={() => toggleVideoShuffle()} checked={!videoShuffle} /><label className="shuffleVideo" htmlFor="shuffleVideo"></label></td>);
     }
 
     /**
@@ -148,7 +164,7 @@ function AudioController() {
                 <table className="list songlist">
                     <tbody>
                         {
-                            songs.map((song, index) => (
+                            songs?.map((song, index) => (
                                 <tr key={index} className="song songlistSong" onClick={() => changeSong(index)} >
                                     <td className="nr" ><h5>{index + 1}</h5></td>
                                     <td className="title"><h6>{song.title}</h6></td>

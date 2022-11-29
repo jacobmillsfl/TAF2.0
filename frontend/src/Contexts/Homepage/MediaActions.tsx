@@ -21,7 +21,7 @@ interface IToggleAudioAction {
 }
 
 interface IToggleVideoAction {
-    type: 'TOGGLE_PLAYING_VIDEO',
+    type: 'TOGGLE_SHUFFLE_VIDEO',
     data: boolean,
 }
 
@@ -35,5 +35,5 @@ export const SET_CURRENT_SONG = 'SET_CURRENT_SONG'
 export const TOGGLE_RANDOM = 'TOGGLE_RANDOM'
 export const TOGGLE_REPEAT = 'TOGGLE_REPEAT'
 export const TOGGLE_PLAYING_AUDIO = 'TOGGLE_PLAYING_AUDIO'
-export const TOGGLE_PLAYING_VIDEO = 'TOGGLE_PLAYING_VIDEO'
+export const TOGGLE_SHUFFLE_VIDEO = 'TOGGLE_SHUFFLE_VIDEO'
 export const SET_SONGS_ARRAY = 'SET_SONGS_ARRAY'

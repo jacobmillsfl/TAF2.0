@@ -1,4 +1,4 @@
-import React, { useReducer, useRef, useEffect } from 'react';
+import React, { useReducer, useRef, useEffect, useState } from 'react';
 import mediaContext from './MediaContext'
 import mediaReducer from './MediaReducer'
 import SongDetail from '../../Models/SongDetail';
@@ -10,39 +10,36 @@ import {
     TOGGLE_RANDOM,
     TOGGLE_REPEAT,
     TOGGLE_PLAYING_AUDIO,
-    TOGGLE_PLAYING_VIDEO,
+    TOGGLE_SHUFFLE_VIDEO,
     SET_SONGS_ARRAY,
     MediaAction
 } from './MediaActions'
 
 export type MediaState = {
     currentSongIndex: number,
-    songs: Array<SongDetail>,
+    songs: Array<SongDetail> | undefined,
     repeat: boolean,
     random: boolean,
     audioPlaying: boolean,
-    videoPlaying: boolean,
+    videoShuffle: boolean,
     audio: HtmlAudioRef,
     currentSongTime: number,
 }
 
 const MediaComponent = (props: any) => {
     const audio = useRef<HTMLAudioElement>(null);
-    //const songlist = [{ title: "BringItBack", artist: "The Ambient Funk", url: "https://tafers.net/files/BringItBack.mp3" }];
-    const songlist = SongApi.getDefaultSongs();
-
     const initialState: MediaState = {
         currentSongIndex: 0,
-        songs: songlist,
+        songs: undefined,
         repeat: false,
         random: false,
         audioPlaying: false,
-        videoPlaying: false,
+        videoShuffle: true,
         audio: audio,
         currentSongTime: 0,
     }
 
-    const [state, dispatch] = useReducer(mediaReducer, initialState)
+    const [state, dispatch] = useReducer(mediaReducer, initialState);
 
     const setSongsArray = (songArr: Array<SongDetail>) => {
         dispatch({ type: SET_SONGS_ARRAY, data: songArr });
@@ -70,18 +67,18 @@ const MediaComponent = (props: any) => {
         if (audio.current?.readyState === 4) {
             toggleAudio(playAudio)
         } else {
-            audio.current!.onloadeddata = () => {  toggleAudio(state.audioPlaying) }
+            audio.current!.onloadeddata = () => { toggleAudio(state.audioPlaying) }
         }    
     }
 
-    const toggleVideoPlaying = (play?: boolean) => {
+    const toggleVideoShuffle = (play?: boolean) => {
         let playVideo = play;
 
         if (playVideo === undefined) {
-            playVideo = !state.videoPlaying
+            playVideo = !state.videoShuffle
         }
 
-        dispatch({ type: TOGGLE_PLAYING_VIDEO, data: playVideo }); 
+        dispatch({ type: TOGGLE_SHUFFLE_VIDEO, data: playVideo }); 
     }
 
     const toggleRandom = () => {
@@ -93,17 +90,25 @@ const MediaComponent = (props: any) => {
     }
 
     const setCurrentSong = (id: number) => {
-        let newIndex = id % state.songs.length;
+        if (state.songs)
+        {
+            let newIndex = id % state.songs.length;
 
-        if (newIndex < 0) {
-            newIndex = state.songs.length - 1;
+            if (newIndex < 0) {
+                newIndex = state.songs.length - 1;
+            }
+    
+            console.log(`MediaComponent:: PreviousSongIndex=${state.currentSongIndex} NewSongIndex=${newIndex}.`)
+            dispatch({ type: SET_CURRENT_SONG, data: newIndex });
         }
-
-        console.log(`MediaComponent:: PreviousSongIndex=${state.currentSongIndex} NewSongIndex=${newIndex}.`)
-        dispatch({ type: SET_CURRENT_SONG, data: newIndex });
     }
 
     const handleSongEnd = () => {
+        if (!state.songs)
+        {
+            // If there are no songs, don't worry about it
+            return;
+        }
         if (state.random) {
             console.log("MediaComponent:: Generating random song index...")
             let randomIndex = ~~(Math.random() * state.songs.length);
@@ -131,6 +136,14 @@ const MediaComponent = (props: any) => {
         }
     }
 
+    // Onload effect
+    useEffect( () => {
+        console.log("API getting songs");
+        SongApi.getSongs().then( (apiSongs) => {
+            console.log("API setting songs");
+            setSongsArray(apiSongs);
+        });
+    }, []);
 
     return (
         <mediaContext.Provider
@@ -140,11 +153,11 @@ const MediaComponent = (props: any) => {
                 repeat: state.repeat,
                 random: state.random,
                 audioPlaying: state.audioPlaying,
-                videoPlaying: state.videoPlaying,
+                videoShuffle: state.videoShuffle,
                 audio: audio,
                 setSongsArray,
                 toggleMediaPlaying,
-                toggleVideoPlaying,
+                toggleVideoShuffle,
                 toggleRandom,
                 toggleRepeat,
                 setCurrentSong,
@@ -156,7 +169,7 @@ const MediaComponent = (props: any) => {
                 onEnded={handleSongEnd}
                 ref={audio}
                 preload="true"
-                src={state.songs[state.currentSongIndex].url}
+                src={state.songs && state.songs.length > 0 ? state.songs[state.currentSongIndex].url : ""}
                 autoPlay={state.audioPlaying}
                 muted={false}
             />

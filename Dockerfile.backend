@@ -1,8 +1,8 @@
 FROM python:3
  
-RUN mkdir /taf-backend
-WORKDIR /taf-backend
-COPY ./ ./
+RUN mkdir /backend
+WORKDIR /backend
+COPY ./backend ./
 
 RUN pip install -r ./requirements.txt
  

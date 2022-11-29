@@ -4,15 +4,15 @@ import HtmlAudioRef from '../../Models/HtmlAudioRef';
 
 interface MediaPlayerContext {
     currentSongIndex: number;
-    songs: Array<SongDetail>;
+    songs: Array<SongDetail> | undefined;
     repeat: boolean;
     random: boolean;
     audioPlaying: boolean;
-    videoPlaying: boolean;
+    videoShuffle: boolean;
     audio: HtmlAudioRef;
     setSongsArray: (songArr: Array<SongDetail>) => void;
     toggleMediaPlaying: (play?: boolean) => void;
-    toggleVideoPlaying: (play?: boolean) => void;
+    toggleVideoShuffle: (play?: boolean) => void;
     toggleRandom: () => void;
     toggleRepeat: () => void;
     setCurrentSong: (id: number) => void;
@@ -20,15 +20,15 @@ interface MediaPlayerContext {
 
 const mediaContext = createContext<MediaPlayerContext>({
     currentSongIndex: 0,
-    songs: [],
+    songs: undefined,
     repeat: false,
     random: false,
     audioPlaying: false,
-    videoPlaying: true,
+    videoShuffle: true,
     audio: { current: null },
     setSongsArray: () => {},
     toggleMediaPlaying: () => {},
-    toggleVideoPlaying: () => {},
+    toggleVideoShuffle: () => {},
     toggleRandom: () => {},
     toggleRepeat: () => {},
     setCurrentSong: () => {},

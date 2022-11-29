@@ -105,3 +105,9 @@ dist
 
 # Local tmp files
 tmp/
+
+# vscode local settings (we may want this later)
+.vscode/
+
+# We don't want build data in the repo, just rebuild
+frontend/build/

@@ -11,9 +11,9 @@ import MediaComponent from '../../Contexts/Homepage/MediaComponent';
 function Homepage() {
     return (
         <>
+            <HomeNav />
             <MediaComponent className="mediaComponent">
-                <MediaContainer />
-                <HomeNav />
+                <MediaContainer />                
                 <AudioContainer />
             </MediaComponent>
         </>

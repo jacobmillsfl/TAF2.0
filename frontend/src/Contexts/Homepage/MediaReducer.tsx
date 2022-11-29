@@ -5,11 +5,10 @@ import {
     TOGGLE_RANDOM,
     TOGGLE_REPEAT,
     TOGGLE_PLAYING_AUDIO,
-    TOGGLE_PLAYING_VIDEO,
+    TOGGLE_SHUFFLE_VIDEO,
     SET_SONGS_ARRAY,
     MediaAction
 } from './MediaActions'
-
 
 function mediaReducer(state: MediaState, action: MediaAction): MediaState {
     switch (action.type) {
@@ -38,10 +37,10 @@ function mediaReducer(state: MediaState, action: MediaAction): MediaState {
                 ...state,
                 audioPlaying: action.data,
             }
-        case TOGGLE_PLAYING_VIDEO:
+        case TOGGLE_SHUFFLE_VIDEO:
             return {
                 ...state,
-                videoPlaying: action.data,
+                videoShuffle: action.data,
             }
         default:
             return state

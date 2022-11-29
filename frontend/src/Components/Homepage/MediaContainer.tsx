@@ -11,7 +11,7 @@ function MediaContainer() {
         repeat,
         random,
         audioPlaying,
-        videoPlaying,
+        videoShuffle,
     } = useContext(mediaContext)
 
     let defaultVideo = { name: "default", video: cyberBackground, playbackRate: 1 };
@@ -19,7 +19,7 @@ function MediaContainer() {
     const videos = VideoUtility.getVideos();
 
     useEffect(() => {
-        if (videoPlaying) {
+        if (videoShuffle) {
             const index = Math.floor(Math.random() * videos.length);
             setCurrentVideo(videos[index]);
         }

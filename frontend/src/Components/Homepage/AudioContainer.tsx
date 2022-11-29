@@ -12,20 +12,20 @@ function AudioContainer() {
         repeat,
         random,
         audioPlaying,
-        videoPlaying,
+        videoShuffle,
     } = useContext(mediaContext)
 
     useEffect(() => {
-        // console.log("AudioContainer useEffect::")
-        // console.log({
-        //     currentSongIndex,
-        //     songs,
-        //     audio,
-        //     repeat,
-        //     random,
-        //     audioPlaying,
-        //     videoPlaying
-        // })
+        console.log("AudioContainer useEffect::")
+        console.log({
+            currentSongIndex,
+            songs,
+            audio,
+            repeat,
+            random,
+            audioPlaying,
+            videoShuffle
+        })
     })
 
 
