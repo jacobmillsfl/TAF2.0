@@ -2,39 +2,59 @@
 A new and improved web application for music and artist management
 
 ## Tech Stack
-
-Frontend: ReactJS + TypeScript
-Backend: Flask
-Database: TBD
-Distribution: Docker
-Web Host Engine: NGINX
-
+- Frontend: ReactJS + TypeScript
+- Backend: Python Flask
+- Database: TBD
+- Distribution: Docker
 
 ## Getting Started
+To develop and run this application you'll need to install the following:
+ - [docker](https://docs.docker.com/get-docker/)
+ - [docker-compose](https://docs.docker.com/compose/install/)
+ - [NodeJS](https://nodejs.org/en/download/)
+ - [python3](https://www.python.org/downloads/)
 
-### Install docker
 
-On Windows: https://docs.docker.com/desktop/windows/install/
-On Debian: `sudo apt install docker.io`
+## Running the full stack in Docker
+`docker-compose` can be used to launch the entire stack within a dockerized environment. When working with Docker, you need to `build` and `run` your docker images. All docker configurations are within the repo root directory. From that directory, you can run `docker-compose` commands to manage the application.
 
-Verify your docker installation by entering the commands:
-`docker version` - This sould print version info
-`docker ps` - As long as this doesn't throw an error then it's fine
+To Build:
+```bash
+docker-compose build
+```
 
-## Running the backend
+To Run:
+```bash
+docker-compose up -d
+```
 
-`cd backend` - Changes to the backend directory
-`./run.sh`   - A script that builds the dockerfile and launches the backend app
+To Stop:
+```bash
+docker-compose down
+```
 
-### Troubleshooting the backend
+"Building" the application creates Docker images based on the Dockerfile configurations. Whenever you make changes to the application source code, you'll want to rebuild the Docker images.
 
-First make sure you've built the docker image
-`docker build . -t taf-backend`
+## Running locally without docker
+If you want to run the application outside of docker, perhaps as part of development and testing, you'll need to run the Frontend and Backend code individually. Both of the frontend and backend applications have the following files including their respective environment variables.
+- `.backend.env`
+- `.frontend.env`
 
-Then try running the image directly
-`docker run -it taf-backend /bin/bash`
+**These environment files help with deployment from local to production environments. They should not contain any production values, keys, or authentication tokens.**
 
-Try running the app directly
-`python3 ./app.py`
+### Running the backend manually
 
-See if you can access the webpage at `http://localhost:8080/`
+To run the Backend application, you need to first run the `setup_backend.sh` script from the application root directory. Then, navigate to the `backend/` directory and run the command `python3 app.py`.
+
+If successful, the API should be available at `http://localhost:8080/`.
+
+### Running the frontend manually
+To run the Frontend application, first navigate to the `frontend/` directory. You should first ensure that you have all required NPM modules installed. To do so, run the command `npm install`.
+
+After all NPM modules are installed, you can launch the Frontend application with the command `npm run start`. Additional NPM commands are available and can be found within the "scripts" section of the `package.json` file for the Frontend app.
+
+If successful, the web page should be available at `http://localhost:3000/`.
+
+Note:
+ - If the backend is not running, the frontend will not be fully functional
+ - You only need to run `npm install` the first time you run the app and after modifying NPM modules. You do not need to reinstall NPM modules after making code changes.

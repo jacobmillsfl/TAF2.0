@@ -8,6 +8,8 @@ services:
     restart: always
     ports:
       - 8080:8080
+    env_file:
+      - .backend.env
   app:
     container_name: tafweb-app
     restart: always

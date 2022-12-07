@@ -12,6 +12,7 @@
     "@types/react-icons": "^3.0.0",
     "@types/reactstrap": "^8.7.2",
     "bootstrap": "^5.1.3",
+    "env-cmd": "^10.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.4.0",
@@ -20,8 +21,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd -f ../.frontend.env react-scripts start",
+    "build": "env-cmd -f ../.frontend.env react-scripts build",
+    "build-prod": "env-cmd -f ../.prod.env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",

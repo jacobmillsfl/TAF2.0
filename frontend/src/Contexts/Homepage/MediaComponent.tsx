@@ -168,7 +168,7 @@ const MediaComponent = (props: any) => {
                 className="bgm"
                 onEnded={handleSongEnd}
                 ref={audio}
-                preload="true"
+                preload="auto"
                 src={state.songs && state.songs.length > 0 ? state.songs[state.currentSongIndex].url : ""}
                 autoPlay={state.audioPlaying}
                 muted={false}
