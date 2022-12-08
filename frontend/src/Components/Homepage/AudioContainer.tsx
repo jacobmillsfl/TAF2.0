@@ -30,11 +30,9 @@ function AudioContainer() {
 
 
     return (
-        <div className="layer1">
-            <div className="layer1Container">
-                <AudioController />
-            </div>
-        </div>
+        <>
+            <AudioController />
+        </>
     );
 }
 

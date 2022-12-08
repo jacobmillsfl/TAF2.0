@@ -1,18 +1,28 @@
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import mediaContext from "../../Contexts/Homepage/MediaContext";
 
-function Layer2() {
+function Footer() {
+    const {
+        currentSongIndex,
+        songs,
+    } = useContext(mediaContext);
+
+    const [footerText, setfooterText] = useState("");
+
+    useEffect( () => {
+        if (songs && songs.length > 0) {
+            setfooterText(songs[currentSongIndex].title);
+        }
+    }, [currentSongIndex, songs]);
     return (
-        <div className="layer2">
-            <div className="layer2Bg">
-                <div className="footerLayer">
-                    <div className="footerLayerBg">
-                        <a className="footerLayerAuthor" href="#">
-                            The Ambient Funk Project
-                        </a>
-                    </div>
-                </div>
+        <div className="footerLayer">
+            <div className="footerLayerBg">
+                <a className="footerLayerAuthor" href="#">
+                    { footerText }
+                </a>
             </div>
         </div>
-    );
+    )
 }
 
-export default Layer2;
+export default Footer;
