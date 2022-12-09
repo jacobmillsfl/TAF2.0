@@ -58,3 +58,7 @@ If successful, the web page should be available at `http://localhost:3000/`.
 Note:
  - If the backend is not running, the frontend will not be fully functional
  - You only need to run `npm install` the first time you run the app and after modifying NPM modules. You do not need to reinstall NPM modules after making code changes.
+
+## Tech Stack
+The TAF2.0 tech stack uses dockerized components for the web app, the web api, and the database. Persistent data is stored in Docker volumes. The following illustration outlines the current tech stack.
+![TAF Tech Stack](docs/taf20_arch.drawio.png)

@@ -21,9 +21,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "env-cmd -f ../.frontend.env react-scripts start",
-    "build": "env-cmd -f ../.frontend.env react-scripts build",
-    "build-prod": "env-cmd -f ../.prod.env react-scripts build",
+    "start": "env-cmd -f ./.frontend.env react-scripts start",
+    "build": "env-cmd -f ./.frontend.env react-scripts build",
+    "build-prod": "env-cmd -f ./.prod.env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",

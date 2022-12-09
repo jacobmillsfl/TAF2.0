@@ -1,22 +1,43 @@
 version: "3.7"
 services:
+  mysqldb:
+    container_name: tafweb-db
+    image: mysql:5.7
+    restart: always
+    env_file:
+      - ./database/.database.env
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+      - ./database/create_db.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./database/table_songs.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./database/init_data.sql:/docker-entrypoint-initdb.d/3.sql
   api:
     container_name: tafweb-api
     build:
-      context: .
+      context: ./backend/
       dockerfile: Dockerfile.backend
     restart: always
     ports:
       - 8080:8080
     env_file:
-      - .backend.env
+      - ./backend/.backend.env
+      - ./database/.database.env
+    depends_on:
+      - mysqldb
+    volumes:
+      - files:/files
   app:
     container_name: tafweb-app
     restart: always
     build:
-      context: .
+      context: ./frontend/
       dockerfile: Dockerfile.frontend
     ports:
       - 3000:80
     depends_on:
       - api
+volumes: 
+  db:
+  files:

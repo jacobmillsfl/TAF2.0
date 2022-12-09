@@ -1,0 +1,19 @@
+FROM python:3
+
+# Initialize volume data
+COPY ./init_api_files.sh /init_api_files.sh
+RUN /init_api_files.sh
+
+# Copy the API code
+RUN mkdir /backend
+WORKDIR /backend
+COPY ./ ./
+
+# Install Python requirements
+RUN pip install -r ./requirements.txt
+ 
+# Expose port 8080
+EXPOSE 8080
+
+# Run API
+CMD ["python3", "./app.py"]
