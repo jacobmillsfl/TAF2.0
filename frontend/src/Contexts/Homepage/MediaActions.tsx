@@ -1,4 +1,4 @@
-import SongDetail from '../../Models/SongDetail';
+import { SongDetail } from '../../Models/SongDetail';
 
 interface ISetSongAction {
     type: 'SET_CURRENT_SONG',

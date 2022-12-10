@@ -1,4 +1,4 @@
-import VideoDetail from '../Models/VideoDetail';
+import { VideoDetail } from '../Models/VideoDetail';
 import cyber_01 from '../media/cyber_01.mp4';
 import cyber_02 from '../media/cyber_02_reversed.mp4';
 import cyber_03 from '../media/cyber_03.mp4';

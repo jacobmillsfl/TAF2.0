@@ -1,6 +1,6 @@
-import SongDetail from "../Models/SongDetail";
+import { SongDetail } from "../Models/SongDetail";
 
-class SongApi {
+export default class SongApi {
     static async getSongs() : Promise<SongDetail[]> {
         const apiUrl = SongApi.getAppUrl();
         if (apiUrl) {
@@ -23,5 +23,3 @@ class SongApi {
         }
     }
 }
-
-export default SongApi;
