@@ -1,7 +1,5 @@
-type VideoDetail = {
+export type VideoDetail = {
     name: string,
     video: any,
     playbackRate: number
 }
-
-export default VideoDetail;

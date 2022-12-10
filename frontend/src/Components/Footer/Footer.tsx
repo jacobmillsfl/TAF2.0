@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import mediaContext from "../../Contexts/Homepage/MediaContext";
 
 function Footer() {
@@ -17,7 +17,7 @@ function Footer() {
     return (
         <div className="footerLayer">
             <div className="footerLayerBg">
-                <a className="footerLayerAuthor" href="#">
+                <a className="footerLayerAuthor">
                     { footerText }
                 </a>
             </div>

@@ -1,16 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import mediaContext from "../../Contexts/Homepage/MediaContext";
 import VideoUtility from "../../Utilities/VideoUtility";
-import VideoDetail from "../../Models/VideoDetail";
+import { VideoDetail } from "../../Models/VideoDetail";
 import cyberBackground from "../../media/cyber_01.mp4";
 
 function MediaContainer() {
     const {
         currentSongIndex,
-        songs,
-        repeat,
-        random,
-        audioPlaying,
         videoShuffle,
     } = useContext(mediaContext)
 

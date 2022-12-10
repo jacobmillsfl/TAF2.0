@@ -1,9 +1,10 @@
 import React, { useReducer, useRef, useEffect, useState } from 'react';
 import mediaContext from './MediaContext'
 import mediaReducer from './MediaReducer'
-import SongDetail from '../../Models/SongDetail';
-import HtmlAudioRef from '../../Models/HtmlAudioRef';
+import { SongDetail } from '../../Models/SongDetail';
+import { HtmlAudioRef } from '../../Models/HtmlAudioRef';
 import SongApi from '../../Utilities/SongApi';
+import MediaContainer from '../../Components/Homepage/MediaContainer';
 
 import {
     SET_CURRENT_SONG,
@@ -172,7 +173,8 @@ const MediaComponent = (props: any) => {
                 src={state.songs && state.songs.length > 0 ? state.songs[state.currentSongIndex].url : ""}
                 autoPlay={state.audioPlaying}
                 muted={false}
-            />
+            />            
+            <MediaContainer />       
             {props.children}
         </mediaContext.Provider>
     )

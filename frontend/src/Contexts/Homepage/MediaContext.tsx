@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import SongDetail from '../../Models/SongDetail';
-import HtmlAudioRef from '../../Models/HtmlAudioRef';
+import { SongDetail } from '../../Models/SongDetail';
+import { HtmlAudioRef } from '../../Models/HtmlAudioRef';
 
 interface MediaPlayerContext {
     currentSongIndex: number;

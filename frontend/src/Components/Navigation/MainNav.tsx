@@ -1,9 +1,18 @@
 
 import { useState } from 'react';
-import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink, Collapse } from 'reactstrap';
+import {
+	Navbar,
+	NavbarBrand,
+	NavbarToggler,
+	Nav,
+	NavItem,
+	NavLink,
+	Collapse
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
-function HomeNav() {
+function MainNav() {
 	const [collapsed, setCollapsed] = useState(true);
 
 	const toggle = () => {
@@ -17,16 +26,19 @@ function HomeNav() {
 			<Collapse isOpen={!collapsed} navbar>
 				<Nav className="mr-auto" navbar>
 					<NavItem>
-						<NavLink href="#">Home</NavLink>
+						<Link to="/" className="nav-link">Home</Link>					
 					</NavItem>
 					<NavItem>
-						<NavLink href="#">About</NavLink>
+					<Link to="/visuals" className="nav-link">Visuals</Link>					
 					</NavItem>
 					<NavItem>
-						<NavLink href="#">Login</NavLink>
+						<Link to="/about" className="nav-link">About</Link>					
 					</NavItem>
 					<NavItem>
-						<NavLink href="#">Register</NavLink>
+					<Link to="/login" className="nav-link">Login</Link>					
+					</NavItem>
+					<NavItem>
+						<Link to="/register" className="nav-link">Register</Link>					
 					</NavItem>
 				</Nav>
 			</Collapse>
@@ -34,4 +46,4 @@ function HomeNav() {
 	);
 }
 
-export default HomeNav;
+export default MainNav;
