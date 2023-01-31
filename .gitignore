@@ -71,6 +71,9 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+.frontend.env
+.backend.env
+.database.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -111,3 +114,5 @@ tmp/
 
 # We don't want build data in the repo, just rebuild
 frontend/build/
+
+

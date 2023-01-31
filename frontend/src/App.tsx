@@ -19,9 +19,9 @@ function App() {
         <MainNav />        
         <MediaComponent className="mediaComponent">
           <Routes>
-              <Route path='/' element={< Homepage />}></Route>
-              <Route path='/visuals' element={< Visuals />}></Route>
-              <Route path='/about' element={< About />}></Route>
+            <Route path='/' element={< Homepage />}></Route>
+            <Route path='/visuals' element={< Visuals />}></Route>
+            <Route path='/about' element={< About />}></Route>
           </Routes>
           <Footer />
         </MediaComponent>

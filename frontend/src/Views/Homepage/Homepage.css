@@ -599,7 +599,8 @@ html {
     text-align: center;
     font-size: 0.8em;
     margin-top: 0.5em;
-    font-family: "izayoi";
+    font-family: "FontAwesome";
+    width: -webkit-fill-available;
 }
 
 
@@ -810,8 +811,8 @@ html {
 }
 
 @font-face {
-    font-family: "audiowide";
-    src: url('https://fonts.googleapis.com/css?family=Roboto');
+    font-family: "Audiowide";
+    src: url('https://fonts.googleapis.com/css?family=Audiowide');
 }
 
 
@@ -927,7 +928,7 @@ h6 {
 .screen {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 0;
-    height: 650px;
+    height: 550px;
     width: 366px;
     position: absolute;
     left: 50%;
@@ -1020,7 +1021,7 @@ label.main:hover:before {
     left: 0;
     margin: 0;
     padding: 0;
-    height: 286px;
+    height: 156px;
     width: 366px;
     background: #111;
     transition: all 0.3s ease-in;
@@ -1287,7 +1288,7 @@ td>#heart8:checked~label.zmr:before {
     transition: all 0.15s linear;
 }
 
-td>#play:checked~label.play:before {
+#play:checked~label.play:before {
     content: "\f04c";
     transition: all 0.15s linear;
 }
@@ -1369,18 +1370,18 @@ td>#play:checked~label.play:before {
     transition: all 0.15s linear;
 }
 
-td>#love:checked~label.love:before {
+#love:checked~label.love:before {
     content: "\f004";
     color: #ff564c;
     transition: all 0.15s linear;
 }
 
-td>#shuffle:checked~label.shuffle:before {
+#shuffle:checked~label.shuffle:before {
     color: #ff564c;
     transition: all 0.15s linear;
 }
 
-td>#repeat:checked~label.repeat:before {
+#repeat:checked~label.repeat:before {
     color: #ff564c;
     transition: all 0.15s linear;
 }
@@ -1396,7 +1397,8 @@ td>#repeat:checked~label.repeat:before {
     transition: all 0.15s linear;
 }
 
-td>#shuffleVideo:checked~label.shuffleVideo:before {
+#shuffleVideo:checked~label.shuffleVideo:before {
+    content: "\f4e2";
     color: #ff564c;
     transition: all 0.15s linear;
 }
