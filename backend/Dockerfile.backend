@@ -1,5 +1,8 @@
 FROM python:3
 
+# Set shell
+SHELL ["/bin/bash", "-c"] 
+
 # Initialize volume data
 COPY ./init_api_files.sh /init_api_files.sh
 RUN /init_api_files.sh
@@ -10,6 +13,9 @@ WORKDIR /backend
 COPY ./ ./
 
 # Install Python requirements
+RUN python3 -m venv tafapi
+RUN source tafapi/bin/activate
+RUN pip install --upgrade pip
 RUN pip install -r ./requirements.txt
  
 # Expose port 8080
@@ -17,3 +23,4 @@ EXPOSE 8080
 
 # Run API
 CMD ["python3", "./app.py"]
+#CMD ["/bin/bash"]

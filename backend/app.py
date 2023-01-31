@@ -42,6 +42,11 @@ def songs():
             "url": f'{BASE_URL}/files/{song["dataPath"]}',
             "albumArt": f'{BASE_URL}/files/{song["artPath"]}',
         })
+    
+    # TODO: Remove the following. It's a temporary way to make the song list bigger without using more sources
+    song_list += song_list
+    song_list += song_list
+    song_list += song_list
 
     return json.dumps(song_list)
 

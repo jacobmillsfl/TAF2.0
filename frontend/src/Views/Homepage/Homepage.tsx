@@ -72,56 +72,25 @@ function HomePage() {
             setCurrentSongDetail(songs[currentSongIndex]);
         }
         console.log("AudioController::useEffect::currentSongIndex");
-    }, [currentSongIndex])
+    }, [currentSongIndex]);
 
     /**
-     * Change the current song
+     * CSS hack to re-style seek bar as the seek value changes
      */
-    function changeSong(index: number) {
-        if (songs)
-        {
-            if (random) {
-                const newIndex = Math.floor(Math.random() * songs.length)
-                console.log("new random index: ", newIndex);
-                setCurrentSong(newIndex);
-            } else {
-                setCurrentSong(index);
-            }
-    
-            toggleMediaPlaying(true);
-        }
-    }
+    useEffect( () => {
+        let target = document.querySelector("#AudioSeekBar") as HTMLInputElement;
+        let relativeValue = Number(target.value) - Number(target.min);
+        let relativeMax = Number(target.max) - Number(target.min)
+        let value = relativeValue / relativeMax * 100;
+        target.style.background = 'linear-gradient(to right, #0839b3 0%, #3767e1 ' + value + '%, #fff ' + value + '%, white 100%)'
+    }, [seekValue]);
+
 
     /**
      * Get album art for the current song
      */
     function getAlbumArt(song: SongDetail | null) {
         return song?.albumArt ?? tafAlbum;
-    }
-
-    /**
-     * Toggle playing media
-     */
-    function togglePlay() {
-        toggleMediaPlaying();
-    }
-
-    function toggleshuffleVideo() {
-        toggleVideoShuffle(!videoShuffle)
-    }
-
-    /**
-     * Get the current play icon
-     */
-    function getPlayIcon() : any {
-        return (<td><input type="checkbox" id="play" title="Play" onChange={() => togglePlay()} checked={audioPlaying} /><label className="play" htmlFor="play"></label></td>);
-    }
-
-    /**
-     * Get the current play icon
-     */
-    function getVideoIcon() {
-        return (<td><input type="checkbox" id="shuffleVideo" onChange={() => toggleVideoShuffle()} checked={!videoShuffle} /><label className="shuffleVideo" htmlFor="shuffleVideo"></label></td>);
     }
 
     /**
@@ -133,22 +102,11 @@ function HomePage() {
     }
 
     /**
-     * CSS hack to re-style seek bar as the seek value changes
-     */
-    useEffect( () => {
-        let target = document.querySelector("#AudioSeekBar") as HTMLInputElement;
-        let relativeValue = Number(target.value) - Number(target.min);
-        let relativeMax = Number(target.max) - Number(target.min)
-        let value = relativeValue / relativeMax * 100;
-        target.style.background = 'linear-gradient(to right, #0839b3 0%, #3767e1 ' + value + '%, #fff ' + value + '%, white 100%)'
-    }, [seekValue])
-
-    /**
      * Handle behavior for backward media navigation
      */
     function handleBackward() {
         if (seekValue < 5) {
-            changeSong(currentSongIndex - 1);
+            setCurrentSong(currentSongIndex - 1);
         } else {
             // Restart current song
             audio.current!.currentTime = 0;
@@ -168,7 +126,7 @@ function HomePage() {
                     <tbody>
                         {
                             songs?.map((song, index) => (
-                                <tr key={index} className="song songlistSong" onClick={() => changeSong(index)} >
+                                <tr key={index} className="song songlistSong" onClick={() => setCurrentSong(index)} >
                                     <td className="nr" ><h5>{index + 1}</h5></td>
                                     <td className="title"><h6>{song.title}</h6></td>
                                 </tr>
@@ -199,24 +157,24 @@ function HomePage() {
                 </div>
 
 
-                <table className="player">
+                {/* <table className="player">
                     <tbody>
                         <tr>
                             <td><input type="checkbox" id="shuffle" /><label className="shuffle" htmlFor="shuffle" onClick={() => toggleRandom()}></label></td>
                             <td><input type="checkbox" id="backward" onClick={handleBackward} /><label className="backward" htmlFor="backward"></label></td>
-                            {getPlayIcon()}
-                            <td><input type="checkbox" id="forward" onClick={() => changeSong(currentSongIndex + 1)} /><label className="forward" htmlFor="forward"></label></td>
+                            <td><input type="checkbox" id="play" title="Play" onChange={() => toggleMediaPlaying()} checked={audioPlaying} /><label className="play" htmlFor="play"></label></td>
+                            <td><input type="checkbox" id="forward" onClick={() => setCurrentSong(currentSongIndex + 1)} /><label className="forward" htmlFor="forward"></label></td>
                             <td><input type="checkbox" id="repeat" /><label className="repeat" htmlFor="repeat" onClick={() => toggleRepeat()}></label></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            {getVideoIcon()}
+                            <td><input type="checkbox" id="shuffleVideo" onChange={() => toggleVideoShuffle()} checked={!videoShuffle} /><label className="shuffleVideo" htmlFor="shuffleVideo"></label></td>
                             <td></td>
                             <td></td>
                         </tr>
                     </tbody>
-                </table>
+                </table> */}
 
                 <table className="footer">
                 </table>

@@ -93,12 +93,12 @@ const MediaComponent = (props: any) => {
     const setCurrentSong = (id: number) => {
         if (state.songs)
         {
-            let newIndex = id % state.songs.length;
+            let newIndex = state.random ? 
+                Math.floor(Math.random() * state.songs.length) :
+                id < 0 ? 
+                    state.songs.length - 1 :
+                    id % state.songs.length;
 
-            if (newIndex < 0) {
-                newIndex = state.songs.length - 1;
-            }
-    
             console.log(`MediaComponent:: PreviousSongIndex=${state.currentSongIndex} NewSongIndex=${newIndex}.`)
             dispatch({ type: SET_CURRENT_SONG, data: newIndex });
         }
