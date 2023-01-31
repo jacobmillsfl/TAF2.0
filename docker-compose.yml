@@ -6,8 +6,6 @@ services:
     restart: unless-stopped
     env_file:
       - ./database/.database.env
-    ports:
-      - 3306:3306
     volumes:
       - db:/var/lib/mysql
       - ./database/create_db.sql:/docker-entrypoint-initdb.d/1.sql
