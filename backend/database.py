@@ -49,3 +49,10 @@ class DatabaseUtil:
         result = self.cursor.fetchall()
         self.__disconnect__()
         return result
+    
+    def custom_load_default_playlist(self):
+        self.__connect__()
+        self.cursor.execute("call usp_Custom_LoadAllSongsWithArtistAlbumInfo()")
+        result = self.cursor.fetchall()
+        self.__disconnect__()
+        return result
