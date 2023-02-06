@@ -4,8 +4,12 @@ FROM python:3
 SHELL ["/bin/bash", "-c"] 
 
 # Initialize volume data
-COPY ./init_api_files.sh /init_api_files.sh
-RUN /init_api_files.sh
+RUN mkdir /files
+COPY ./default_data/album/ /files/album/
+COPY ./default_data/artist/ /files/artist/
+COPY ./default_data/song/ /files/song/
+WORKDIR /files
+
 
 # Copy the API code
 RUN mkdir /backend

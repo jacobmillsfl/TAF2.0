@@ -33,20 +33,17 @@ def get_static_file(path):
 def songs():
     song_list = []
     db = DatabaseUtil()
-    songs = db.songs_load_all()
+    songs = db.custom_load_default_playlist()
 
     for song in songs:
         song_list.append({
-            "title": song["title"],
-            "artist": song["artist"],
-            "url": f'{BASE_URL}/files/{song["dataPath"]}',
-            "albumArt": f'{BASE_URL}/files/{song["artPath"]}',
+            "title": song["SongName"],
+            "artist": song["ArtistName"],
+            "album": song["AlbumName"],
+            "url": f'{BASE_URL}/files/{song["SongPath"]}',
+            "albumArt": f'{BASE_URL}/files/{song["ArtPath"]}',
+            "trackNumber": song["TrackNumber"],
         })
-    
-    # TODO: Remove the following. It's a temporary way to make the song list bigger without using more sources
-    song_list += song_list
-    song_list += song_list
-    song_list += song_list
 
     return json.dumps(song_list)
 

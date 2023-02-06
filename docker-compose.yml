@@ -9,8 +9,11 @@ services:
     volumes:
       - db:/var/lib/mysql
       - ./database/create_db.sql:/docker-entrypoint-initdb.d/1.sql
-      - ./database/table_songs.sql:/docker-entrypoint-initdb.d/2.sql
-      - ./database/init_data.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./database/01_artist.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./database/02_album.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./database/03_song.sql:/docker-entrypoint-initdb.d/4.sql
+      - ./database/init_data.sql:/docker-entrypoint-initdb.d/5.sql
+      - ./database/custom_routines.sql:/docker-entrypoint-initdb.d/6.sql
   api:
     container_name: tafweb-api
     build:
