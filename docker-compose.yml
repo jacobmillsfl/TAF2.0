@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile.backend
     restart: unless-stopped
     ports:
-      - 8080:8080
+      - 8080:5000
     env_file:
       - ./backend/.backend.env
       - ./database/.database.env
