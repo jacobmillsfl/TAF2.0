@@ -4,7 +4,7 @@ export default class SongApi {
     static async getSongs() : Promise<SongDetail[]> {
         const apiUrl = SongApi.getAppUrl();
         if (apiUrl) {
-            const response = await fetch("http://127.0.0.1:8080/songs");
+            const response = await fetch(`${apiUrl}/songs`);
             const data = await (response.json() as Promise<SongDetail[]>);
             return data;
         } else {
