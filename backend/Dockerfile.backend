@@ -12,19 +12,23 @@ WORKDIR /files
 
 
 # Copy the API code
-RUN mkdir /backend
-WORKDIR /backend
+#RUN mkdir /app
+WORKDIR /app
 COPY ./ ./
 
 # Install Python requirements
+RUN apt update
+RUN apt install -y python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 RUN python3 -m venv tafapi
 RUN source tafapi/bin/activate
 RUN pip install --upgrade pip
-RUN pip install -r ./requirements.txt
- 
+RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
+
+
 # Expose port 8080
-EXPOSE 8080
+EXPOSE 5000
 
 # Run API
-CMD ["python3", "./app.py"]
+#CMD ["python3", "./app.py"]
 #CMD ["/bin/bash"]
+CMD ["uwsgi", "--socket", "0.0.0.0:5000", "--protocol=http", "-w", "wsgi:app"]

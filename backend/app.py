@@ -2,7 +2,6 @@ from flask import Flask, send_from_directory
 from flask_cors import CORS
 import json
 import os
-import pymysql
 from database import DatabaseUtil
 
 # Create global app object
@@ -48,4 +47,5 @@ def songs():
     return json.dumps(song_list)
 
 
-app.run(host="0.0.0.0", port=8080)
+#if __name__ == "__main__":
+#    app.run(host="0.0.0.0", port=80)
