@@ -26,7 +26,7 @@ def home():
 
 @app.route("/files/<path:path>")
 def get_static_file(path):
-    return send_from_directory("/files", path)
+    return send_from_directory("../files", path)
 
 @app.route("/songs")
 def songs():
