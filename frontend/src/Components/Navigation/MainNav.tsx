@@ -35,6 +35,9 @@ function MainNav() {
 						<Link to="/about" className="nav-link">About</Link>					
 					</NavItem>
 					<NavItem>
+					<Link to="/promo" className="nav-link">Promo</Link>					
+					</NavItem>
+					<NavItem>
 					<Link to="/login" className="nav-link">Login</Link>					
 					</NavItem>
 					<NavItem>

@@ -32,3 +32,50 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+.footer {
+  background: none;
+  font-family: FontAwesome;
+  color: #6d6d6d;
+  font-size: 15px;
+  line-height: 15px;
+  height: 45px;
+  width: 360px;
+  position: absolute;
+  bottom: 10px;
+  left: 23px;
+  z-index: 20;
+  transition: all 0.15s linear;
+  transition: bottom 0.3s linear;
+}
+
+
+.footerLayer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.footerLayerBg {
+  background: rgb(19, 25, 41);
+  padding: 1.25em 0;
+  box-shadow: 0 0 1em rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footerLayerAuthor {
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+  font-family: "FontAwesome";
+  width: -webkit-fill-available;
+}

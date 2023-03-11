@@ -4,7 +4,7 @@ import mediaReducer from './MediaReducer'
 import { SongDetail } from '../../Models/SongDetail';
 import { HtmlAudioRef } from '../../Models/HtmlAudioRef';
 import SongApi from '../../Utilities/SongApi';
-import MediaContainer from '../../Components/Homepage/MediaContainer';
+import MediaContainer from '../../Components/MediaPlayer/MediaContainer';
 
 import {
     SET_CURRENT_SONG,
