@@ -35,7 +35,9 @@ export function SocialList({ listings }: { listings: Array<SocialListing> }) {
 }
 
 const SocialHeadingStyle = {
-    "textShadow": "3px 2px black"
+    "textShadow": "3px 2px black",
+    "background": "#0000008c",
+    "borderRadius": "5px"
 }
 
 const SocialListStyle = {
@@ -71,6 +73,7 @@ const SocialListTextStyle = {
 const SocialListIconStyle = {
     "padding": "20px",
     "color": "white",
-    "background": "rgb(102 102 102 / 50%)"
+    "background": "rgb(102 102 102 / 50%)",
+    "borderRadius": "0px 5px 5px 0px"
     
 }

@@ -35,7 +35,7 @@ export default function Promo() {
     return (
         <div style={PromoOuterStyle}>
             <div style={PromoInnerStyle}>
-                <ShadowBox>
+                <ShadowBox mode="top">
                     <AlbumTwoPromo />
                 </ShadowBox>
                 <SocialList listings={album2SocialList}></SocialList>

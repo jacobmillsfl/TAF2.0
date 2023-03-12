@@ -56,3 +56,10 @@ class DatabaseUtil:
         result = self.cursor.fetchall()
         self.__disconnect__()
         return result
+
+    def album_load_all(self):
+        self.__connect__()
+        self.cursor.execute("call usp_Album_LoadAll()")
+        result = self.cursor.fetchall()
+        self.__disconnect__()
+        return result

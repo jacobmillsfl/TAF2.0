@@ -79,3 +79,8 @@
   font-family: "FontAwesome";
   width: -webkit-fill-available;
 }
+
+.playlistBtn button {
+  --bs-btn-bg: #ffffff00 !important;
+  --bs-btn-border-color: #ffffff00 !important;
+}

@@ -10,7 +10,7 @@ export default function AlbumTwoPromo() {
                 </div>
             </div>
             <div>
-                <img className="artCover hyperShadow pointer" style={{ "maxWidth": "50vw", "maxHeight": "50vh", "display": "block", "marginLeft": "auto", "marginRight": "auto", "paddingTop": "20px" }} src={process.env.PUBLIC_URL + "/img/SoulOnFire_AlbumArt.png"} />
+                <img className="artCover hyperShadow pointer" style={{ "maxWidth": "50vw", "maxHeight": "50vh", "display": "block", "marginLeft": "auto", "marginRight": "auto", "paddingTop": "20px" }} src={process.env.PUBLIC_URL + "/img/soulonfire.png"} />
             </div>
             <div style={{ "textAlign": "center", "maxWidth": "600px", "margin": "auto" }}>
                 <div style={{ "marginTop": "24px", "fontSize": "14pt", "fontWeight": "400", "color": "white" }} translate="no">

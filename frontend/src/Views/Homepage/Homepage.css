@@ -1224,7 +1224,7 @@ td>#heart8:checked~label.zmr:before {
 .shadow {
     background: rgba(17, 17, 17, 0.8);
     width: 366px;
-    height: 50px;
+    height: 100px;
     position: absolute;
     bottom: -12px;
     left: 0;

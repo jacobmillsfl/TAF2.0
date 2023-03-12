@@ -21,7 +21,7 @@ function App() {
         <MediaComponent className="mediaComponent">
           <Routes>
             <Route path='/' element={< Homepage />}></Route>
-            <Route path='/visuals' element={< Visuals />}></Route>
+            <Route path='/vibe' element={< Visuals />}></Route>
             <Route path='/about' element={< About />}></Route>
             <Route path='/promo' element={< Promo />}></Route>
           </Routes>
