@@ -1,34 +1,39 @@
 FROM python:3
 
 # Set shell
-SHELL ["/bin/bash", "-c"] 
+SHELL ["/bin/bash", "-c"]
+
+# Install dependencies
+RUN apt update
+RUN apt install -y python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+
+# Create app user
+RUN useradd -ms /bin/bash appuser
+WORKDIR /home/appuser
+USER appuser
 
 # Initialize volume data
-RUN mkdir /files
-COPY ./default_data/album/ /files/album/
-COPY ./default_data/artist/ /files/artist/
-COPY ./default_data/song/ /files/song/
-WORKDIR /files
-
+RUN mkdir ./files
+COPY ./default_data/album/ ./files/album/
+COPY ./default_data/artist/ ./files/artist/
+COPY ./default_data/song/ ./files/song/
 
 # Copy the API code
-#RUN mkdir /app
-WORKDIR /app
+RUN mkdir ./app
+WORKDIR ./app
 COPY ./ ./
 
 # Install Python requirements
-RUN apt update
-RUN apt install -y python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 RUN python3 -m venv tafapi
 RUN source tafapi/bin/activate
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
 
-# Expose port 8080
+# Expose port
 EXPOSE 5000
 
 # Run API
 #CMD ["python3", "./app.py"]
-#CMD ["/bin/bash"]
-CMD ["uwsgi", "--socket", "0.0.0.0:5000", "--protocol=http", "-w", "wsgi:app"]
+#CMD ["uwsgi", "--ini", "uwsgi.ini", "--socket", "0.0.0.0:5000", "--enable-threads", "--protocol=http", "-w", "wsgi:app"]
+CMD ["bash", "init_script.sh"]

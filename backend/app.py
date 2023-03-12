@@ -17,6 +17,12 @@ if not BASE_URL:
 
 
 # #####################
+# Database
+# #####################
+db = DatabaseUtil()
+
+
+# #####################
 # Routes
 # #####################
 
@@ -26,12 +32,11 @@ def home():
 
 @app.route("/files/<path:path>")
 def get_static_file(path):
-    return send_from_directory("/files", path)
+    return send_from_directory("../files", path)
 
 @app.route("/songs")
 def songs():
     song_list = []
-    db = DatabaseUtil()
     songs = db.custom_load_default_playlist()
 
     for song in songs:
@@ -45,7 +50,10 @@ def songs():
         })
 
     return json.dumps(song_list)
-
+@app.route("/albums")
+def albums():
+    albums = db.album_load_all()
+    return albums
 
 #if __name__ == "__main__":
 #    app.run(host="0.0.0.0", port=80)

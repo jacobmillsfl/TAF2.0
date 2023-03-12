@@ -34,7 +34,7 @@ function Footer() {
             <div className="footerLayerBg">
                 <div className="footerLayerAuthor">
                     <Row>
-                        <Col className="col-md-3 d-none d-md-block" style={{fontFamily: "izayoi"}}>{artistText}</Col>
+                        <Col className="col-md-3 d-none d-md-block" style={{fontFamily: "Audiowide"}}>{artistText}</Col>
                         <Col className="col-md-6 col-sm-12" style={{fontSize: "26px", lineHeight: "initial", letterSpacing: "25px"}}>
                             <input type="checkbox" id="shuffle" /><label className="shuffle" htmlFor="shuffle" onClick={() => toggleRandom()}></label>
                             <input type="checkbox" id="backward" onClick={() => setCurrentSong(currentSongIndex - 1)} /><label className="backward" htmlFor="backward"></label>
@@ -42,7 +42,7 @@ function Footer() {
                             <input type="checkbox" id="forward" onClick={() => setCurrentSong(currentSongIndex + 1)} /><label className="forward" htmlFor="forward"></label>
                             <input type="checkbox" id="repeat" /><label className="repeat" htmlFor="repeat" onClick={() => toggleRepeat()}></label>
                         </Col>
-                        <Col className="col-md-3 d-none d-md-block" style={{fontFamily: "izayoi"}}>{songText}</Col>
+                        <Col className="col-md-3 d-none d-md-block" style={{fontFamily: "Audiowide"}}>{songText}</Col>
                     </Row>
             
                 </div>

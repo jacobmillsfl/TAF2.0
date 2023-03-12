@@ -135,8 +135,8 @@ function HomePage() {
                     </tbody>
                 </table>
 
-                <div className="shadow">
-                </div>
+                {/* <div className="shadow">
+                </div> */}
 
                 <div className="bar">
                     <input
@@ -179,7 +179,7 @@ function HomePage() {
                 <table className="footer">
                 </table>
 
-                <div className="current"><h2>{currentSongDetail?.title}</h2></div>
+                {/* <div className="current"><h3>{currentSongDetail?.title}</h3></div> */}
 
             </article>
         </>

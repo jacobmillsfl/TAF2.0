@@ -11,6 +11,7 @@ import './App.css';
 import MediaComponent from './Contexts/Homepage/MediaComponent';
 import Footer from './Components/Footer/Footer';
 import Visuals from "./Views/Visuals/Visuals";
+import Promo from "./Views/Promo/Promo";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
         <MediaComponent className="mediaComponent">
           <Routes>
             <Route path='/' element={< Homepage />}></Route>
-            <Route path='/visuals' element={< Visuals />}></Route>
+            <Route path='/vibe' element={< Visuals />}></Route>
             <Route path='/about' element={< About />}></Route>
+            <Route path='/promo' element={< Promo />}></Route>
           </Routes>
           <Footer />
         </MediaComponent>

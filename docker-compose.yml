@@ -28,7 +28,7 @@ services:
     depends_on:
       - mysqldb
     volumes:
-      - files:/files
+      - files:/home/appuser/files
   app:
     container_name: tafweb-app
     restart: unless-stopped
