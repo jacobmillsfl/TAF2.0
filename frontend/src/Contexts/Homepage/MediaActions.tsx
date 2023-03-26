@@ -30,10 +30,16 @@ interface ISetSongsArray {
     data: Array<SongDetail>,
 }
 
-export type MediaAction = ISetSongAction | IToggleRandomAction | IToggleRepeatAction | IToggleAudioAction | IToggleVideoAction | ISetSongsArray;
+interface ISetPlaylist {
+    type: 'SET_PLAYLIST',
+    data: Array<SongDetail>,
+}
+
+export type MediaAction = ISetSongAction | IToggleRandomAction | IToggleRepeatAction | IToggleAudioAction | IToggleVideoAction | ISetSongsArray | ISetPlaylist;
 export const SET_CURRENT_SONG = 'SET_CURRENT_SONG'
 export const TOGGLE_RANDOM = 'TOGGLE_RANDOM'
 export const TOGGLE_REPEAT = 'TOGGLE_REPEAT'
 export const TOGGLE_PLAYING_AUDIO = 'TOGGLE_PLAYING_AUDIO'
 export const TOGGLE_SHUFFLE_VIDEO = 'TOGGLE_SHUFFLE_VIDEO'
 export const SET_SONGS_ARRAY = 'SET_SONGS_ARRAY'
+export const SET_PLAYLIST = 'SET_PLAYLIST'

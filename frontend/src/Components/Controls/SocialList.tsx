@@ -5,11 +5,11 @@ export type SocialListing = {
     text: string
 }
 
-export function SocialList({ listings }: { listings: Array<SocialListing> }) {
+export function SocialList({ listings, heading }: { listings: Array<SocialListing>, heading: string }) {
     return (
         <div style={SocialListStyle}>
             <h2 style={SocialHeadingStyle}>
-                Social Media Links
+                {heading}
             </h2>
             {
                 listings.map( listing =>

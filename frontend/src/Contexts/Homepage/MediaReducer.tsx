@@ -7,7 +7,8 @@ import {
     TOGGLE_PLAYING_AUDIO,
     TOGGLE_SHUFFLE_VIDEO,
     SET_SONGS_ARRAY,
-    MediaAction
+    MediaAction,
+    SET_PLAYLIST
 } from './MediaActions'
 
 function mediaReducer(state: MediaState, action: MediaAction): MediaState {
@@ -16,6 +17,11 @@ function mediaReducer(state: MediaState, action: MediaAction): MediaState {
             return {
                 ...state,
                 songs: action.data,
+            }
+        case SET_PLAYLIST:
+            return {
+                ...state,
+                playlist: action.data,
             }
         case SET_CURRENT_SONG:
             return {

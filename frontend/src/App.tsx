@@ -12,18 +12,22 @@ import MediaComponent from './Contexts/Homepage/MediaComponent';
 import Footer from './Components/Footer/Footer';
 import Visuals from "./Views/Visuals/Visuals";
 import Promo from "./Views/Promo/Promo";
+import LandingPage from "./Views/Homepage/LandingPage";
+import Videos from "./Views/Videos/Videos";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <MainNav />        
+      <div className="App">           
         <MediaComponent className="mediaComponent">
+        <MainNav />     
           <Routes>
-            <Route path='/' element={< Homepage />}></Route>
+            <Route path='/' element={< LandingPage />}></Route>
+            <Route path='/media' element={< Homepage />}></Route>
             <Route path='/vibe' element={< Visuals />}></Route>
             <Route path='/about' element={< About />}></Route>
-            <Route path='/promo' element={< Promo />}></Route>
+            <Route path='/albums' element={< Promo />}></Route>
+            <Route path='/videos' element={< Videos />}></Route>
           </Routes>
           <Footer />
         </MediaComponent>

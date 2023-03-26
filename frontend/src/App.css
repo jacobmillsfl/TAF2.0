@@ -84,3 +84,7 @@
   --bs-btn-bg: #ffffff00 !important;
   --bs-btn-border-color: #ffffff00 !important;
 }
+
+.dropdown-header {
+  color: black !important;
+}
