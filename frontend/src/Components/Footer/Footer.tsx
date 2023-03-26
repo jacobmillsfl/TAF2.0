@@ -9,6 +9,7 @@ function Footer() {
     const {
         currentSongIndex,
         songs,
+        playlist,
         audio,
         random,
         audioPlaying,
@@ -24,11 +25,12 @@ function Footer() {
     const [songText, setSongText] = useState("");
 
     useEffect( () => {
-        if (songs && songs.length > 0) {
-            setSongText(songs[currentSongIndex].title);
-            setArtistText(songs[currentSongIndex].artist);
+        if (playlist && playlist.length > 0 && currentSongIndex >= 0) {
+            setSongText(playlist[currentSongIndex].title);
+            setArtistText(playlist[currentSongIndex].artist);
         }
-    }, [currentSongIndex, songs]);
+    }, [currentSongIndex, playlist]);
+
     return (
         <div className="footerLayer">
             <div className="footerLayerBg">

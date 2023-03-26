@@ -5,6 +5,7 @@ import { HtmlAudioRef } from '../../Models/HtmlAudioRef';
 interface MediaPlayerContext {
     currentSongIndex: number;
     songs: Array<SongDetail> | undefined;
+    playlist: Array<SongDetail> | undefined;
     repeat: boolean;
     random: boolean;
     audioPlaying: boolean;
@@ -16,11 +17,13 @@ interface MediaPlayerContext {
     toggleRandom: () => void;
     toggleRepeat: () => void;
     setCurrentSong: (id: number) => void;
+    setPlaylist: (name?: string) => void;
 }
 
 const mediaContext = createContext<MediaPlayerContext>({
-    currentSongIndex: 0,
+    currentSongIndex: -1,
     songs: undefined,
+    playlist: undefined,
     repeat: false,
     random: false,
     audioPlaying: false,
@@ -32,6 +35,7 @@ const mediaContext = createContext<MediaPlayerContext>({
     toggleRandom: () => {},
     toggleRepeat: () => {},
     setCurrentSong: () => {},
+    setPlaylist: () => {},
 });
 
 export default mediaContext;

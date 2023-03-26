@@ -3,4 +3,6 @@ export type SongDetail  = {
     artist: string,
     url: string,
     albumArt: string | null,
+    album: string,
+    trackNumber: number
 }

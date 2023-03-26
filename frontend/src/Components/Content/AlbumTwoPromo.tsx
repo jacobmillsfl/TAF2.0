@@ -3,10 +3,9 @@ export default function AlbumTwoPromo() {
         <>
             <div style={{ "textAlign": "center" }}>
                 <div style={{"fontFamily": "Audiowide", "fontSize": "25pt", "lineHeight": "1.25em", "color": "white" }} translate="no">
-                    Coming soon!
+                    Soul on Fire - Coming soon!
                 </div>
                 <div style={{ "marginTop": "25px", "fontSize": "14pt", "fontWeight": "400", "color": "white" }} translate="no">
-                    Soul on Fire by The Ambient Funk
                 </div>
             </div>
             <div>
@@ -14,18 +13,9 @@ export default function AlbumTwoPromo() {
             </div>
             <div style={{ "textAlign": "center", "maxWidth": "600px", "margin": "auto" }}>
                 <div style={{ "marginTop": "24px", "fontSize": "14pt", "fontWeight": "400", "color": "white" }} translate="no">
-                    The Ambient Funk yada yada.
+                Soul on Fire is the second studio length album by The Ambient Funk. Titled after a featured track, this album represents a self transformation, burning past internal barriers and rising from the ashes. In this release, The Ambient Funk is pushing boundaries in the realm of ambient, progressive, rock, funk, and electronica music. This album also features multiple guest artists.
                 </div>
             </div>
         </>
     )
-}
-
-const ShadowBoxOuterStyle = {
-    "backgroundColor": "#000000a8",
-    "borderColor": "white",
-    "borderRadius": "0 0 2em 2em",
-    "minHeight": "40h",
-    "minWidth": "40vw",
-    "paddingTop": "2em"
 }

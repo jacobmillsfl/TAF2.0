@@ -15,6 +15,7 @@ function HomePage() {
     const {
         currentSongIndex,
         songs,
+        playlist,
         audio,
         random,
         audioPlaying,
@@ -24,6 +25,7 @@ function HomePage() {
         toggleRandom,
         toggleRepeat,
         setCurrentSong,
+        setPlaylist,
     } = useContext(mediaContext)
 
     const [currentSongDetail, setCurrentSongDetail] = useState<SongDetail | null>(null);
@@ -33,7 +35,7 @@ function HomePage() {
     /**
      * Onload event
      */
-    useEffect(() => {        
+    useEffect(() => {
         if (audio.current) {
 
             // Add a listener to update the song duration bar
@@ -48,9 +50,32 @@ function HomePage() {
         }
 
         // Set initial song info
-        setCurrentSongDetail({ title: "Loading", artist: "", url: "", albumArt: null });
+        setCurrentSongDetail({ title: "Loading", artist: "", url: "", albumArt: null, album: "", trackNumber: 0 });
         console.log("AudioController::useEffect::onload");
     }, [])
+
+    /**
+     * Triggers whenever the current song changes.
+     */
+    useEffect(() => {
+        if (playlist)
+        {
+            setCurrentSongDetail(playlist[currentSongIndex]);
+        }
+        console.log("AudioController::useEffect::currentSongIndex");
+    }, [currentSongIndex]);
+
+    /**
+     * Triggers whenever the list of songs changes
+     */
+    useEffect(() => {
+        if (playlist) 
+        {
+            setCurrentSong(0);
+            setCurrentSongDetail({ title: playlist[0].title, artist: playlist[0].artist, url: playlist[0].url, albumArt: playlist[0].albumArt, album: playlist[0].album, trackNumber: playlist[0].trackNumber });
+        }
+        console.log("AudioController::useEffect::songs");
+    }, [playlist])
 
     /**
      * Triggers whenever the list of songs changes
@@ -58,21 +83,12 @@ function HomePage() {
     useEffect(() => {
         if (songs) 
         {
-            setCurrentSongDetail(songs![currentSongIndex]);
+            //setCurrentSongDetail(songs![currentSongIndex]);
+            //setCurrentSong(0);
+            setPlaylist();
         }
         console.log("AudioController::useEffect::songs");
     }, [songs])
-
-    /**
-     * Triggers whenever the current song changes.
-     */
-    useEffect(() => {
-        if (songs)
-        {
-            setCurrentSongDetail(songs[currentSongIndex]);
-        }
-        console.log("AudioController::useEffect::currentSongIndex");
-    }, [currentSongIndex]);
 
     /**
      * CSS hack to re-style seek bar as the seek value changes
@@ -125,7 +141,7 @@ function HomePage() {
                 <table className="list songlist">
                     <tbody>
                         {
-                            songs?.map((song, index) => (
+                            playlist?.map((song, index) => (
                                 <tr key={index} className="song songlistSong" onClick={() => setCurrentSong(index)} >
                                     <td className="nr" ><h5>{index + 1}</h5></td>
                                     <td className="title"><h6>{song.title}</h6></td>

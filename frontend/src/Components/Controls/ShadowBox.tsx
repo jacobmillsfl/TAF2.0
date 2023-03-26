@@ -52,5 +52,5 @@ const ShadowBoxMidStyle = {
 
 const ShadowBoxInnerStyle = {
     "margin": "2em",
-    "paddingBottom": "5em"
+    "paddingBottom": "1em"
 }

@@ -13,12 +13,14 @@ import {
     TOGGLE_PLAYING_AUDIO,
     TOGGLE_SHUFFLE_VIDEO,
     SET_SONGS_ARRAY,
+    SET_PLAYLIST,
     MediaAction
 } from './MediaActions'
 
 export type MediaState = {
     currentSongIndex: number,
     songs: Array<SongDetail> | undefined,
+    playlist: Array<SongDetail> | undefined,
     repeat: boolean,
     random: boolean,
     audioPlaying: boolean,
@@ -30,8 +32,9 @@ export type MediaState = {
 const MediaComponent = (props: any) => {
     const audio = useRef<HTMLAudioElement>(null);
     const initialState: MediaState = {
-        currentSongIndex: 0,
+        currentSongIndex: -1,
         songs: undefined,
+        playlist: undefined,
         repeat: false,
         random: false,
         audioPlaying: false,
@@ -91,16 +94,33 @@ const MediaComponent = (props: any) => {
     }
 
     const setCurrentSong = (id: number) => {
-        if (state.songs)
+        if (state.playlist)
         {
             let newIndex = state.random ? 
-                Math.floor(Math.random() * state.songs.length) :
+                Math.floor(Math.random() * state.playlist.length) :
                 id < 0 ? 
-                    state.songs.length - 1 :
-                    id % state.songs.length;
+                    state.playlist.length - 1 :
+                    id % state.playlist.length;
 
             console.log(`MediaComponent:: PreviousSongIndex=${state.currentSongIndex} NewSongIndex=${newIndex}.`)
             dispatch({ type: SET_CURRENT_SONG, data: newIndex });
+        }
+    }
+
+    const setPlaylist = (name?: string) => {
+        let songlist = new Array<SongDetail>();
+        console.log("SetPlaylist::", state.songs);
+        if (state.songs) {
+            if (name) {            
+                for (let song of state.songs) {
+                    if (song.album === name) {
+                        songlist.push(song);
+                    }
+                }
+                dispatch({ type: SET_PLAYLIST, data: songlist });
+            } else {
+                dispatch({ type: SET_PLAYLIST, data: state.songs });
+            }
         }
     }
 
@@ -151,6 +171,7 @@ const MediaComponent = (props: any) => {
             value={{
                 currentSongIndex: state.currentSongIndex,
                 songs: state.songs,
+                playlist: state.playlist,
                 repeat: state.repeat,
                 random: state.random,
                 audioPlaying: state.audioPlaying,
@@ -162,6 +183,7 @@ const MediaComponent = (props: any) => {
                 toggleRandom,
                 toggleRepeat,
                 setCurrentSong,
+                setPlaylist,
             }}
         >
             <audio
@@ -170,7 +192,7 @@ const MediaComponent = (props: any) => {
                 onEnded={handleSongEnd}
                 ref={audio}
                 preload="auto"
-                src={state.songs && state.songs.length > 0 ? state.songs[state.currentSongIndex].url : ""}
+                src={state.songs && state.songs.length > 0 && state.currentSongIndex >= 0 ? state.songs[state.currentSongIndex].url : ""}
                 autoPlay={state.audioPlaying}
                 muted={false}
             />            
