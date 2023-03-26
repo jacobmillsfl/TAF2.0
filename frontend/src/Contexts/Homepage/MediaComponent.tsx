@@ -117,6 +117,7 @@ const MediaComponent = (props: any) => {
                         songlist.push(song);
                     }
                 }
+                console.log("New Playlist::", songlist);
                 dispatch({ type: SET_PLAYLIST, data: songlist });
             } else {
                 dispatch({ type: SET_PLAYLIST, data: state.songs });
@@ -192,11 +193,11 @@ const MediaComponent = (props: any) => {
                 onEnded={handleSongEnd}
                 ref={audio}
                 preload="auto"
-                src={state.songs && state.songs.length > 0 && state.currentSongIndex >= 0 ? state.songs[state.currentSongIndex].url : ""}
+                src={state.playlist && state.playlist.length > 0 && state.currentSongIndex >= 0 ? state.playlist[state.currentSongIndex].url : ""}
                 autoPlay={state.audioPlaying}
                 muted={false}
             />            
-            <MediaContainer />       
+            <MediaContainer />
             {props.children}
         </mediaContext.Provider>
     )
