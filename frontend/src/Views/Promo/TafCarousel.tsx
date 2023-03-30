@@ -64,12 +64,12 @@ export default function Promo() {
             >
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
-                        <img src={item.src} alt={item.altText} style={{ "maxWidth": "50vw", "maxHeight": "30vh", "display": "block", "marginLeft": "auto", "marginRight": "auto" }} />
+                        <img src={item.src} alt={item.altText} style={ImageStyle} />
                     </div>
-                    <div className="col-md-6 col-sm-12" style={{"padding":"3em", "color":"white", "fontFamily":"Audiowide", "textAlign":"center"}}>
+                    <div className="col-md-6 col-sm-12" style={ContentStyle}>
                         <p style={{"fontSize": "20pt"}}>{item.heading}</p>
                         <p>{item.paragraph}</p>
-                        {item.link && <a href={item.link} target="_blank">{item.link}</a>}
+                        {item.link && <a href={item.link} style={LinkStyle} target="_blank">{item.link}</a>}
                     </div>
                 </div>
             </CarouselItem>
@@ -110,4 +110,20 @@ const PromoInnerStyle = {
     /*"display": "flex",*/
     "justifyContent": "center",
     "lineHeight": "1.5rem",
+}
+const LinkStyle = {
+    "wordWrap": "break-word" as const
+}
+const ContentStyle = {
+    "padding":"3em", 
+    "color":"white", 
+    "fontFamily":"Audiowide", 
+    "textAlign":"center" as const
+}
+const ImageStyle = {
+    "maxWidth": "50vw", 
+    "maxHeight": "30vh", 
+    "display": "block", 
+    "marginLeft": "auto", 
+    "marginRight": "auto"
 }
