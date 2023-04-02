@@ -167,6 +167,11 @@ const MediaComponent = (props: any) => {
         });
     }, []);
 
+    useEffect( () => {
+        console.log("Setting Playlist");
+        setPlaylist();
+    }, [state.songs]);
+
     return (
         <mediaContext.Provider
             value={{

@@ -12,8 +12,8 @@ export function SocialList({ listings, heading }: { listings: Array<SocialListin
                 {heading}
             </h2>
             {
-                listings.map( listing =>
-                    <a target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle}>
+                listings.map( (listing, index) =>
+                    <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle}>
                         <span className="hyperDspLink hyperShadow">
                             <div style={SocialListSpanStyle}>
                                 <div>
@@ -37,7 +37,8 @@ export function SocialList({ listings, heading }: { listings: Array<SocialListin
 const SocialHeadingStyle = {
     "textShadow": "3px 2px black",
     "background": "#0000008c",
-    "borderRadius": "5px"
+    "borderRadius": "5px",
+    "lineHeight": "7px"
 }
 
 const SocialListStyle = {

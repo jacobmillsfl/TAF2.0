@@ -7,7 +7,7 @@ export default function About()
         {
             name: "Brad",
             imgUrl: "Brad.jpg",
-            text: "Guitar",
+            text: "Guitar, Keys",
             position: "left"
         }, 
         {
@@ -19,7 +19,7 @@ export default function About()
         {
             name: "Clayton",
             imgUrl: "Clayton.jpg",
-            text: "Drums",
+            text: "Percussion",
             position: "left"
         }, 
         {
