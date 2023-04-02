@@ -11,13 +11,13 @@ export default function Videos()
                     </h2>
                     <br />
                     <br />
-                    <iframe width="auto" height="auto" src="https://www.youtube.com/embed/f6k2nsf9n9A?start=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    <iframe width="100%" height="300px" src="https://www.youtube.com/embed/f6k2nsf9n9A?start=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     <br />
                     <br />
-                    <iframe width="auto" height="auto" src="https://www.youtube.com/embed/B5hRhu7phUQ?start=12" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    <iframe width="100%" height="300px" src="https://www.youtube.com/embed/B5hRhu7phUQ?start=12" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     <br />
                     <br />
-                    <iframe width="auto" height="auto" src="https://www.youtube.com/embed/nifw3O0PkR4?start=8" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    <iframe width="100%" height="300px" src="https://www.youtube.com/embed/nifw3O0PkR4?start=8" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </div>
             </ShadowBox>
         </div>
