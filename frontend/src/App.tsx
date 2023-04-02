@@ -20,7 +20,7 @@ function App() {
     <Router>
       <div className="App">           
         <MediaComponent className="mediaComponent">
-        <MainNav />     
+          <MainNav />     
           <Routes>
             <Route path='/' element={< LandingPage />}></Route>
             <Route path='/media' element={< Homepage />}></Route>

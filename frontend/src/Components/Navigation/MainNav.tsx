@@ -38,6 +38,18 @@ function MainNav() {
 		setPlaylist(selection);
 	}
 
+	window.onscroll = function() {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+			if (!collapsed) {
+				setCollapsed(true);
+			}
+		}
+	}
+
 	return (
 		<Navbar color="dark" dark expand="md">
 			<NavbarBrand href="#">TAFers.net</NavbarBrand>
@@ -49,17 +61,19 @@ function MainNav() {
 					</NavItem>
 					<Dropdown isOpen={playlistCollapse} toggle={playlistToggle} className="playlistBtn">
 						<DropdownToggle caret className="nav-link">
-							Playlist
+							Music
 						</DropdownToggle>
 						<DropdownMenu>						
-							<NavItem><Link to="/media" style={{"color":"black", "textDecoration":"none"}}><DropdownItem>Media</DropdownItem></Link></NavItem>
+							<NavItem><Link to="/media" style={{"color":"black", "textDecoration":"none"}}><DropdownItem onClick={()=>playlistSelect("")}>Player</DropdownItem></Link></NavItem>
 							<NavItem><Link to="/vibe" style={{"color":"black", "textDecoration":"none"}}><DropdownItem>Vibe</DropdownItem></Link></NavItem>
 							<DropdownItem divider />
-							<DropdownItem header>The Ambient Funk</DropdownItem>
+							<DropdownItem header style={DropdownHeaderStyle}>The Ambient Funk</DropdownItem>
 							<DropdownItem onClick={()=>playlistSelect("TAF")}>TAF</DropdownItem>
+							<DropdownItem onClick={()=>playlistSelect("Soul On Fire")}>Soul on Fire</DropdownItem>
 							<DropdownItem divider />
-							<DropdownItem header>Brigand</DropdownItem>
+							<DropdownItem header style={DropdownHeaderStyle}>Brigand</DropdownItem>
 							<DropdownItem onClick={()=>playlistSelect("The Vault")}>The Vault</DropdownItem>
+							{/* <DropdownItem onClick={()=>playlistSelect("Brigand")}>Brigand</DropdownItem> */}
 						</DropdownMenu>
 					</Dropdown>
 					<NavItem>
@@ -75,6 +89,10 @@ function MainNav() {
 			</Collapse>
 		</Navbar>
 	);
+}
+
+const DropdownHeaderStyle = {
+	"padding": "5px !important"
 }
 
 export default MainNav;
