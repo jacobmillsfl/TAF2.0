@@ -82,7 +82,7 @@ export default function Promo() {
                 display: 'inlineBlock', width: "100%"
             }}>
                 <Carousel previous={previousButton} next={nextButton}
-                    activeIndex={activeIndex} style={{"paddingLeft":"10vw", "paddingRight":"10vw"}}>
+                    activeIndex={activeIndex} style={CarouselStyle}>
                     
                     <CarouselIndicators items={items}
                         activeIndex={activeIndex}
@@ -126,4 +126,9 @@ const ImageStyle = {
     "display": "block", 
     "marginLeft": "auto", 
     "marginRight": "auto"
+}
+const CarouselStyle = {
+    // "paddingLeft":"10vw", 
+    // "paddingRight":"10vw"
+    // commenting out because it makes the paragraph contents too thin on mobile.
 }
