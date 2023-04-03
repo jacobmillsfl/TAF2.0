@@ -78,9 +78,7 @@ export default function Promo() {
 
     return (
         <ShadowBox mode="top">
-            <div style={{
-                display: 'inlineBlock', width: "100%"
-            }}>
+            <div style={ShadowTopStyle}>
                 <Carousel previous={previousButton} next={nextButton}
                     activeIndex={activeIndex} style={CarouselStyle}>
                     
@@ -131,4 +129,8 @@ const CarouselStyle = {
     // "paddingLeft":"10vw", 
     // "paddingRight":"10vw"
     // commenting out because it makes the paragraph contents too thin on mobile.
+}
+const ShadowTopStyle = {
+    display: 'inlineBlock', 
+    width: "100%"
 }

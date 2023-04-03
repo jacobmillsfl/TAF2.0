@@ -37,7 +37,7 @@ export default function About()
     );
 
     return (
-        <div style={{paddingBottom:"5em"}}>
+        <div style={PaddingBottomStyle}>
             <ShadowBox mode="top">
                 <div style={AboutBodyStyle}>
                     <h2>
@@ -68,4 +68,8 @@ const AboutContentStyle = {
     "fontSize": "22px",
     "fontFamily": "Ariel",
     "textAlign": "justify" as const,
+}
+
+const PaddingBottomStyle = {
+    paddingBottom:"8em"
 }
