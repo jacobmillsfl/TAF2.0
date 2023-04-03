@@ -1,10 +1,44 @@
 import ShadowBox from "../../Components/Controls/ShadowBox";
+import { BandMember, BandMemberList } from "../../Components/Controls/BandMemberList";
 
 export default function About()
 {
+    const bandMembers = new Array<BandMember>(
+        {
+            name: "Brad",
+            imgUrl: "Brad.jpg",
+            text: "Guitar, Keys",
+            position: "left"
+        }, 
+        {
+            name: "Jacob",
+            imgUrl: "Jacob.png",
+            text: "Guitar, Bass, Keys",
+            position: "right"
+        }, 
+        {
+            name: "Clayton",
+            imgUrl: "Clayton.jpg",
+            text: "Percussion",
+            position: "left"
+        }, 
+        {
+            name: "Thomas",
+            imgUrl: "Thomas.jpg",
+            text: "Vocals",
+            position: "right"
+        }, 
+        {
+            name: "Rick",
+            imgUrl: "Rick.png",
+            text: "Vocals",
+            position: "left"
+        }, 
+    );
+
     return (
         <div style={{paddingBottom:"5em"}}>
-            <ShadowBox mode="mid">
+            <ShadowBox mode="top">
                 <div style={AboutBodyStyle}>
                     <h2>
                         About Us
@@ -15,6 +49,7 @@ export default function About()
                     </p>
                 </div>
             </ShadowBox>
+            <BandMemberList members={bandMembers} />
         </div>
         
     );
