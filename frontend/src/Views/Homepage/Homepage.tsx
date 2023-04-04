@@ -131,7 +131,7 @@ function HomePage() {
 
     return (
         <>
-            <article className="screen" style={{ backgroundImage: `url(${CyberBackground})` }} >
+            <article className="screen" style={CyberStyle} >
                 <input type="checkbox" value="None" id="magicButton" name="check" />
                 <label className="main" htmlFor="magicButton"></label>
 
@@ -163,7 +163,7 @@ function HomePage() {
                         min="0"
                         max={seekDuration}
                         onChange={(event) => handleSeekInput(event.target)}
-                        style={{ "width": "100%" }}
+                        style={BarStyle}
                     />
                 </div>
 
@@ -223,6 +223,14 @@ const musicPlayerBody: cssProperties = {
 
 const musicPlayerSong: cssProperties = {
     padding: "0px 10px 0px 10px"
+}
+
+const CyberStyle = { 
+    backgroundImage: `url(${CyberBackground})` 
+}
+
+const BarStyle = { 
+    "width": "100%" 
 }
 
 

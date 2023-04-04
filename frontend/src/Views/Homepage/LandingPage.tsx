@@ -54,7 +54,7 @@ export default function LandingPage()
     );
 
     return (
-        <div style={{"paddingBottom":"5em"}}>
+        <div style={PaddingBottomStyle}>
             <div className="row">
                 <div className="col-md-12">
                     <TafCarousel />
@@ -71,4 +71,8 @@ export default function LandingPage()
             </div>
         </div>
     );
+}
+
+const PaddingBottomStyle = {
+    "paddingBottom":"5em"
 }

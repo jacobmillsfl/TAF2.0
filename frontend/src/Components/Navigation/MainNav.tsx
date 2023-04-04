@@ -64,8 +64,8 @@ function MainNav() {
 							Music
 						</DropdownToggle>
 						<DropdownMenu>						
-							<NavItem><Link to="/media" style={{"color":"black", "textDecoration":"none"}}><DropdownItem onClick={()=>playlistSelect("")}>Player</DropdownItem></Link></NavItem>
-							<NavItem><Link to="/vibe" style={{"color":"black", "textDecoration":"none"}}><DropdownItem>Vibe</DropdownItem></Link></NavItem>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("")}>Player</DropdownItem></Link></NavItem>
+							<NavItem><Link to="/vibe" style={VibeHeaderStyle}><DropdownItem>Vibe</DropdownItem></Link></NavItem>
 							<DropdownItem divider />
 							<DropdownItem header style={DropdownHeaderStyle}>The Ambient Funk</DropdownItem>
 							<DropdownItem onClick={()=>playlistSelect("TAF")}>TAF</DropdownItem>
@@ -91,8 +91,20 @@ function MainNav() {
 	);
 }
 
+const PlayerHeaderStyle = {
+	"color":"black", 
+	"textDecoration":"none"
+}
+const VibeHeaderStyle = {
+	"color":"black", 
+	"textDecoration":"none"
+}
+
 const DropdownHeaderStyle = {
 	"padding": "5px !important"
 }
+
+
+
 
 export default MainNav;

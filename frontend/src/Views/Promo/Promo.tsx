@@ -8,7 +8,7 @@ export default function Promo() {
             <div style={PromoInnerStyle}>
                 <ShadowBox mode="top">
                     <AlbumTwoPromo />
-                    <hr style={{"color":"white", "margin": "1em"}}></hr>
+                    <hr style={AlbumTwoStyle}></hr>
                     <AlbumOnePromo />
                 </ShadowBox>
             </div>
@@ -25,4 +25,9 @@ const PromoInnerStyle = {
     /*"display": "flex",*/
     "justifyContent": "center",
     "lineHeight": "1.5rem",
+}
+
+const AlbumTwoStyle = {
+    "color":"white", 
+    "margin": "1em"
 }
