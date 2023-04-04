@@ -11,7 +11,8 @@ import './App.css';
 import MediaComponent from './Contexts/Homepage/MediaComponent';
 import Footer from './Components/Footer/Footer';
 import Visuals from "./Views/Visuals/Visuals";
-import Promo from "./Views/Promo/Promo";
+// import Promo from "./Views/Promo/Promo";
+import Promo from "./Views/Promo/PromoTest";
 import LandingPage from "./Views/Homepage/LandingPage";
 import Videos from "./Views/Videos/Videos";
 

@@ -3,13 +3,13 @@ export default function Brigand() {
       <>
           <div style={AlbumNameAlignStyle}>
               <div style={AlbumNameStyle} translate="no">
-                  Brigand Album Name
+                  The Vault
               </div>
               <div style={AlbumNameSpacingStyle} translate="no">
               </div>
           </div>
           <div>
-              <img className="artCover hyperShadow pointer" style={AlbumArtStyle} src={process.env.PUBLIC_URL + "/img/TafAlbumCover.png"} />
+              <img className="artCover hyperShadow pointer" style={AlbumArtStyle} src={process.env.PUBLIC_URL + "/img/the_vault.jpg"} />
           </div>
           <div style={AlbumAboutParagraphStyle}>
               <div style={AlbumAboutContentsStyle} translate="no">
