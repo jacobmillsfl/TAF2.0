@@ -1,12 +1,9 @@
-// taken from BandMemberList.tsx
-import ShadowBox from "../../Components/Controls/ShadowBox"
 
 export type Album = {
   name: string,
   imgUrl: string,
   description: string
 }
-
 
 export default function AlbumComponent({ albums }: { albums: Array<Album> }) {
   function generateInnerContent(album: Album) {
@@ -22,24 +19,13 @@ export default function AlbumComponent({ albums }: { albums: Array<Album> }) {
             <img className="artCover hyperShadow pointer" style={AlbumArtStyle} src={process.env.PUBLIC_URL + album.imgUrl} />
             </div>
             <div style={AlbumAboutParagraphStyle}>
-                <div style={AlbumAboutContentsStyle} translate="no">{album.description}
+                <div style={AlbumAboutContentsStyle}> {album.description}
                 </div>
             </div>
+            <hr style={HorizontalLineStyle}></hr>
         </>
     )
 }
-
-// return (
-//     <div style={PromoOuterStyle}>
-//         <div style={PromoInnerStyle}>
-//             <ShadowBox mode="top">
-//                 {
-//             albums.map( album => generateInnerContent(album) )
-//                 }
-//             </ShadowBox>
-//             </div>
-//         </div>
-//     );
 
 return (
     <div style={AlbumFrameStyle}>
@@ -65,12 +51,10 @@ const PromoInnerStyle = {
     "justifyContent": "center",
     "lineHeight": "1.5rem",
 }
-
 const AlbumTwoStyle = {
     "color":"white", 
     "margin": "1em"
 }
-
 const AlbumNameAlignStyle = { 
     "textAlign": "center" as const
 }
@@ -105,23 +89,7 @@ const AlbumAboutContentsStyle = {
     "fontWeight": "400", 
     "color": "white" 
 }
-
-
-
-
-// export type BandMember = {
-//   imgUrl: string,
-//   name: string,
-//   text: string,
-//   position: "left" | "right"
-// }
-
-// export function BandMemberList({ members }: { members: Array<BandMember>}) {}
-
-// export default function AlbumComponent({ name, imgUrl, description}: { name : string, imgUrl : string, description : string }) {
-//     return (
-//         <div>
-//              // Album component code goes here
-//         </div>
-//     )
-// }
+const HorizontalLineStyle = {
+    "color":"white", 
+    "margin": "1em"
+}

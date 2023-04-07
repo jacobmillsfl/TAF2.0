@@ -1,15 +1,33 @@
-import ShadowBox from "../../Components/Controls/ShadowBox"
-import AlbumTwoPromo from "../../Components/Content/AlbumTwoPromo"
-import AlbumOnePromo from "../../Components/Content/AlbumOnePromo"
+import ShadowBox from "../../Components/Controls/ShadowBox";
+// import { Album, AlbumComponent } from "../../Components/Content/Albums";
+import AlbumComponent from "../../Components/Content/Albums"
+import { Album } from "../../Components/Content/Albums";
 
-export default function Promo() {
+export default function Promo() 
+{
+  const albums = new Array<Album>(
+    {
+      name: "Soul on Fire - Coming Soon!",
+      imgUrl: "/img/soulonfire.png",
+      description: "Soul on Fire is the second studio length album by The Ambient Funk. Titled after a featured track, this album represents a self transformation, burning past internal barriers and rising from the ashes. In this release, The Ambient Funk is pushing boundaries in the realm of ambient, progressive, rock, funk, and electronica music. This album also features multiple guest artists."
+    },
+    {
+      name: "TAF",
+      imgUrl: "/img/TafAlbumCover.png",
+      description: "TAF is the first album by The Ambient Funk. It started as an electronica project and evolved into a sound that can best be described as 'Ambient Funk.' This album lays the roots for The Ambient Funk's style, from mesmerizing synthesizers to screaming guitars, you'll be taken on a journey through the TAF universe."
+    },
+    {
+      name: "The Vault",
+      imgUrl: "/img/the_vault.jpg",
+      description: "Brigand text goes here."
+    },
+  )
+
     return (
         <div style={PromoOuterStyle}>
             <div style={PromoInnerStyle}>
                 <ShadowBox mode="top">
-                    <AlbumTwoPromo />
-                    <hr style={AlbumTwoStyle}></hr>
-                    <AlbumOnePromo />
+                <AlbumComponent albums={albums} />
                 </ShadowBox>
             </div>
         </div>
@@ -26,7 +44,6 @@ const PromoInnerStyle = {
     "justifyContent": "center",
     "lineHeight": "1.5rem",
 }
-
 const AlbumTwoStyle = {
     "color":"white", 
     "margin": "1em"
