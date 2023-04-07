@@ -53,11 +53,11 @@ const BandFrameStyle = {
     "margin": "auto"
 }
 
-const SocialListAttributeStyle = {
-    "textDecoration": "none",
-    "color": "inherit",
-    "margin": "1em"
-}
+// const SocialListAttributeStyle = {
+//     "textDecoration": "none",
+//     "color": "inherit",
+//     "margin": "1em"
+// }
 
 const BandListSpanStyle = {
     "display": "flex",
