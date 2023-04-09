@@ -77,18 +77,6 @@ function HomePage() {
         console.log("AudioController::useEffect::songs");
     }, [playlist])
 
-    /**
-     * Triggers whenever the list of songs changes
-     */
-    useEffect(() => {
-        if (songs) 
-        {
-            //setCurrentSongDetail(songs![currentSongIndex]);
-            //setCurrentSong(0);
-            setPlaylist();
-        }
-        console.log("AudioController::useEffect::songs");
-    }, [songs])
 
     /**
      * CSS hack to re-style seek bar as the seek value changes

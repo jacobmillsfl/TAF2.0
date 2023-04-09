@@ -53,6 +53,14 @@ export default function LandingPage()
         },
     );
 
+    const emailList = new Array<SocialListing>(
+        {
+            hrefUrl: "mailto:theambientfunk@gmail.com",
+            imgUrl: process.env.PUBLIC_URL + "/img/email.png",
+            text: "theambientfunk@gmail.com"
+        },
+    );
+
     return (
         <div style={PaddingBottomStyle}>
             <div className="row">
@@ -64,9 +72,10 @@ export default function LandingPage()
                 <div className="col-md-6 col-sm-12">
                     <SocialList listings={socialMediaList} heading="Social Media"></SocialList>
                     <SocialList listings={merchList} heading="Merch"></SocialList>
+                    <SocialList listings={emailList} heading="Email"></SocialList>
                 </div>
                 <div className="col-md-6 col-sm-12">
-                    <SocialList listings={streamingList} heading="Music Streaming"></SocialList>
+                    <SocialList listings={streamingList} heading="Music"></SocialList>
                 </div>
             </div>
         </div>
