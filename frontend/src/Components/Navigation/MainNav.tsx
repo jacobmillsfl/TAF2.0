@@ -68,11 +68,11 @@ function MainNav() {
 							<NavItem><Link to="/vibe" style={VibeHeaderStyle}><DropdownItem>Vibe</DropdownItem></Link></NavItem>
 							<DropdownItem divider />
 							<DropdownItem header style={DropdownHeaderStyle}>The Ambient Funk</DropdownItem>
-							<DropdownItem onClick={()=>playlistSelect("TAF")}>TAF</DropdownItem>
-							<DropdownItem onClick={()=>playlistSelect("Soul On Fire")}>Soul on Fire</DropdownItem>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("TAF")}>TAF</DropdownItem></Link></NavItem>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("Soul On Fire")}>Soul on Fire</DropdownItem></Link></NavItem>
 							<DropdownItem divider />
 							<DropdownItem header style={DropdownHeaderStyle}>Brigand</DropdownItem>
-							<DropdownItem onClick={()=>playlistSelect("The Vault")}>The Vault</DropdownItem>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("The Vault")}>The Vault</DropdownItem></Link></NavItem>
 							{/* <DropdownItem onClick={()=>playlistSelect("Brigand")}>Brigand</DropdownItem> */}
 						</DropdownMenu>
 					</Dropdown>

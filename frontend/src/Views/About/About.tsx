@@ -1,5 +1,6 @@
 import ShadowBox from "../../Components/Controls/ShadowBox";
 import { BandMember, BandMemberList } from "../../Components/Controls/BandMemberList";
+import { SocialList, SocialListing } from "../../Components/Controls/SocialList";
 
 export default function About()
 {
@@ -36,6 +37,14 @@ export default function About()
         }, 
     );
 
+    const emailList = new Array<SocialListing>(
+        {
+            hrefUrl: "mailto:theambientfunk@gmail.com",
+            imgUrl: process.env.PUBLIC_URL + "/img/email.png",
+            text: "theambientfunk@gmail.com"
+        },
+    );
+
     return (
         <div style={PaddingBottomStyle}>
             <ShadowBox mode="top">
@@ -50,9 +59,16 @@ export default function About()
                 </div>
             </ShadowBox>
             <BandMemberList members={bandMembers} />
+            <div style={EmailStyle}>
+                <SocialList  listings={emailList} heading="Email"></SocialList>
+            </div>
         </div>
         
     );
+}
+
+const EmailStyle = {
+    "paddingTop": "2em"
 }
 
 const AboutBodyStyle = {
