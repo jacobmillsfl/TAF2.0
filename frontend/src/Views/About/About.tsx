@@ -40,7 +40,7 @@ export default function About()
     const emailList = new Array<SocialListing>(
         {
             hrefUrl: "mailto:theambientfunk@gmail.com",
-            imgUrl: process.env.PUBLIC_URL + "/img/email.png",
+            imgUrl: process.env.PUBLIC_URL + "/img/socials/email.png",
             text: "theambientfunk@gmail.com"
         },
     );
