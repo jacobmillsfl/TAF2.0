@@ -6,6 +6,7 @@ interface MediaPlayerContext {
     currentSongIndex: number;
     songs: Array<SongDetail> | undefined;
     playlist: Array<SongDetail> | undefined;
+    playlistName: string | undefined;
     repeat: boolean;
     random: boolean;
     audioPlaying: boolean;
@@ -17,13 +18,14 @@ interface MediaPlayerContext {
     toggleRandom: () => void;
     toggleRepeat: () => void;
     setCurrentSong: (id: number) => void;
-    setPlaylist: (name?: string) => void;
+    setPlaylist: (name: string) => void;
 }
 
 const mediaContext = createContext<MediaPlayerContext>({
     currentSongIndex: -1,
     songs: undefined,
     playlist: undefined,
+    playlistName: undefined,
     repeat: false,
     random: false,
     audioPlaying: false,

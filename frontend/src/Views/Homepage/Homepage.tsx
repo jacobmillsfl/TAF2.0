@@ -14,7 +14,6 @@ import CyberBackground from "../../media/cyber_03.mp4";
 function HomePage() {
     const {
         currentSongIndex,
-        songs,
         playlist,
         audio,
         random,
@@ -25,7 +24,6 @@ function HomePage() {
         toggleRandom,
         toggleRepeat,
         setCurrentSong,
-        setPlaylist,
     } = useContext(mediaContext)
 
     const [currentSongDetail, setCurrentSongDetail] = useState<SongDetail | null>(null);
@@ -47,34 +45,49 @@ function HomePage() {
             audio.current.onloadeddata = (() => {
                 setSeekDuration(audio.current!.duration);
             })
+
+            // If someone starts playing a song from a different page,
+            // then the `onloadeddata` listener above will not fire.
+            // This will update the song seek duration in that case.
+            if (seekDuration === 0) {
+                setSeekDuration(audio.current!.duration);
+            }
         }
 
         // Set initial song info
-        setCurrentSongDetail({ title: "Loading", artist: "", url: "", albumArt: null, album: "", trackNumber: 0 });
-        console.log("AudioController::useEffect::onload");
+        if (!playlist || playlist.length == 0) {
+            setCurrentSongDetail({ title: "Loading", artist: "", url: "", albumArt: null, album: "", trackNumber: 0 });
+            console.log("AudioController::useEffect::onload");
+        }
     }, [])
 
     /**
      * Triggers whenever the current song changes.
      */
     useEffect(() => {
-        if (playlist)
+        if (playlist && playlist.length > 0 && currentSongIndex >= 0)
         {
             setCurrentSongDetail(playlist[currentSongIndex]);
         }
-        console.log("AudioController::useEffect::currentSongIndex");
+        console.log("AudioController::useEffect::currentSongIndex", currentSongIndex);
     }, [currentSongIndex]);
 
     /**
      * Triggers whenever the list of songs changes
      */
     useEffect(() => {
-        if (playlist) 
+        console.log("AudioController::useEffect::playlist", playlist);
+        if (playlist && playlist.length > 0 && currentSongIndex >= 0) 
         {
-            setCurrentSong(0);
-            setCurrentSongDetail({ title: playlist[0].title, artist: playlist[0].artist, url: playlist[0].url, albumArt: playlist[0].albumArt, album: playlist[0].album, trackNumber: playlist[0].trackNumber });
+            setCurrentSongDetail({ 
+                title: playlist[currentSongIndex].title,
+                artist: playlist[currentSongIndex].artist,
+                url: playlist[currentSongIndex].url,
+                albumArt: playlist[currentSongIndex].albumArt,
+                album: playlist[currentSongIndex].album,
+                trackNumber: playlist[currentSongIndex].trackNumber
+            });
         }
-        console.log("AudioController::useEffect::songs");
     }, [playlist])
 
 
