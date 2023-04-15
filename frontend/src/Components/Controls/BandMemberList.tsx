@@ -2,37 +2,45 @@
 export type BandMember = {
     imgUrl: string,
     name: string,
-    text: string,
-    position: "left" | "right"
+    text: string
 }
 
 export function BandMemberList({ members }: { members: Array<BandMember>}) {
 
-    function generateInnerContent(member: BandMember) {
-        if (member.position == "left") {
+
+    function generateMemberImage(member: BandMember) {
+        return (
+            <div>
+                <img style={BandListImgStyle} src={process.env.PUBLIC_URL + "/img/photos/" + member.imgUrl} />
+            </div>
+        )
+    }
+
+    function generateMemberInfo(member: BandMember) {
+        return (
+            <div style={BandListTextStyle}>
+                <p style={BandMemberNameStyle}>{member.name}</p>
+                <hr />
+                <p style={BandMemberTextStyle}>{member.text}</p>
+            </div>
+        )
+    }
+
+    function generateInnerContent(member: BandMember, key: number) {
+        const position = key % 2;
+
+        if (position == 0) {
             return (
-                <span className="" style={BandListSpanStyle}>
-                    <div>
-                        <img style={BandListImgStyle} src={process.env.PUBLIC_URL + "/img/photos/" + member.imgUrl} />
-                    </div>
-                    <div style={BandListTextStyle}>
-                        <p style={BandMemberNameStyle}>{member.name}</p>
-                        <hr />
-                        <p style={BandMemberTextStyle}>{member.text}</p>
-                    </div>
+                <span key={key} className="" style={BandListSpanStyle}>
+                    {generateMemberImage(member)}
+                    {generateMemberInfo(member)}
                 </span>
             )
         } else {
             return (
-                <span className="" style={BandListSpanStyle}>
-                    <div style={BandListTextStyle}>
-                        <p style={BandMemberNameStyle}>{member.name}</p>
-                        <hr />
-                        <p style={BandMemberTextStyle}>{member.text}</p>
-                    </div>
-                    <div>
-                        <img style={BandListImgStyle} src={process.env.PUBLIC_URL + "/img/photos/" + member.imgUrl} />
-                    </div>
+                <span key={key} className="" style={BandListSpanStyle}>
+                    {generateMemberInfo(member)}
+                    {generateMemberImage(member)}
                 </span>
             )
         }
@@ -41,7 +49,7 @@ export function BandMemberList({ members }: { members: Array<BandMember>}) {
     return (
         <div style={BandFrameStyle}>
             {
-                members.map( member => generateInnerContent(member) )
+                members.map( (member, key) => generateInnerContent(member, key) )
             }
         </div>
     )
