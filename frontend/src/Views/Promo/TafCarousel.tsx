@@ -37,7 +37,7 @@ export default function Promo() {
             src: process.env.PUBLIC_URL + "/img/taf_shirt.png",
             altText: 'We have merchandise',
             paragraph: "We are now selling merch through eBay. Order your The Ambient Funk tshirt today!",
-            link : "https://www.ebay.com/itm/155450892009",
+            link : "https://www.ebay.com/usr/theambientfunk",
             heading: "TAF merch is now available!"
         },
     ];
@@ -98,10 +98,10 @@ export default function Promo() {
                             setActiveIndex(newIndex);
                         }} />
                     {carouselItemData}
-                    <CarouselControl directionText="Prev"
+                    {/* <CarouselControl directionText="Prev"
                         direction="prev" onClickHandler={previousButton} />
                     <CarouselControl directionText="Next"
-                        direction="next" onClickHandler={nextButton} />
+                        direction="next" onClickHandler={nextButton} /> */}
                 </Carousel>
             </div >
         </ShadowBox>
