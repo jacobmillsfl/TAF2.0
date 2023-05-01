@@ -22,6 +22,8 @@ function MainNav() {
 	const [playlistCollapse, setPlaylistCollapse] = useState(false);
 
 	const {
+		playlist,
+		playlistName,
         setPlaylist,
     } = useContext(mediaContext)
 
@@ -35,7 +37,9 @@ function MainNav() {
 	}
 
 	const playlistSelect = (selection: string) => {
-		setPlaylist(selection);
+		if (playlistName === undefined || playlistName != selection) {
+			setPlaylist(selection);
+		}
 	}
 
 	window.onscroll = function() {

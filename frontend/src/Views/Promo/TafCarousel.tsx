@@ -19,6 +19,13 @@ export default function Promo() {
     // Sample items for Carousel
     const items = [
         {
+            caption: 'Welcome to TAFers.net!',
+            src: process.env.PUBLIC_URL + "/img/StableProductionStudios.png",
+            altText: 'Welcome to TAFers DOT net',
+            paragraph: "Home of The Ambient Funk and friends, this website includes a portfolio of content from Stable Production Studios",
+            heading: "Welcome to TAFers.net!"
+        },
+        {
             caption: 'Soul on Fire',
             src: process.env.PUBLIC_URL + "/img/soultransparent.png",
             altText: 'Soul on Fire Album coming soon',
@@ -28,7 +35,7 @@ export default function Promo() {
         {
             caption: 'Merch!',
             src: process.env.PUBLIC_URL + "/img/taf_shirt.png",
-            altText: 'Slide Two',
+            altText: 'We have merchandise',
             paragraph: "We are now selling merch through eBay. Order your The Ambient Funk tshirt today!",
             link : "https://www.ebay.com/itm/155450892009",
             heading: "TAF merch is now available!"
@@ -62,15 +69,17 @@ export default function Promo() {
                 onExited={() => setAnimating(false)}
                 onExiting={() => setAnimating(true)}
             >
-                <div className="row">
-                    <div className="col-md-6 col-sm-12">
+                <div className="row" style={CarouselRowStyle}>
+                    <div className="col-lg-2 col-sm-hidden"></div>
+                    <div className="col-lg-4 col-md-6 col-sm-12">
                         <img src={item.src} alt={item.altText} style={ImageStyle} />
                     </div>
-                    <div className="col-md-6 col-sm-12" style={ContentStyle}>
+                    <div className="col-lg-4 col-md-6 col-sm-12" style={ContentStyle}>
                         <p style={{"fontSize": "20pt"}}>{item.heading}</p>
                         <p>{item.paragraph}</p>
                         {item.link && <a href={item.link} style={LinkStyle} target="_blank" rel="noreferrer">{item.link}</a>}
                     </div>
+                    <div className="col-lg-2 col-sm-hidden"></div>
                 </div>
             </CarouselItem>
         );
@@ -133,4 +142,8 @@ const CarouselStyle = {
 const ShadowTopStyle = {
     display: 'inlineBlock', 
     width: "100%"
+}
+
+const CarouselRowStyle = {
+    "minHeight": "350px"
 }
