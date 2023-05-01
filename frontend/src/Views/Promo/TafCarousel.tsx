@@ -20,7 +20,7 @@ export default function Promo() {
     const items = [
         {
             caption: 'Soul on Fire',
-            src: process.env.PUBLIC_URL + "/img/soulonfire.png",
+            src: process.env.PUBLIC_URL + "/img/soultransparent.png",
             altText: 'Slide One',
             paragraph: "The Ambient Funk is releasing a new album later this year! Stay tuned for a release date.",
             heading: "New album coming soon!"
