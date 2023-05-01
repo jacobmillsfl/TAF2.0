@@ -21,7 +21,7 @@ export default function Promo() {
         {
             caption: 'Soul on Fire',
             src: process.env.PUBLIC_URL + "/img/soultransparent.png",
-            altText: 'Slide One',
+            altText: 'Soul on Fire Album coming soon',
             paragraph: "The Ambient Funk is releasing a new album later this year! Stay tuned for a release date.",
             heading: "New album coming soon!"
         },
@@ -69,7 +69,7 @@ export default function Promo() {
                     <div className="col-md-6 col-sm-12" style={ContentStyle}>
                         <p style={{"fontSize": "20pt"}}>{item.heading}</p>
                         <p>{item.paragraph}</p>
-                        {item.link && <a href={item.link} style={LinkStyle} target="_blank">{item.link}</a>}
+                        {item.link && <a href={item.link} style={LinkStyle} target="_blank" rel="noreferrer">{item.link}</a>}
                     </div>
                 </div>
             </CarouselItem>
