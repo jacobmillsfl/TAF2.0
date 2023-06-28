@@ -11,10 +11,6 @@ type AlbumProps = {
 }
 
 export const AlbumComponent: React.FC<AlbumProps> = ({ albums }) => {
-
-    // this is former code. Leaving in for documentation.
-    // export default function AlbumComponent({ albums }: AlbumProps) {
-    // export default function AlbumComponent({ albums }: { albums: Array<Album> }) {
     function generateInnerContent(album: Album) {
         return (
             <>

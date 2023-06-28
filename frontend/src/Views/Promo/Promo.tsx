@@ -1,5 +1,4 @@
 import ShadowBox from "../../Components/Controls/ShadowBox";
-// import { Album, AlbumComponent } from "../../Components/Content/Albums";
 import { AlbumComponent } from "../../Components/Content/Albums"
 import { Album } from "../../Components/Content/Albums";
 

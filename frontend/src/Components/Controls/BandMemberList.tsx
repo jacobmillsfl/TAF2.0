@@ -10,11 +10,6 @@ type BandMemberProps = {
 }
 
 export const BandMemberList: React.FC<BandMemberProps> = ({ members }) => {
-    // former code. to be removed later
-    // export function BandMemberList({ members }: BandMemberProps) {
-    // export function BandMemberList({ members }: { members: Array<BandMember> }) {
-
-
     function generateMemberImage(member: BandMember) {
         return (
             <div>

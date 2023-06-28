@@ -11,10 +11,6 @@ type SocialListProps = {
 }
 
 export const SocialList: React.FC<SocialListProps> = ({ listings, heading }) => {
-    // former code. to be removed later
-    // export function SocialList({ listings, heading }: { listings: Array<SocialListing>, heading: string }) {
-
-
     return (
         <div style={SocialListStyle}>
             <h2 style={SocialHeadingStyle}>
@@ -22,7 +18,8 @@ export const SocialList: React.FC<SocialListProps> = ({ listings, heading }) => 
             </h2>
             {
                 listings.map((listing, index) =>
-                    <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle} rel="noreferrer">
+                    <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle} rel="noopener noreferrer">
+                        {/* <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle}> */}
                         <span className="hyperDspLink hyperShadow">
                             <div style={SocialListSpanStyle}>
                                 <div>
