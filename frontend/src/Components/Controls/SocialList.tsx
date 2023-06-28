@@ -5,15 +5,24 @@ export type SocialListing = {
     text: string
 }
 
-export function SocialList({ listings, heading }: { listings: Array<SocialListing>, heading: string }) {
+type SocialListProps = {
+    listings: Array<SocialListing>,
+    heading: string
+}
+
+export const SocialList: React.FC<SocialListProps> = ({ listings, heading }) => {
+    // former code. to be removed later
+    // export function SocialList({ listings, heading }: { listings: Array<SocialListing>, heading: string }) {
+
+
     return (
         <div style={SocialListStyle}>
             <h2 style={SocialHeadingStyle}>
                 {heading}
             </h2>
             {
-                listings.map( (listing, index) =>
-                    <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle}>
+                listings.map((listing, index) =>
+                    <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle} rel="noreferrer">
                         <span className="hyperDspLink hyperShadow">
                             <div style={SocialListSpanStyle}>
                                 <div>
@@ -76,5 +85,5 @@ const SocialListIconStyle = {
     "color": "white",
     "background": "rgb(102 102 102 / 50%)",
     "borderRadius": "0px 5px 5px 0px"
-    
+
 }

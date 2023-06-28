@@ -2,24 +2,23 @@ import ShadowBox from "../../Components/Controls/ShadowBox";
 import { BandMember, BandMemberList } from "../../Components/Controls/BandMemberList";
 import { SocialList, SocialListing } from "../../Components/Controls/SocialList";
 
-export default function About()
-{
+export default function About() {
     const bandMembers = new Array<BandMember>(
         {
             name: "Brad",
             imgUrl: "Brad.jpg",
             text: "Guitar, Keys",
-        }, 
+        },
         {
             name: "Jacob",
             imgUrl: "Jacob.png",
             text: "Guitar, Bass, Keys",
-        }, 
+        },
         {
             name: "Clayton",
             imgUrl: "Clayton.jpg",
             text: "Percussion",
-        }, 
+        },
         {
             name: "Thomas",
             imgUrl: "Thomas.jpg",
@@ -29,7 +28,7 @@ export default function About()
             name: "Rick",
             imgUrl: "Rick.png",
             text: "Vocals",
-        }, 
+        },
     );
 
     const emailList = new Array<SocialListing>(
@@ -55,10 +54,10 @@ export default function About()
             </ShadowBox>
             <BandMemberList members={bandMembers} />
             <div style={EmailStyle}>
-                <SocialList  listings={emailList} heading="Email"></SocialList>
+                <SocialList listings={emailList} heading="Email"></SocialList>
             </div>
         </div>
-        
+
     );
 }
 
@@ -70,7 +69,7 @@ const AboutBodyStyle = {
     "maxWidth": "600px",
     "textAlign": "center" as const,
     "margin": "auto",
-    "marginBotton":"1em"
+    "marginBotton": "1em"
 }
 
 const AboutContentStyle = {
@@ -82,5 +81,5 @@ const AboutContentStyle = {
 }
 
 const PaddingBottomStyle = {
-    paddingBottom:"8em"
+    paddingBottom: "8em"
 }

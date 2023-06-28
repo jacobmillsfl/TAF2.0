@@ -1,39 +1,48 @@
+import React from "react"
 
 export type Album = {
-  name: string,
-  imgUrl: string,
-  description: string
+    name: string,
+    imgUrl: string,
+    description: string
 }
 
-export default function AlbumComponent({ albums }: { albums: Array<Album> }) {
-  function generateInnerContent(album: Album) {
+type AlbumProps = {
+    albums: Array<Album>
+}
+
+export const AlbumComponent: React.FC<AlbumProps> = ({ albums }) => {
+
+    // this is former code. Leaving in for documentation.
+    // export default function AlbumComponent({ albums }: AlbumProps) {
+    // export default function AlbumComponent({ albums }: { albums: Array<Album> }) {
+    function generateInnerContent(album: Album) {
+        return (
+            <>
+                <div style={AlbumNameAlignStyle}>
+                    <div style={AlbumNameStyle} translate="no">{album.name}
+                    </div>
+                    <div style={AlbumNameSpacingStyle} translate="no">
+                    </div>
+                </div>
+                <div>
+                    <img className="artCover hyperShadow pointer" style={AlbumArtStyle} src={process.env.PUBLIC_URL + album.imgUrl} />
+                </div>
+                <div style={AlbumAboutParagraphStyle}>
+                    <div style={AlbumAboutContentsStyle}> {album.description}
+                    </div>
+                </div>
+                <hr style={HorizontalLineStyle}></hr>
+            </>
+        )
+    }
+
     return (
-        <>
-            <div style={AlbumNameAlignStyle}>
-                <div style={AlbumNameStyle} translate="no">{album.name}
-                </div>
-                <div style={AlbumNameSpacingStyle} translate="no">
-                </div>
-            </div>
-            <div>
-            <img className="artCover hyperShadow pointer" style={AlbumArtStyle} src={process.env.PUBLIC_URL + album.imgUrl} />
-            </div>
-            <div style={AlbumAboutParagraphStyle}>
-                <div style={AlbumAboutContentsStyle}> {album.description}
-                </div>
-            </div>
-            <hr style={HorizontalLineStyle}></hr>
-        </>
+        <div style={AlbumFrameStyle}>
+            {
+                albums.map(album => generateInnerContent(album))
+            }
+        </div>
     )
-}
-
-return (
-    <div style={AlbumFrameStyle}>
-        {
-            albums.map( album => generateInnerContent(album) )
-        }
-    </div>
-)
 }
 
 const AlbumFrameStyle = {
@@ -52,44 +61,44 @@ const PromoInnerStyle = {
     "lineHeight": "1.5rem",
 }
 const AlbumTwoStyle = {
-    "color":"white", 
+    "color": "white",
     "margin": "1em"
 }
-const AlbumNameAlignStyle = { 
+const AlbumNameAlignStyle = {
     "textAlign": "center" as const
 }
 const AlbumNameStyle = {
-    "fontFamily": "Audiowide", 
+    "fontFamily": "Audiowide",
     "fontSize": "25pt",
-    "lineHeight": "1.25em", 
-    "color": "white" 
-} 
-const AlbumNameSpacingStyle = { 
-    "marginTop": "25px", 
+    "lineHeight": "1.25em",
+    "color": "white"
+}
+const AlbumNameSpacingStyle = {
+    "marginTop": "25px",
     "fontSize": "14pt",
-    "fontWeight": "400", 
-    "color": "white" 
+    "fontWeight": "400",
+    "color": "white"
 }
-const AlbumArtStyle = { 
-    "maxWidth": "50vw", 
-    "maxHeight": "50vh", 
-    "display": "block", 
-    "marginLeft": "auto", 
-    "marginRight": "auto", 
-    "paddingTop": "20px" 
+const AlbumArtStyle = {
+    "maxWidth": "50vw",
+    "maxHeight": "50vh",
+    "display": "block",
+    "marginLeft": "auto",
+    "marginRight": "auto",
+    "paddingTop": "20px"
 }
-const AlbumAboutParagraphStyle = { 
+const AlbumAboutParagraphStyle = {
     "textAlign": "center" as const,
-    "maxWidth": "600px", 
-    "margin": "auto" 
+    "maxWidth": "600px",
+    "margin": "auto"
 }
 const AlbumAboutContentsStyle = {
-    "marginTop": "24px", 
-    "fontSize": "14pt", 
-    "fontWeight": "400", 
-    "color": "white" 
+    "marginTop": "24px",
+    "fontSize": "14pt",
+    "fontWeight": "400",
+    "color": "white"
 }
 const HorizontalLineStyle = {
-    "color":"white", 
+    "color": "white",
     "margin": "1em"
 }
