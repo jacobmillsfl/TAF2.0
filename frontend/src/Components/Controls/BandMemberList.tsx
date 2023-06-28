@@ -5,9 +5,11 @@ export type BandMember = {
     text: string
 }
 
-export function BandMemberList({ members }: { members: Array<BandMember>}) {
+type BandMemberProps = {
+    members: Array<BandMember>
+}
 
-
+export const BandMemberList: React.FC<BandMemberProps> = ({ members }) => {
     function generateMemberImage(member: BandMember) {
         return (
             <div>
@@ -49,7 +51,7 @@ export function BandMemberList({ members }: { members: Array<BandMember>}) {
     return (
         <div style={BandFrameStyle}>
             {
-                members.map( (member, key) => generateInnerContent(member, key) )
+                members.map((member, key) => generateInnerContent(member, key))
             }
         </div>
     )
