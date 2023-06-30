@@ -67,10 +67,7 @@ const ButtonStyle = {
   // "size": "sm",
   // "variant": "secondary"
   // "backgroundColor": "#8B8000",
-
 }
-
-
 
 
 // todo
