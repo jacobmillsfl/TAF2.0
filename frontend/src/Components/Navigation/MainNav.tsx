@@ -17,6 +17,9 @@ import { Link } from 'react-router-dom';
 import mediaContext from "../../Contexts/Homepage/MediaContext";
 
 
+
+
+
 function MainNav() {
 	const [collapsed, setCollapsed] = useState(true);
 	const [playlistCollapse, setPlaylistCollapse] = useState(false);
@@ -24,8 +27,8 @@ function MainNav() {
 	const {
 		playlist,
 		playlistName,
-        setPlaylist,
-    } = useContext(mediaContext)
+		setPlaylist,
+	} = useContext(mediaContext)
 
 
 	const toggle = () => {
@@ -42,7 +45,7 @@ function MainNav() {
 		}
 	}
 
-	window.onscroll = function() {
+	window.onscroll = function () {
 		scrollFunction()
 	};
 
@@ -67,16 +70,16 @@ function MainNav() {
 						<DropdownToggle caret className="nav-link">
 							Music
 						</DropdownToggle>
-						<DropdownMenu>						
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("")}>Player</DropdownItem></Link></NavItem>
+						<DropdownMenu>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("")}>Player</DropdownItem></Link></NavItem>
 							<NavItem><Link to="/vibe" style={VibeHeaderStyle}><DropdownItem>Vibe</DropdownItem></Link></NavItem>
 							<DropdownItem divider />
 							<DropdownItem header style={DropdownHeaderStyle}>The Ambient Funk</DropdownItem>
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("TAF")}>TAF</DropdownItem></Link></NavItem>
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("Soul On Fire")}>Soul on Fire</DropdownItem></Link></NavItem>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("TAF")}>TAF</DropdownItem></Link></NavItem>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("Soul On Fire")}>Soul on Fire</DropdownItem></Link></NavItem>
 							<DropdownItem divider />
 							<DropdownItem header style={DropdownHeaderStyle}>Brigand</DropdownItem>
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={()=>playlistSelect("The Vault")}>The Vault</DropdownItem></Link></NavItem>
+							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("The Vault")}>The Vault</DropdownItem></Link></NavItem>
 							{/* <DropdownItem onClick={()=>playlistSelect("Brigand")}>Brigand</DropdownItem> */}
 						</DropdownMenu>
 					</Dropdown>
@@ -89,6 +92,9 @@ function MainNav() {
 					<NavItem>
 						<Link to="/about" className="nav-link">About</Link>
 					</NavItem>
+					<NavItem>
+						<Link to="/merch" className="nav-link">Merch</Link>
+					</NavItem>
 				</Nav>
 			</Collapse>
 		</Navbar>
@@ -96,12 +102,12 @@ function MainNav() {
 }
 
 const PlayerHeaderStyle = {
-	"color":"black", 
-	"textDecoration":"none"
+	"color": "black",
+	"textDecoration": "none"
 }
 const VibeHeaderStyle = {
-	"color":"black", 
-	"textDecoration":"none"
+	"color": "black",
+	"textDecoration": "none"
 }
 
 const DropdownHeaderStyle = {

@@ -1,4 +1,3 @@
-
 export type BandMember = {
     imgUrl: string,
     name: string,
