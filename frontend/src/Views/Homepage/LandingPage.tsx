@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import TafCarousel from "../Promo/TafCarousel";
 import { SocialList, SocialListing } from "../../Components/Controls/SocialList";
 
-export default function LandingPage()
-{
+export default function LandingPage() {
     const streamingList = new Array<SocialListing>(
         {
             hrefUrl: "https://open.spotify.com/album/2x6ud6V4iFkBWXer2wa6jJ",
@@ -83,5 +82,5 @@ export default function LandingPage()
 }
 
 const PaddingBottomStyle = {
-    "paddingBottom":"5em"
+    "paddingBottom": "5em"
 }

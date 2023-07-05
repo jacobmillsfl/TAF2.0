@@ -12,18 +12,19 @@ export default function Promo() {
 
     // State for Active index
     const [activeIndex, setActiveIndex] = React.useState(0);
-  
+
     // State for Animation
     const [animating, setAnimating] = React.useState(false);
-  
+
     // Sample items for Carousel
     const items = [
         {
-            caption: 'Welcome to TAFers.net!',
-            src: process.env.PUBLIC_URL + "/img/StableProductionStudios.png",
-            altText: 'Welcome to TAFers DOT net',
-            paragraph: "Home of The Ambient Funk and friends, this website includes a portfolio of content from Stable Production Studios",
-            heading: "Welcome to TAFers.net!"
+            caption: 'Merch!',
+            src: process.env.PUBLIC_URL + "/img/taf_merch.png",
+            altText: 'We have merchandise',
+            paragraph: "We are now selling merch through eBay. Order your The Ambient Funk tshirt today!",
+            link: "https://www.ebay.com/usr/theambientfunk",
+            heading: "TAF merch is now available!"
         },
         {
             caption: 'Soul on Fire',
@@ -33,18 +34,17 @@ export default function Promo() {
             heading: "New album coming soon!"
         },
         {
-            caption: 'Merch!',
-            src: process.env.PUBLIC_URL + "/img/taf_shirt.png",
-            altText: 'We have merchandise',
-            paragraph: "We are now selling merch through eBay. Order your The Ambient Funk tshirt today!",
-            link : "https://www.ebay.com/usr/theambientfunk",
-            heading: "TAF merch is now available!"
+            caption: 'Welcome to TAFers.net!',
+            src: process.env.PUBLIC_URL + "/img/StableProductionStudios.png",
+            altText: 'Welcome to TAFers DOT net',
+            paragraph: "Home of The Ambient Funk and friends, this website includes a portfolio of content from Stable Production Studios",
+            heading: "Welcome to TAFers.net!"
         },
     ];
-  
+
     // Items array length
     const itemLength = items.length - 1
-  
+
     // Previous button for Carousel
     const previousButton = () => {
         if (animating) return;
@@ -60,7 +60,7 @@ export default function Promo() {
             0 : activeIndex + 1;
         setActiveIndex(nextIndex);
     }
-  
+
     // Carousel Item Data
     const carouselItemData = items.map((item) => {
         return (
@@ -75,7 +75,7 @@ export default function Promo() {
                         <img src={item.src} alt={item.altText} style={ImageStyle} />
                     </div>
                     <div className="col-lg-4 col-md-6 col-sm-12" style={ContentStyle}>
-                        <p style={{"fontSize": "20pt"}}>{item.heading}</p>
+                        <p style={{ "fontSize": "20pt" }}>{item.heading}</p>
                         <p>{item.paragraph}</p>
                         {item.link && <a href={item.link} style={LinkStyle} target="_blank" rel="noreferrer">{item.link}</a>}
                     </div>
@@ -90,7 +90,7 @@ export default function Promo() {
             <div style={ShadowTopStyle}>
                 <Carousel previous={previousButton} next={nextButton}
                     activeIndex={activeIndex} style={CarouselStyle}>
-                    
+
                     <CarouselIndicators items={items}
                         activeIndex={activeIndex}
                         onClickHandler={(newIndex) => {
@@ -122,16 +122,16 @@ const LinkStyle = {
     "wordWrap": "break-word" as const
 }
 const ContentStyle = {
-    "padding":"3em", 
-    "color":"white", 
-    "fontFamily":"Audiowide", 
-    "textAlign":"center" as const
+    "padding": "3em",
+    "color": "white",
+    "fontFamily": "Audiowide",
+    "textAlign": "center" as const
 }
 const ImageStyle = {
-    "maxWidth": "50vw", 
-    "maxHeight": "30vh", 
-    "display": "block", 
-    "marginLeft": "auto", 
+    "maxWidth": "50vw",
+    "maxHeight": "30vh",
+    "display": "block",
+    "marginLeft": "auto",
     "marginRight": "auto"
 }
 const CarouselStyle = {
@@ -140,7 +140,7 @@ const CarouselStyle = {
     // commenting out because it makes the paragraph contents too thin on mobile.
 }
 const ShadowTopStyle = {
-    display: 'inlineBlock', 
+    display: 'inlineBlock',
     width: "100%"
 }
 

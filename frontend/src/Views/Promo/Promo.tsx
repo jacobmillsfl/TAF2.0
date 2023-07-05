@@ -2,6 +2,9 @@ import ShadowBox from "../../Components/Controls/ShadowBox";
 import { AlbumComponent } from "../../Components/Content/Albums"
 import { Album } from "../../Components/Content/Albums";
 
+import { Merch } from "../Merch/Merch";
+import { MerchComponent } from "../Merch/Merch";
+
 export default function Promo() {
     const albums = new Array<Album>(
         {
@@ -12,7 +15,7 @@ export default function Promo() {
         {
             name: "TAF",
             imgUrl: "/img/TafAlbumCover.png",
-            description: "TAF is the first album by The Ambient Funk. It started as an electronica project and evolved into a sound that can best be described as 'Ambient Funk.' This album lays the roots for The Ambient Funk's style, from mesmerizing synthesizers to screaming guitars, you'll be taken on a journey through the TAF universe."
+            description: "The Ambient Funk's debut album 'TAF' is a soulful and introspective exploration of the human condition. Drawing on a range of musical influences, the album weaves intricate rhythms and dynamic instrumental arrangements into a rich tapestry of sound. This album lays the roots for The Ambient Funk's style, from mesmerizing synthesizers to screaming guitars, you'll be taken on a journey through the TAF universe."
         },
         {
             name: "The Vault",
@@ -20,8 +23,6 @@ export default function Promo() {
             description: "The Vault is a collection of previously unreleased Brigand material. It includes 6 of the first songs Brigand ever wrote, recorded in various settings from live performances to radio edits. The Vault captures the raw essense and heavy sounds of the early Brigand days."
         },
     )
-
-
 
     return (
         <div style={PromoOuterStyle}>

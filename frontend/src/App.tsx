@@ -14,13 +14,14 @@ import Visuals from "./Views/Visuals/Visuals";
 import Promo from "./Views/Promo/Promo";
 import LandingPage from "./Views/Homepage/LandingPage";
 import Videos from "./Views/Videos/Videos";
+import { MerchComponent } from './Views/Merch/Merch';
 
 function App() {
   return (
     <Router>
-      <div className="App">           
+      <div className="App">
         <MediaComponent className="mediaComponent">
-          <MainNav />     
+          <MainNav />
           <Routes>
             <Route path='/' element={< LandingPage />}></Route>
             <Route path='/media' element={< Homepage />}></Route>
@@ -28,6 +29,7 @@ function App() {
             <Route path='/about' element={< About />}></Route>
             <Route path='/albums' element={< Promo />}></Route>
             <Route path='/videos' element={< Videos />}></Route>
+            <Route path='/merch' element={< MerchComponent />}></Route>
           </Routes>
           <Footer />
         </MediaComponent>
