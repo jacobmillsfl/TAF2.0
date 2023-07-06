@@ -48,10 +48,10 @@ function MainNav() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggle} />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="me-auto">
-						<Nav.Link as={Link} to="/">Home</Nav.Link>
+						<Nav.Link as={Link} to="/" eventKey="home">Home</Nav.Link>
 						<NavDropdown title="Music" id="basic-nav-dropdown">
-							<NavDropdown.Item as={Link} to="/media">Player</NavDropdown.Item>
-							<NavDropdown.Item as={Link} to="/vibe">
+							<NavDropdown.Item as={Link} to="/media" eventKey="media">Player</NavDropdown.Item>
+							<NavDropdown.Item as={Link} to="/vibe" eventKey="vibe">
 								Vibe
 							</NavDropdown.Item>
 							<NavDropdown.Divider />
@@ -64,10 +64,10 @@ function MainNav() {
 							The Vault
 							</NavDropdown.Item>
 						</NavDropdown>
-						<Nav.Link as={Link} to="/albums">Albums</Nav.Link>
-						<Nav.Link as={Link} to="/videos">Videos</Nav.Link>
-						<Nav.Link as={Link} to="/merch">Merch</Nav.Link>
-						<Nav.Link as={Link} to="/about">About</Nav.Link>
+						<Nav.Link as={Link} to="/albums" eventKey="albums">Albums</Nav.Link>
+						<Nav.Link as={Link} to="/videos" eventKey="videos">Videos</Nav.Link>
+						<Nav.Link as={Link} to="/merch" eventKey="merch">Merch</Nav.Link>
+						<Nav.Link as={Link} to="/about" eventKey="about">About</Nav.Link>
 
 					</Nav>
 				</Navbar.Collapse>
