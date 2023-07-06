@@ -67,7 +67,7 @@ export default function Promo() {
                     <div className="col-lg-4 col-md-6 col-sm-12" style={ContentStyle}>
                         <p style={{ "fontSize": "20pt" }}>{item.heading}</p>
                         <p>{item.paragraph}</p>
-                        {item.link && <a href={item.link} style={LinkStyle} target="_blank" rel="noreferrer">{item.link}</a>}
+                        {item.link && <a href={item.link} style={LinkStyle} target="_blank" rel="noopener">{item.link}</a>}
                     </div>
                     <div className="col-lg-2 col-sm-hidden"></div>
                 </div>

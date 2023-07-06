@@ -9,7 +9,7 @@ const CardComponent: React.FC<{ cardInfo: Merch[] }> = ({ cardInfo }) => {
     const button: HTMLButtonElement = event.currentTarget;
     const url = button.getAttribute("data-url")
     if (url) {
-      window.open(url, '_blank')?.focus();
+      window.open(url, '_blank', 'noopener')?.focus();
     }
   };
 
