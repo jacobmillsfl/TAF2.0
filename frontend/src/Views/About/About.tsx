@@ -1,6 +1,7 @@
 import ShadowBox from "../../Components/Controls/ShadowBox";
 import { BandMember, BandMemberList } from "../../Components/Controls/BandMemberList";
 import { SocialList, SocialListing } from "../../Components/Controls/SocialList";
+import { ContentContainer } from "../ContentContainer/ContentContainer";
 
 export default function About() {
     const bandMembers = new Array<BandMember>(
@@ -40,7 +41,7 @@ export default function About() {
     );
 
     return (
-        <div style={PaddingBottomStyle}>
+        <ContentContainer>
             <ShadowBox mode="top">
                 <div style={AboutBodyStyle}>
                     <h2>
@@ -56,8 +57,7 @@ export default function About() {
             <div style={EmailStyle}>
                 <SocialList listings={emailList} heading="Email"></SocialList>
             </div>
-        </div>
-
+        </ContentContainer>
     );
 }
 
@@ -78,8 +78,4 @@ const AboutContentStyle = {
     "fontSize": "22px",
     "fontFamily": "Ariel",
     "textAlign": "justify" as const,
-}
-
-const PaddingBottomStyle = {
-    paddingBottom: "8em"
 }

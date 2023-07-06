@@ -1,11 +1,12 @@
 import ShadowBox from "../../Components/Controls/ShadowBox";
+import { ContentContainer } from "../ContentContainer/ContentContainer";
 
 export default function Videos()
 {
     return (
-        <div style={{paddingBottom:"5em"}}>
+        <ContentContainer>
             <ShadowBox mode="mid">
-                <div style={AboutBodyStyle}>
+                <div style={VideosStyle}>
                     <h2>
                         Featured YouTube Content
                     </h2>
@@ -20,12 +21,12 @@ export default function Videos()
                     <iframe width="100%" height="300px" src="https://www.youtube.com/embed/nifw3O0PkR4?start=8" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </div>
             </ShadowBox>
-        </div>
+        </ContentContainer>
         
     );
 }
 
-const AboutBodyStyle = {
+const VideosStyle = {
     "maxWidth": "600px",
     "textAlign": "center" as const,
     "margin": "auto",

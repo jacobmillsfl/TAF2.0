@@ -1,15 +1,15 @@
 import './Homepage.css';
 
-
 import { useState, useEffect, useContext } from 'react';
 import mediaContext from "../../Contexts/Homepage/MediaContext";
-import { Table, ListGroup } from "reactstrap";
+import { Table, ListGroup } from "react-bootstrap";
 import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
 import { RiVideoFill, RiVideoLine } from "react-icons/ri";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { SongDetail } from "../../Models/SongDetail";
 import tafAlbum from "../../media/tafalbum.png";
 import CyberBackground from "../../media/cyber_03.mp4";
+import { ContentContainer } from '../ContentContainer/ContentContainer';
 
 function HomePage() {
     const {
@@ -131,7 +131,7 @@ function HomePage() {
     }
 
     return (
-        <>
+        <ContentContainer>
             <article className="screen" style={CyberStyle} >
                 <input type="checkbox" value="None" id="magicButton" name="check" />
                 <label className="main" htmlFor="magicButton"></label>
@@ -199,7 +199,7 @@ function HomePage() {
                 {/* <div className="current"><h3>{currentSongDetail?.title}</h3></div> */}
 
             </article>
-        </>
+        </ContentContainer>
     );
 }
 
@@ -233,7 +233,5 @@ const CyberStyle = {
 const BarStyle = { 
     "width": "100%" 
 }
-
-
 
 export default HomePage;

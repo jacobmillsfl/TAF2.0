@@ -28,18 +28,20 @@ const CardComponent: React.FC<{ cardInfo: Merch[] }> = ({ cardInfo }) => {
           {rowCards.map((card, index) => (
             <Col key={index} sm={12} md={6} lg={4}>
               <Card style={CardStyle} className="bg-dark text-white">
-                <Card.Img variant="top" src={card.imgUrl} />
                 <Card.Body>
-                  <Card.Title>{card.name}</Card.Title>
+                  <Card.Title className="mt-4">{card.name}</Card.Title>
+                </Card.Body>
+                <Card.Img variant="top" src={card.imgUrl} />
+                <Card.Footer>
                   <Button
-                    variant="primary"
+                    variant="warning"
                     type="button"
                     style={ButtonStyle}
                     data-url={card.storeUrl}
                     onClick={merchClick}>
                     Shop
                   </Button>
-                </Card.Body>
+                </Card.Footer>
               </Card>
             </Col>
           ))}
@@ -59,17 +61,10 @@ const CardStyle = {
   "margin": "1em",
   "--bs-bg-opacity": ".8",
   "background-color": "rgba(var(--bs-dark-rgb),var(--bs-bg-opacity)) !important",
+  "max-width": "400px",
 }
 
 const ButtonStyle = {
-  // "width": "65px",
-  // "height": "55px",
-  // "size": "sm",
-  // "variant": "secondary"
-  // "backgroundColor": "#8B8000",
+  "width": "100%",
+  "font-family": "Audiowide"
 }
-
-
-// todo
-// buy button bigger
-// text bigger

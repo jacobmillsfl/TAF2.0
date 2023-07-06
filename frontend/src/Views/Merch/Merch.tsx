@@ -1,5 +1,6 @@
 import React from "react"
 import CardComponent from "../../Components/Controls/CardComponent"
+import { ContentContainer } from "../ContentContainer/ContentContainer"
 
 export type Merch = {
   name: string,
@@ -11,33 +12,34 @@ export const MerchComponent: React.FC = () => {
 
   let merchandise = new Array<Merch>(
     {
-      name: "TAF Hat",
+      name: "The Ambient Funk TAF Hat",
       imgUrl: process.env.PUBLIC_URL + "img/taf_hat.png",
       storeUrl: "https://www.ebay.com/itm/155534593613"
     },
     {
-      name: "TAF Shirt",
+      name: "The Ambient Funk TAF Unisex Shirt",
       imgUrl: process.env.PUBLIC_URL + "img/taf_shirt.png",
       storeUrl: "https://www.ebay.com/itm/155450892009"
     },
     {
-      name: "BRIGAND Shirt",
+      name: "Brigand Unisex T-Shirt",
       imgUrl: process.env.PUBLIC_URL + "img/brigand_shirt.png",
       storeUrl: "https://www.ebay.com/itm/155450926544"
     },
   )
 
   return (
-    <div style={MerchFrameStyle}>
-      <CardComponent cardInfo={merchandise} />
-    </div>
+    <ContentContainer>
+      <div style={MerchFrameStyle}>
+        <CardComponent cardInfo={merchandise} />
+      </div>
+    </ContentContainer>
   )
 }
 
 
 const MerchFrameStyle = {
-  "maxWidth": "6000px",
+  "maxWidth": "80vw",
   "textAlign": "center" as const,
   "margin": "auto",
-  paddingBottom: "8em"
 }
