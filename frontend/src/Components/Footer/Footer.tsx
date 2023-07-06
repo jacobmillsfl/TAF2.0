@@ -3,7 +3,7 @@ import mediaContext from "../../Contexts/Homepage/MediaContext";
 import {
 	Row,
     Col
-} from 'reactstrap';
+} from 'react-bootstrap';
 
 function Footer() {
     const {

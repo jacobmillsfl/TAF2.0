@@ -1,31 +1,17 @@
 
 import { useState, useContext } from 'react';
-import {
-	Navbar,
-	NavbarBrand,
-	NavbarToggler,
-	Nav,
-	NavItem,
-	NavLink,
-	Collapse,
-	Dropdown,
-	DropdownToggle,
-	DropdownItem,
-	DropdownMenu
-} from 'reactstrap';
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import mediaContext from "../../Contexts/Homepage/MediaContext";
 
-
-
-
-
 function MainNav() {
 	const [collapsed, setCollapsed] = useState(true);
-	const [playlistCollapse, setPlaylistCollapse] = useState(false);
 
 	const {
-		playlist,
 		playlistName,
 		setPlaylist,
 	} = useContext(mediaContext)
@@ -35,12 +21,10 @@ function MainNav() {
 		setCollapsed(collapsed => !collapsed);
 	}
 
-	const playlistToggle = () => {
-		setPlaylistCollapse(playlistCollapse => !playlistCollapse);
-	}
-
 	const playlistSelect = (selection: string) => {
-		if (playlistName === undefined || playlistName != selection) {
+		console.log(`OLD: ${playlistName}, NEW:${selection}`)
+		if (playlistName === undefined || playlistName !== selection) {
+			console.log("CHANGING SELECTION")
 			setPlaylist(selection);
 		}
 	}
@@ -50,7 +34,7 @@ function MainNav() {
 	};
 
 	function scrollFunction() {
-		if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+		if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
 			if (!collapsed) {
 				setCollapsed(true);
 			}
@@ -58,45 +42,36 @@ function MainNav() {
 	}
 
 	return (
-		<Navbar color="dark" dark expand="md">
-			<NavbarBrand href="#">TAFers.net</NavbarBrand>
-			<NavbarToggler onClick={toggle} />
-			<Collapse isOpen={!collapsed} navbar>
-				<Nav className="mr-auto" navbar>
-					<NavItem>
-						<Link to="/" className="nav-link">Home</Link>
-					</NavItem>
-					<Dropdown isOpen={playlistCollapse} toggle={playlistToggle} className="playlistBtn">
-						<DropdownToggle caret className="nav-link">
-							Music
-						</DropdownToggle>
-						<DropdownMenu>
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("")}>Player</DropdownItem></Link></NavItem>
-							<NavItem><Link to="/vibe" style={VibeHeaderStyle}><DropdownItem>Vibe</DropdownItem></Link></NavItem>
-							<DropdownItem divider />
-							<DropdownItem header style={DropdownHeaderStyle}>The Ambient Funk</DropdownItem>
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("TAF")}>TAF</DropdownItem></Link></NavItem>
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("Soul On Fire")}>Soul on Fire</DropdownItem></Link></NavItem>
-							<DropdownItem divider />
-							<DropdownItem header style={DropdownHeaderStyle}>Brigand</DropdownItem>
-							<NavItem><Link to="/media" style={PlayerHeaderStyle}><DropdownItem onClick={() => playlistSelect("The Vault")}>The Vault</DropdownItem></Link></NavItem>
-							{/* <DropdownItem onClick={()=>playlistSelect("Brigand")}>Brigand</DropdownItem> */}
-						</DropdownMenu>
-					</Dropdown>
-					<NavItem>
-						<Link to="/albums" className="nav-link">Albums</Link>
-					</NavItem>
-					<NavItem>
-						<Link to="/videos" className="nav-link">Videos</Link>
-					</NavItem>
-					<NavItem>
-						<Link to="/about" className="nav-link">About</Link>
-					</NavItem>
-					<NavItem>
-						<Link to="/merch" className="nav-link">Merch</Link>
-					</NavItem>
-				</Nav>
-			</Collapse>
+		<Navbar expand="lg" bg="dark" variant="dark" expanded={!collapsed}>
+			<Container>
+				<Navbar.Brand href="/">TAFers.net</Navbar.Brand>
+				<Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggle} />
+				<Navbar.Collapse id="basic-navbar-nav">
+					<Nav className="me-auto">
+						<Nav.Link as={Link} to="/" eventKey="home">Home</Nav.Link>
+						<NavDropdown title="Music" id="basic-nav-dropdown">
+							<NavDropdown.Item as={Link} to="/media" eventKey="media">Player</NavDropdown.Item>
+							<NavDropdown.Item as={Link} to="/vibe" eventKey="vibe">
+								Vibe
+							</NavDropdown.Item>
+							<NavDropdown.Divider />
+							<h6 className="dropdown-header">The Ambient Funk</h6>
+							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("TAF")}>TAF</NavDropdown.Item>
+							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("Soul On Fire")}>Soul On Fire</NavDropdown.Item>
+							<NavDropdown.Divider />
+							<h6 className="dropdown-header">Brigand</h6>
+							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("The Vault")}>
+							The Vault
+							</NavDropdown.Item>
+						</NavDropdown>
+						<Nav.Link as={Link} to="/albums" eventKey="albums">Albums</Nav.Link>
+						<Nav.Link as={Link} to="/videos" eventKey="videos">Videos</Nav.Link>
+						<Nav.Link as={Link} to="/merch" eventKey="merch">Merch</Nav.Link>
+						<Nav.Link as={Link} to="/about" eventKey="about">About</Nav.Link>
+
+					</Nav>
+				</Navbar.Collapse>
+			</Container>
 		</Navbar>
 	);
 }

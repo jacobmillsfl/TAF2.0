@@ -18,8 +18,7 @@ export const SocialList: React.FC<SocialListProps> = ({ listings, heading }) => 
             </h2>
             {
                 listings.map((listing, index) =>
-                    <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle} rel="noopener noreferrer">
-                        {/* <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle}> */}
+                    <a key={index} target="_blank" href={listing.hrefUrl} style={SocialListAttributeStyle} rel="noopener">
                         <span className="hyperDspLink hyperShadow">
                             <div style={SocialListSpanStyle}>
                                 <div>

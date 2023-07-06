@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import TafCarousel from "../Promo/TafCarousel";
+import TafCarousel from "../Album/TafCarousel";
 import { SocialList, SocialListing } from "../../Components/Controls/SocialList";
+import { ContentContainer } from "../ContentContainer/ContentContainer";
 
 export default function LandingPage() {
     const streamingList = new Array<SocialListing>(
@@ -61,7 +62,7 @@ export default function LandingPage() {
     );
 
     return (
-        <div style={PaddingBottomStyle}>
+        <ContentContainer>
             <div className="row">
                 <div className="col-md-12">
                     <TafCarousel />
@@ -77,10 +78,7 @@ export default function LandingPage() {
                     <SocialList listings={streamingList} heading="Music"></SocialList>
                 </div>
             </div>
-        </div>
+        </ContentContainer>
     );
 }
 
-const PaddingBottomStyle = {
-    "paddingBottom": "5em"
-}

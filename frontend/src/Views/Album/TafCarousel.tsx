@@ -1,12 +1,6 @@
 import React from 'react'
 import ShadowBox from "../../Components/Controls/ShadowBox"
-
-import {
-    CarouselControl,
-    Carousel,
-    CarouselItem,
-    CarouselIndicators,
-} from 'reactstrap';
+import Carousel from 'react-bootstrap/Carousel';
 
 export default function Promo() {
 
@@ -64,11 +58,7 @@ export default function Promo() {
     // Carousel Item Data
     const carouselItemData = items.map((item) => {
         return (
-            <CarouselItem
-                key={item.src}
-                onExited={() => setAnimating(false)}
-                onExiting={() => setAnimating(true)}
-            >
+            <Carousel.Item>
                 <div className="row" style={CarouselRowStyle}>
                     <div className="col-lg-2 col-sm-hidden"></div>
                     <div className="col-lg-4 col-md-6 col-sm-12">
@@ -77,31 +67,19 @@ export default function Promo() {
                     <div className="col-lg-4 col-md-6 col-sm-12" style={ContentStyle}>
                         <p style={{ "fontSize": "20pt" }}>{item.heading}</p>
                         <p>{item.paragraph}</p>
-                        {item.link && <a href={item.link} style={LinkStyle} target="_blank" rel="noreferrer">{item.link}</a>}
+                        {item.link && <a href={item.link} style={LinkStyle} target="_blank" rel="noopener">{item.link}</a>}
                     </div>
                     <div className="col-lg-2 col-sm-hidden"></div>
                 </div>
-            </CarouselItem>
+            </Carousel.Item>
         );
     });
 
     return (
         <ShadowBox mode="top">
             <div style={ShadowTopStyle}>
-                <Carousel previous={previousButton} next={nextButton}
-                    activeIndex={activeIndex} style={CarouselStyle}>
-
-                    <CarouselIndicators items={items}
-                        activeIndex={activeIndex}
-                        onClickHandler={(newIndex) => {
-                            if (animating) return;
-                            setActiveIndex(newIndex);
-                        }} />
+                <Carousel>
                     {carouselItemData}
-                    {/* <CarouselControl directionText="Prev"
-                        direction="prev" onClickHandler={previousButton} />
-                    <CarouselControl directionText="Next"
-                        direction="next" onClickHandler={nextButton} /> */}
                 </Carousel>
             </div >
         </ShadowBox>

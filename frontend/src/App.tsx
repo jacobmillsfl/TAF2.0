@@ -11,7 +11,7 @@ import './App.css';
 import MediaComponent from './Contexts/Homepage/MediaComponent';
 import Footer from './Components/Footer/Footer';
 import Visuals from "./Views/Visuals/Visuals";
-import Promo from "./Views/Promo/Promo";
+import { AlbumComponent } from "./Views/Album/Album";
 import LandingPage from "./Views/Homepage/LandingPage";
 import Videos from "./Views/Videos/Videos";
 import { MerchComponent } from './Views/Merch/Merch';
@@ -23,13 +23,13 @@ function App() {
         <MediaComponent className="mediaComponent">
           <MainNav />
           <Routes>
-            <Route path='/' element={< LandingPage />}></Route>
-            <Route path='/media' element={< Homepage />}></Route>
-            <Route path='/vibe' element={< Visuals />}></Route>
-            <Route path='/about' element={< About />}></Route>
-            <Route path='/albums' element={< Promo />}></Route>
-            <Route path='/videos' element={< Videos />}></Route>
-            <Route path='/merch' element={< MerchComponent />}></Route>
+              <Route path='/' element={< LandingPage />} />
+              <Route path='/media' element={< Homepage />} />
+              <Route path='/vibe' element={< Visuals />} />
+              <Route path='/about' element={< About />} />
+              <Route path='/albums' element={< AlbumComponent />} />
+              <Route path='/videos' element={< Videos />} />
+              <Route path='/merch' element={< MerchComponent />} />
           </Routes>
           <Footer />
         </MediaComponent>
