@@ -58,6 +58,7 @@ function MainNav() {
 							<h6 className="dropdown-header">The Ambient Funk</h6>
 							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("TAF")}>TAF</NavDropdown.Item>
 							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("Soul On Fire")}>Soul On Fire</NavDropdown.Item>
+							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("Soul On Fire (Instrumental)")}>Soul On Fire (Instrumental)</NavDropdown.Item>
 							<NavDropdown.Divider />
 							<h6 className="dropdown-header">Brigand</h6>
 							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("The Vault")}>

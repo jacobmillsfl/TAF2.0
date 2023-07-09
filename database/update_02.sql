@@ -13,7 +13,7 @@ SELECT id
 INTO @tafArtistId
 FROM Artist WHERE name = 'The Ambient Funk';
 
-CALL `tafdb`.`usp_Album_Add`(@tafArtistId, 'Soul On Fire', 'album/soul_on_fire_inst.png','2023-08-01');
+CALL `tafdb`.`usp_Album_Add`(@tafArtistId, 'Soul On Fire (Instrumental)', 'album/soul_on_fire_inst.png','2023-08-01');
 SET @tafAlbumSOFI := LAST_INSERT_ID();
 
 CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOFI, 'Rudimentary (Instrumental)', 'song/Rudimentary_Instrumental.mp3', 1);
