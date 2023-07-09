@@ -14,7 +14,7 @@ export const MerchComponent: React.FC = () => {
     {
       name: "The Ambient Funk TAF Hat",
       imgUrl: process.env.PUBLIC_URL + "img/taf_hat.png",
-      storeUrl: "https://www.ebay.com/itm/155534593613"
+      storeUrl: "https://www.ebay.com/itm/155656999594"
     },
     {
       name: "The Ambient Funk TAF Unisex Shirt",
