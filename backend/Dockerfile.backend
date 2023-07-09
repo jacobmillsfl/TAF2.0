@@ -27,6 +27,7 @@ COPY ./ ./
 RUN python3 -m venv tafapi
 RUN source tafapi/bin/activate
 RUN pip install --upgrade pip
+RUN pip uninstall uwsgi
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
 
