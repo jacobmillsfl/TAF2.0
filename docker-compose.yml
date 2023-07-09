@@ -14,6 +14,8 @@ services:
       - ./database/03_song.sql:/docker-entrypoint-initdb.d/4.sql
       - ./database/init_data.sql:/docker-entrypoint-initdb.d/5.sql
       - ./database/custom_routines.sql:/docker-entrypoint-initdb.d/6.sql
+      - ./database/update_01.sql:/docker-entrypoint-initdb.d/7.sql
+      - ./database/update_02.sql:/docker-entrypoint-initdb.d/8.sql
   api:
     container_name: tafweb-api
     build:

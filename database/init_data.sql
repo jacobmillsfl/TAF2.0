@@ -32,15 +32,15 @@ CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumId, 'Otherside', 'song/Others
 CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumId, 'Trifold Ecstacy', 'song/TrifoldEcstacy.mp3', 10);
 
 CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Rudimentary', 'song/Rudimentary.mp3', 1);
-CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'FreeYourMind', 'song/FreeYourMind.mp3', 2);
-CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'JumpingItUp', 'song/JumpingItUp.mp3', 3);
+CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Free Your Mind', 'song/FreeYourMind.mp3', 2);
+CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Jumping It Up', 'song/JumpingItUp.mp3', 3);
 CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Vinculum', 'song/Vinculum.mp3', 4);
-CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'HeavenLightMyCandle', 'song/HeavenLightMyCandle.mp3', 5);
-CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'TheDistanceBetweenUs', 'song/TheDistanceBetweenUs.mp3', 6);
+CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Heaven Light My Candle', 'song/HeavenLightMyCandle.mp3', 5);
+CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'The Distance Between Us', 'song/TheDistanceBetweenUs.mp3', 6);
 CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Acrophobia', 'song/Acrophobia.mp3', 7);
-CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'SoulOnFire', 'song/SoulOnFire.mp3', 8);
-CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'AbyssOfBliss', 'song/AbyssOfBliss.mp3', 9);
-CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'BringItBack', 'song/BringItBack.mp3', 10);
+CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Soul On Fire', 'song/SoulOnFire.mp3', 8);
+CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Abyss of Bliss', 'song/AbyssOfBliss.mp3', 9);
+CALL `tafdb`.`usp_Song_Add`(@tafArtistId, @tafAlbumSOF, 'Bring It Back', 'song/BringItBack.mp3', 10);
 
 CALL `tafdb`.`usp_Song_Add`(@brigandArtistId, @brigandAlbumId, 'All That Remains', 'song/AllThatRemains.mp3', 1);
 CALL `tafdb`.`usp_Song_Add`(@brigandArtistId, @brigandAlbumId, 'Another Domino', 'song/AnotherDomino.mp3', 2);
