@@ -33,7 +33,7 @@ RUN pip install uwsgi
 # Expose port
 EXPOSE 5000
 
-ENV PATH="${PATH}:/home/appuser/.local/bin/" 
+ENV PATH="${PATH}:/home/appuser/.local/bin/"
 
 # Run API
 #CMD ["python3", "./app.py"]
