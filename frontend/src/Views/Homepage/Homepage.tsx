@@ -29,6 +29,27 @@ function HomePage() {
     const [currentSongDetail, setCurrentSongDetail] = useState<SongDetail | null>(null);
     const [seekDuration, setSeekDuration] = useState(0);
     const [seekValue, setSeekValue] = useState(0);
+    const [showPlayer, setShowPlayer] = useState(true);
+
+
+    let timeout: NodeJS.Timeout;
+    const resetTimeout = () => {
+        let duration = 3000; // 3 seconds
+        clearTimeout(timeout);
+        timeout = setTimeout(() => setShowPlayer(false), duration);
+    };
+
+    // Track mouse movement
+    const handleMouseMove = () => {
+        setShowPlayer(true);
+        resetTimeout();
+    };
+
+    // Track keyboard input
+    const handleKeyPress = () => {
+        setShowPlayer(true);
+        resetTimeout();
+    };
 
     /**
      * Onload event
@@ -57,19 +78,32 @@ function HomePage() {
         // Set initial song info
         if (!playlist || playlist.length == 0) {
             setCurrentSongDetail({ title: "Loading", artist: "", url: "", albumArt: null, album: "", trackNumber: 0 });
-            console.log("AudioController::useEffect::onload");
         }
+
+        // Add event listeners for mousemove and keydown
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('keydown', handleKeyPress);
+
+        // Initialize the timeout
+        resetTimeout();
+
+        return () => {
+            // Clean up by removing event listeners
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('keydown', handleKeyPress);
+
+            // Clear the timeout on unmount
+            clearTimeout(timeout);
+        };
     }, [])
 
     /**
      * Triggers whenever the current song changes.
      */
     useEffect(() => {
-        if (playlist && playlist.length > 0 && currentSongIndex >= 0)
-        {
+        if (playlist && playlist.length > 0 && currentSongIndex >= 0) {
             setCurrentSongDetail(playlist[currentSongIndex]);
         }
-        console.log("AudioController::useEffect::currentSongIndex", currentSongIndex);
     }, [currentSongIndex]);
 
     /**
@@ -77,9 +111,8 @@ function HomePage() {
      */
     useEffect(() => {
         console.log("AudioController::useEffect::playlist", playlist);
-        if (playlist && playlist.length > 0 && currentSongIndex >= 0) 
-        {
-            setCurrentSongDetail({ 
+        if (playlist && playlist.length > 0 && currentSongIndex >= 0) {
+            setCurrentSongDetail({
                 title: playlist[currentSongIndex].title,
                 artist: playlist[currentSongIndex].artist,
                 url: playlist[currentSongIndex].url,
@@ -94,7 +127,7 @@ function HomePage() {
     /**
      * CSS hack to re-style seek bar as the seek value changes
      */
-    useEffect( () => {
+    useEffect(() => {
         let target = document.querySelector("#AudioSeekBar") as HTMLInputElement;
         let relativeValue = Number(target.value) - Number(target.min);
         let relativeMax = Number(target.max) - Number(target.min)
@@ -130,9 +163,17 @@ function HomePage() {
         }
     }
 
+    function seekInfo(){
+        let currentMinutes = `${Math.floor(seekValue / 60)}`.padStart(2, "0");
+        let currentSeconds = `${Math.floor(seekValue % 60)}`.padStart(2, "0");
+        let maxMinutes = `${Math.floor(seekDuration / 60)}`.padStart(2, "0");
+        let maxSeconds = `${Math.floor(seekDuration % 60)}`.padStart(2, "0");
+        return `${currentMinutes}:${currentSeconds} | ${maxMinutes}:${maxSeconds}`
+    }
+
     return (
         <ContentContainer>
-            <article className="screen" style={CyberStyle} >
+            <article className={`screen fading-div ${showPlayer ? 'visible' : 'hidden'}`} style={CyberStyle} >
                 <input type="checkbox" value="None" id="magicButton" name="check" />
                 <label className="main" htmlFor="magicButton"></label>
 
@@ -171,8 +212,8 @@ function HomePage() {
                 <div className="info">
                     <h4>{currentSongDetail?.title}</h4>
                     <h3>{currentSongDetail?.artist}</h3>
+                    <h4 style={{"marginTop": "16px"}}>{seekInfo()}</h4>
                 </div>
-
 
                 {/* <table className="player">
                     <tbody>
@@ -226,12 +267,12 @@ const musicPlayerSong: cssProperties = {
     padding: "0px 10px 0px 10px"
 }
 
-const CyberStyle = { 
-    backgroundImage: `url(${CyberBackground})` 
+const CyberStyle = {
+    backgroundImage: `url(${CyberBackground})`
 }
 
-const BarStyle = { 
-    "width": "100%" 
+const BarStyle = {
+    "width": "100%"
 }
 
 export default HomePage;

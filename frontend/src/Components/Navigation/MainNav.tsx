@@ -1,4 +1,3 @@
-
 import { useState, useContext } from 'react';
 
 import Container from 'react-bootstrap/Container';
@@ -22,9 +21,7 @@ function MainNav() {
 	}
 
 	const playlistSelect = (selection: string) => {
-		console.log(`OLD: ${playlistName}, NEW:${selection}`)
 		if (playlistName === undefined || playlistName !== selection) {
-			console.log("CHANGING SELECTION")
 			setPlaylist(selection);
 		}
 	}
@@ -50,10 +47,7 @@ function MainNav() {
 					<Nav className="me-auto">
 						<Nav.Link as={Link} to="/" eventKey="home">Home</Nav.Link>
 						<NavDropdown title="Music" id="basic-nav-dropdown">
-							<NavDropdown.Item as={Link} to="/media" eventKey="media">Player</NavDropdown.Item>
-							<NavDropdown.Item as={Link} to="/vibe" eventKey="vibe">
-								Vibe
-							</NavDropdown.Item>
+							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("")} eventKey="media">All</NavDropdown.Item>
 							<NavDropdown.Divider />
 							<h6 className="dropdown-header">The Ambient Funk</h6>
 							<NavDropdown.Item as={Link} to="/media" onClick={()=>playlistSelect("TAF")}>TAF</NavDropdown.Item>

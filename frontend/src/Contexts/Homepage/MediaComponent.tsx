@@ -168,16 +168,15 @@ const MediaComponent = (props: any) => {
 
     // Onload effect
     useEffect( () => {
-        console.log("API getting songs");
+        console.log("SongApi::getSongs()");
         SongApi.getSongs().then( (apiSongs) => {
-            console.log("API setting songs");
             setSongsArray(apiSongs);
         });
     }, []);
 
     useEffect( () => {
         console.log("Setting Playlist");
-        setPlaylist("Soul On Fire");
+        setPlaylist("");
     }, [state.songs]);
 
     return (

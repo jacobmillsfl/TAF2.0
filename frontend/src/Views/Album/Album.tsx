@@ -10,7 +10,7 @@ export type Album = {
 export const AlbumComponent: React.FC = () => {
     const albums = new Array<Album>(
         {
-            name: "Coming Soon!",
+            name: "Soul On Fire",
             imgUrl: "/img/soultransparent.png",
             description: "Soul on Fire is the second studio length album by The Ambient Funk. Titled after a featured track, this album represents a self transformation, burning past internal barriers and rising from the ashes. In this release, The Ambient Funk is pushing boundaries in the realm of ambient, progressive, rock, funk, and electronica music. This album also features multiple guest artists."
         },

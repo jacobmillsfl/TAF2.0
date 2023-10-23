@@ -10,7 +10,6 @@ import MainNav from './Components/Navigation/MainNav';
 import './App.css';
 import MediaComponent from './Contexts/Homepage/MediaComponent';
 import Footer from './Components/Footer/Footer';
-import Visuals from "./Views/Visuals/Visuals";
 import { AlbumComponent } from "./Views/Album/Album";
 import LandingPage from "./Views/Homepage/LandingPage";
 import Videos from "./Views/Videos/Videos";
@@ -25,7 +24,6 @@ function App() {
           <Routes>
               <Route path='/' element={< LandingPage />} />
               <Route path='/media' element={< Homepage />} />
-              <Route path='/vibe' element={< Visuals />} />
               <Route path='/about' element={< About />} />
               <Route path='/albums' element={< AlbumComponent />} />
               <Route path='/videos' element={< Videos />} />
