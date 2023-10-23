@@ -115,4 +115,5 @@ tmp/
 # We don't want build data in the repo, just rebuild
 frontend/build/
 
-
+# Don't add cache
+backend/__pycache__/
