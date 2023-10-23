@@ -12,6 +12,11 @@ export const MerchComponent: React.FC = () => {
 
   let merchandise = new Array<Merch>(
     {
+      name: "Soul On Fire Shirt",
+      imgUrl: process.env.PUBLIC_URL + "img/sof_shirt.png",
+      storeUrl: "https://www.ebay.com/itm/155736237137"
+    },
+    {
       name: "The Ambient Funk TAF Hat",
       imgUrl: process.env.PUBLIC_URL + "img/taf_hat.png",
       storeUrl: "https://www.ebay.com/itm/155656999594"
