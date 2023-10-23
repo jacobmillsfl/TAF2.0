@@ -29,9 +29,9 @@ const CardComponent: React.FC<{ cardInfo: Merch[] }> = ({ cardInfo }) => {
             <Col key={index} sm={12} md={6} lg={4}>
               <Card style={CardStyle} className="bg-dark text-white">
                 <Card.Body>
-                  <Card.Title className="mt-4">{card.name}</Card.Title>
+                  <Card.Title className="mt-4" style={TitleStyle}>{card.name}</Card.Title>
                 </Card.Body>
-                <Card.Img variant="top" src={card.imgUrl} />
+                <Card.Img variant="top" src={card.imgUrl} style={ProductImageStyle} />
                 <Card.Footer>
                   <Button
                     variant="warning"
@@ -67,4 +67,12 @@ const CardStyle = {
 const ButtonStyle = {
   "width": "100%",
   "font-family": "Audiowide"
+}
+
+const TitleStyle = {
+  "minHeight" : "120px"
+}
+
+const ProductImageStyle = {
+  "marginTop" : "-10vh"
 }

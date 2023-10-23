@@ -980,6 +980,10 @@ label.main:hover:before {
     cursor: pointer;
 }
 
+.nr {
+    width: 35px;
+}
+
 .title {
     text-align: left;
     text-indent: 15px;
@@ -1144,7 +1148,7 @@ td>#heart8:checked~label.zmr:before {
 }
 
 .screen>#magicButton:checked~.info {
-    top: 66px;
+    top: 36px;
     left: 126px;
     text-align: left;
     transition: all 0.3s ease-in;
@@ -1391,4 +1395,17 @@ html {
 
 .footerLayerAuthor {
     width: -moz-available
+}
+
+.fading-div {
+    transition: opacity 5s;
+}
+
+.fading-div.visible {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.fading-div.hidden {
+    opacity: 0;
 }
