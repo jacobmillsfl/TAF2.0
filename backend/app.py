@@ -30,7 +30,6 @@ missing_values = []
 config = {}
 for setting in config_values:
     value = os.environ.get(setting)
-    print(f"{setting} : {value}")
     if value:
         config[setting] = value
     else:
@@ -46,7 +45,6 @@ elif len(missing_values) > 0:
 # #####################
 # Database
 # #####################
-print(config)
 db = DatabaseUtil(config)
 
 
@@ -93,11 +91,7 @@ def register():
     if not username or not email or not password:
         return jsonify({'message': 'All fields are required'}), 400
 
-
-    # TODO: Store user info in database (not the password)
-    # Step 1: See if user exists
     result = db.user_search(username)
-    print(result)
     if result:
         return "Username taken"
     else:
@@ -121,12 +115,10 @@ def login():
         return jsonify({'message': 'username and password required'}), 400
 
     result = db.user_search(username)
-    print(result)
     if not result:
         return jsonify({'message': 'user not found'}), 400
     elif CryptoUtil.check_password(password, result[0]['password_hash']):
         user = result[0]
-        print(user)
         payload = {
             'user_id': user['id'],
             'exp': datetime.utcnow() + timedelta(days=30),
