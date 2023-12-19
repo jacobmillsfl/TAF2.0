@@ -89,3 +89,8 @@
 .dropdown-header {
   color: black !important;
 }
+
+/** Form Controls */
+.input-form-button {
+  float: right;
+}
