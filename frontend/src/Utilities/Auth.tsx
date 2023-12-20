@@ -14,7 +14,8 @@ class Auth {
     }
 
     static isAuthenticated(): boolean {
-        return this.getAuthToken() != null;
+        const token = this.getAuthToken();
+        return token !== null && token !== "";
     }
 
     static async registerUser(username: string, email: string, password: string): Promise<any> {
