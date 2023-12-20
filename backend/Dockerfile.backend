@@ -13,6 +13,13 @@ RUN useradd -ms /bin/bash appuser
 WORKDIR /home/appuser
 USER appuser
 
+# Install Python requirements
+COPY ./requirements.txt ./requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
+RUN pip uninstall -y uwsgi
+RUN pip install uwsgi
+
 # Initialize volume data
 RUN mkdir ./files
 COPY ./default_data/album/ ./files/album/
@@ -23,12 +30,6 @@ COPY ./default_data/song/ ./files/song/
 RUN mkdir ./app
 WORKDIR ./app
 COPY ./ ./
-
-# Install Python requirements
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
-RUN pip uninstall -y uwsgi
-RUN pip install uwsgi
 
 # Expose port
 EXPOSE 5000
