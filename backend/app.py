@@ -100,6 +100,7 @@ def register():
         active_status = 0
         initial_scope = "User"
         saved = db.user_create(username, hashed_password, email, active_status, initial_scope)
+        # TODO: Return a formalized object
         return saved
 
 
