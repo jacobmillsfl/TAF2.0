@@ -6,15 +6,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import mediaContext from "../../Contexts/Homepage/MediaContext";
+import Auth from '../../Utilities/Auth';
 
 function MainNav() {
+	const isAuthenticated = Auth.isAuthenticated();
 	const [collapsed, setCollapsed] = useState(true);
-
 	const {
 		playlistName,
 		setPlaylist,
 	} = useContext(mediaContext)
-
 
 	const toggle = () => {
 		setCollapsed(collapsed => !collapsed);
@@ -63,6 +63,18 @@ function MainNav() {
 						<Nav.Link as={Link} to="/videos" eventKey="videos">Videos</Nav.Link>
 						<Nav.Link as={Link} to="/merch" eventKey="merch">Merch</Nav.Link>
 						<Nav.Link as={Link} to="/about" eventKey="about">About</Nav.Link>
+						{!isAuthenticated &&
+							<Nav.Link as={Link} to="/register" eventKey="register">Register</Nav.Link>
+						}
+						{!isAuthenticated &&
+							<Nav.Link as={Link} to="/login" eventKey="login">Login</Nav.Link>
+						}
+						{isAuthenticated &&
+							<Nav.Link as={Link} to="/admin" eventKey="admin">Admin</Nav.Link>
+						}
+						{isAuthenticated &&
+							<Nav.Link as={Link} to="/logout" eventKey="logout">Log Out</Nav.Link>
+						}
 
 					</Nav>
 				</Navbar.Collapse>

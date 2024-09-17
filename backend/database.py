@@ -1,29 +1,15 @@
 import pymysql
-import os
 
 class DatabaseUtil:
     """Database Utility. Uses an on-demand pattern to connect and disconnect as needed."""
 
-    def __init__(self):
+    def __init__(self, config):
         """Create a new instance of the database utility"""
-        self.host = os.environ.get("MYSQL_HOSTNAME")
-        self.user = os.environ.get("MYSQL_API_USER")
-        self.password = os.environ.get("MYSQL_ROOT_PASSWORD")
-        self.db = os.environ.get("MYSQL_DATABASE")
+        self.host = config["MYSQL_HOSTNAME"]
+        self.user = config["MYSQL_API_USER"]
+        self.password = config["MYSQL_ROOT_PASSWORD"]
+        self.db = config["MYSQL_DATABASE"]
 
-        env_errors = []
-        if not self.host:
-            env_errors.append("MYSQL_HOSTNAME not defined.")
-        if not self.user:
-            env_errors.append("MYSQL_API_USER not defined.")
-        if not self.password:
-            env_errors.append("MYSQL_ROOT_PASSWORD not defined.")
-        if not self.db:
-            env_errors.append("MYSQL_DATABASE not defined.")
-
-        if len(env_errors) > 0:
-            errors = "\n\t".join(env_errors)
-            raise Exception(f"ERROR: Environment variables not set. \n{errors}")
 
     # Connection methodologies
 
@@ -42,6 +28,10 @@ class DatabaseUtil:
         """Closes the current connection. Call after each database transaction."""
 
         self.connection.close()
+    
+    def __commit__(self):
+        """Commits a database transaction."""
+        self.connection.commit()
 
     def songs_load_all(self):
         self.__connect__()
@@ -63,3 +53,24 @@ class DatabaseUtil:
         result = self.cursor.fetchall()
         self.__disconnect__()
         return result
+
+    def user_create(self, username, password_hash, email, active, scope):
+        self.__connect__()
+        query = "usp_User_Add"
+        params = [username, password_hash, email, active, scope]
+        self.cursor.callproc(query, params)
+
+        result = self.cursor.fetchall()
+        self.__commit__()
+        self.__disconnect__()
+        return result
+
+    def user_search(self, username):
+        self.__connect__()
+        query = "usp_User_Search"
+        params = [username]
+        self.cursor.callproc(query, params)
+
+        rows = self.cursor.fetchall()
+        self.__disconnect__()
+        return rows
